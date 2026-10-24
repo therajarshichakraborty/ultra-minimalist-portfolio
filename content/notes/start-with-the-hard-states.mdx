@@ -1,0 +1,26 @@
+export const meta = {
+  title: "start with the hard states",
+  date: "2026-10-12",
+  summary: "i design the empty, loading, and error states before the happy path. they decide more of the layout than you would think.",
+};
+
+when i start a screen, i skip the version with perfect data. i sketch the ones nobody screenshots first:
+
+- **empty**, before anything exists
+- **loading**, while the request is still out
+- **error**, when it comes back wrong
+- **too much**, when a name runs forty characters and the list has three hundred rows
+
+these decide the layout more than the happy path does. a list that looks right with five items can fall apart with zero, or with five hundred. a title that fits on one line on my screen will wrap on someone's phone.
+
+## a small example
+
+the [toast fix i sent to shadcn/ui](/open-source) started this way. the happy path was fine. but a toast with an action only announced "undo" to a screen reader, without saying what would be undone. the fix was a better label, something like `aria-label="undo archive"`, not a redesign.
+
+> the hard states are where people decide whether to trust what you built.
+
+## how i work through them
+
+every component i build gets a small set of fake data next to it: an empty array, a promise that never resolves, one that throws, and a string that is far too long. i switch between them while i work, so the edge cases are there from the first commit instead of the week before launch.
+
+it is slower for the first hour. it is faster for everything after.

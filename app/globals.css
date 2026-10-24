@@ -1,0 +1,498 @@
+@import "tailwindcss";
+
+@theme {
+  --text-meta: 12px;
+  --text-meta--line-height: 1.5;
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-snap: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-script: var(--font-signature), cursive;
+  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-chip: var(--chip);
+  --color-chip-hover: var(--chip-hover);
+  --color-chip-press: var(--chip-press);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --shadow-media: var(--media-shadow);
+  --shadow-lift: var(--lift-shadow);
+}
+
+:root {
+  --bg: #ffffff;
+  --ink: #000000;
+  --muted: #696969;
+  --faint: #767676;
+  --chip: #f0f0f0;
+  --chip-hover: #e5e5e5;
+  --chip-press: #dedede;
+  --surface: #f5f5f5;
+  --line: rgb(0 0 0 / 0.08);
+  --dot: rgb(0 0 0 / 0.11);
+  --dot-strong: rgb(0 0 0 / 0.28);
+  --media-shadow: 0 3px 12px rgb(0 0 0 / 0.04);
+  --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.06), 0 8px 24px -6px rgb(0 0 0 / 0.12);
+  --glare: rgb(255 255 255 / 0.55);
+  --linkedin: #0a66c2;
+  --linkedin-tint: rgb(10 102 194 / 0.1);
+  --linkedin-press: rgb(10 102 194 / 0.16);
+  --github: #24292f;
+  --github-tint: rgb(36 41 47 / 0.1);
+  --github-press: rgb(36 41 47 / 0.16);
+  --x-fill: #000000;
+  --x-ink: #ffffff;
+  --x-press: #242424;
+  --oss: #8250df;
+  --oss-tint: rgb(130 80 223 / 0.1);
+  --oss-press: rgb(130 80 223 / 0.16);
+  --column: 520px;
+  --gutter: 24px;
+  --media: clamp(300px, 48svh, 480px);
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --ink: #ededed;
+  --muted: #a1a1a1;
+  --faint: #8f8f8f;
+  --chip: #1b1b1b;
+  --chip-hover: #262626;
+  --chip-press: #2e2e2e;
+  --surface: #141414;
+  --line: rgb(255 255 255 / 0.08);
+  --dot: rgb(255 255 255 / 0.08);
+  --dot-strong: rgb(255 255 255 / 0.3);
+  --media-shadow: 0 3px 12px rgb(0 0 0 / 0.5);
+  --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -6px rgb(0 0 0 / 0.6);
+  --glare: rgb(255 255 255 / 0.14);
+  --linkedin: #70b5f9;
+  --linkedin-tint: rgb(112 181 249 / 0.14);
+  --linkedin-press: rgb(112 181 249 / 0.22);
+  --github: #f0f6fc;
+  --github-tint: rgb(240 246 252 / 0.12);
+  --github-press: rgb(240 246 252 / 0.18);
+  --x-fill: #ffffff;
+  --x-ink: #000000;
+  --x-press: #d9d9d9;
+  --oss: #a371f7;
+  --oss-tint: rgb(163 113 247 / 0.16);
+  --oss-press: rgb(163 113 247 / 0.24);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --bg: #0a0a0a;
+    --ink: #ededed;
+    --muted: #a1a1a1;
+    --faint: #8f8f8f;
+    --chip: #1b1b1b;
+    --chip-hover: #262626;
+    --chip-press: #2e2e2e;
+    --surface: #141414;
+    --line: rgb(255 255 255 / 0.08);
+    --dot: rgb(255 255 255 / 0.08);
+    --dot-strong: rgb(255 255 255 / 0.3);
+    --media-shadow: 0 3px 12px rgb(0 0 0 / 0.5);
+    --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -6px rgb(0 0 0 / 0.6);
+    --glare: rgb(255 255 255 / 0.14);
+    --linkedin: #70b5f9;
+    --linkedin-tint: rgb(112 181 249 / 0.14);
+    --linkedin-press: rgb(112 181 249 / 0.22);
+    --github: #f0f6fc;
+    --github-tint: rgb(240 246 252 / 0.12);
+    --github-press: rgb(240 246 252 / 0.18);
+    --x-fill: #ffffff;
+    --x-ink: #000000;
+    --x-press: #d9d9d9;
+    --oss: #a371f7;
+    --oss-tint: rgb(163 113 247 / 0.16);
+    --oss-press: rgb(163 113 247 / 0.24);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --column: 360px;
+    --gutter: 20px;
+    --media: min(320px, calc(100vw - 40px));
+  }
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--ink);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100svh;
+    font-size: 15px;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility column {
+  width: min(var(--column), calc(100% - var(--gutter) * 2));
+  margin-inline: auto;
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility chip {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  white-space: nowrap;
+  border-radius: 4px;
+  background: var(--chip);
+  color: var(--ink);
+  padding: 1px 4px;
+  line-height: 18px;
+  text-decoration: none;
+  transform-origin: 50% 50%;
+  transition:
+    background-color 160ms,
+    color 160ms,
+    opacity 120ms,
+    transform 200ms var(--ease-snap);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -4px -2px;
+  }
+
+  &:focus-visible {
+    background: var(--chip-hover);
+    transition: none;
+  }
+
+  &:active:not(:focus-visible) {
+    background: var(--chip-press);
+    transform: scale(0.97);
+    transition-duration: 100ms;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background: var(--chip-hover);
+    }
+  }
+}
+
+@layer components {
+  .chip-icon {
+    position: relative;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    vertical-align: -2px;
+    pointer-events: none;
+    transition: color 160ms;
+  }
+
+  .chip-icon > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    transform-origin: 50% 75%;
+  }
+
+  .chip-icon[data-icon="x"] {
+    margin-right: 0;
+  }
+
+  .chip-icon[data-icon="x"] > svg {
+    transform-origin: 50% 50%;
+  }
+
+  .chip-icon[data-icon="resume"] > svg {
+    transform-origin: 25% 85%;
+  }
+
+  .chip-icon[data-icon="notes"] > svg {
+    transform-origin: 20% 85%;
+  }
+
+  .chip[data-brand="x"] {
+    min-width: 25px;
+    padding-inline: 5px;
+    text-align: center;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .chip[data-brand="linkedin"]:hover:not(:focus-visible) {
+      background: var(--linkedin-tint);
+    }
+
+    .chip[data-brand="linkedin"]:hover:not(:focus-visible) .chip-icon {
+      color: var(--linkedin);
+    }
+
+    .chip[data-brand="linkedin"]:hover:active:not(:focus-visible) {
+      background: var(--linkedin-press);
+    }
+
+    .chip[data-brand="github"]:hover:not(:focus-visible) {
+      background: var(--github-tint);
+    }
+
+    .chip[data-brand="github"]:hover:not(:focus-visible) .chip-icon {
+      color: var(--github);
+    }
+
+    .chip[data-brand="github"]:hover:active:not(:focus-visible) {
+      background: var(--github-press);
+    }
+
+    .chip[data-brand="x"]:hover:not(:focus-visible) {
+      background: var(--x-fill);
+    }
+
+    .chip[data-brand="x"]:hover:not(:focus-visible) .chip-icon {
+      color: var(--x-ink);
+    }
+
+    .chip[data-brand="x"]:hover:active:not(:focus-visible) {
+      background: var(--x-press);
+    }
+
+    .chip[data-brand="oss"]:hover:not(:focus-visible) {
+      background: var(--oss-tint);
+    }
+
+    .chip[data-brand="oss"]:hover:not(:focus-visible) .chip-icon {
+      color: var(--oss);
+    }
+
+    .chip[data-brand="oss"]:hover:active:not(:focus-visible) {
+      background: var(--oss-press);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .chip-icon > svg {
+      transition: transform 280ms var(--ease-out-quint);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="email"] > svg {
+      transform: translateY(-1px) rotate(-6deg);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="linkedin"] > svg {
+      transform: translateY(-1px) scale(1.05);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="x"] > svg {
+      transform: rotate(6deg) scale(1.04);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="github"] > svg {
+      transform: rotate(-7deg) scale(1.05);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="resume"] > svg {
+      transform: translateY(-1px) rotate(4deg);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="notes"] > svg {
+      transform: translate(0.5px, -0.5px) rotate(-5deg);
+    }
+
+    .chip:hover:not(:focus-visible) .chip-icon[data-icon="open-source"] > svg {
+      transform: rotate(-8deg) scale(1.05);
+    }
+  }
+
+  .reveal-word {
+    display: inline-block;
+  }
+
+  html[data-intro] .reveal {
+    animation: reveal 680ms var(--ease-out-quint) both;
+    animation-delay: var(--d, 0ms);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html[data-intro] .reveal {
+      animation: none;
+    }
+  }
+
+  .dot-layer {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
+    background-size: 22px 22px;
+    background-position: center center;
+  }
+
+  .dot-layer[data-layer="base"] {
+    mask-image: radial-gradient(ellipse 62% 58% at 50% 50%, transparent 35%, #000 100%);
+  }
+
+  .dot-layer[data-layer="glow"] {
+    background-image: radial-gradient(var(--dot-strong) 1px, transparent 1.2px);
+    opacity: 0;
+    transition: opacity 500ms var(--ease-out-quint);
+    mask-image: radial-gradient(220px circle at var(--x, -999px) var(--y, -999px), #000 0%, rgb(0 0 0 / 0.5) 45%, transparent 100%);
+  }
+
+  [data-active="true"] > .dot-layer[data-layer="glow"] {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.nav-forward) {
+  animation: 180ms ease-in both vt-out-up;
+}
+
+::view-transition-new(.nav-forward) {
+  animation: 420ms var(--ease-out-quint) 80ms both vt-in-up;
+}
+
+::view-transition-old(.nav-back) {
+  animation: 180ms ease-in both vt-out-down;
+}
+
+::view-transition-new(.nav-back) {
+  animation: 420ms var(--ease-out-quint) 80ms both vt-in-down;
+}
+
+::view-transition-old(.nav-fade) {
+  animation: 160ms ease-in both vt-fade-out;
+}
+
+::view-transition-new(.nav-fade) {
+  animation: 300ms var(--ease-out-quint) 60ms both vt-fade-in;
+}
+
+::view-transition-group(.morph) {
+  animation-duration: 460ms;
+  animation-timing-function: var(--ease-out-quint);
+}
+
+::view-transition-image-pair(.morph) {
+  animation-name: vt-morph-blur;
+}
+
+@keyframes vt-out-up {
+  to {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes vt-in-up {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(12px);
+  }
+}
+
+@keyframes vt-out-down {
+  to {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(8px);
+  }
+}
+
+@keyframes vt-in-down {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes vt-fade-out {
+  to {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes vt-fade-in {
+  from {
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes vt-morph-blur {
+  30% {
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}

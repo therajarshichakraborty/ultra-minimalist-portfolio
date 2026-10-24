@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .body { fill: #000; }
+    .eye { fill: #fff; }
+    @media (prefers-color-scheme: dark) {
+      .body { fill: #fff; }
+      .eye { fill: #000; }
+    }
+  </style>
+  <circle class="body" cx="16" cy="16" r="14" />
+  <rect class="eye" x="8.5" y="11" width="5.5" height="8" rx="2.75" />
+  <rect class="eye" x="18" y="11" width="5.5" height="8" rx="2.75" />
+</svg>

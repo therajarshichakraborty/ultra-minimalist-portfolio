@@ -1,0 +1,35 @@
+export const meta = {
+  title: "motion should explain something",
+  date: "2026-09-21",
+  summary: "the one question i ask before adding an animation, and what i do when the answer is nothing.",
+};
+
+before i add an animation, i ask what it explains. if i cannot answer in one sentence, it does not ship.
+
+most useful motion answers one of three questions:
+
+1. where did this come from? a menu that grows out of its button tells you which button owns it.
+2. where did it go? a row that collapses after you delete it shows the list closing the gap, so you keep your place.
+3. did that work? a button that presses in under your finger confirms the tap before the network does.
+
+## when the answer is nothing
+
+spinners that speed up to look busy. cards that tilt for no reason. page transitions that take longer than the page took to load. none of these explain anything. they only cost time, and they cost it on every visit.
+
+## timing
+
+most of my transitions sit between 150 and 300 milliseconds, on an ease out curve, so things arrive quickly and settle slowly. exits are shorter than entrances, because you already know what is leaving. anything that follows your hand, like a drag or a swipe, should not be eased at all. it should be exactly where your finger is.
+
+## when people ask for less
+
+some people turn motion down at the system level, and the browser passes that along through `prefers-reduced-motion`. i treat it as a design target, not a switch that turns everything off. slides become fades, and anything purely decorative goes away.
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    transition: opacity 200ms ease-out;
+  }
+}
+```
+
+the test still applies there. if the motion was explaining something, the reduced version should explain it too, just more quietly. [mdn has a good reference](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) if you have not used the media query yet.
