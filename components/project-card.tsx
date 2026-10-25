@@ -9,12 +9,12 @@ export function ProjectCard({ project }: { project: Project }) {
     <article data-card="" className="w-(--media)">
       <Morph name={`cover-${project.slug}`}>
         <div>
-          <TiltCard max={4}>
+          <TiltCard max={4} className="rounded-3xl max-sm:rounded-2xl">
             <Link
               href={`/work/${project.slug}`}
               aria-label={`${project.title} case study`}
               transitionTypes={["nav-forward"]}
-              className="relative block aspect-square overflow-hidden rounded bg-surface"
+              className="relative block aspect-square overflow-hidden rounded-3xl max-sm:rounded-2xl bg-surface"
             >
               <ProjectCover slug={project.slug} />
             </Link>

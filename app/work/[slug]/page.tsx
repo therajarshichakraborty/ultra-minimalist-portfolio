@@ -53,7 +53,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
         </dl>
         <div className="reveal mt-10" style={revealDelay(240)}>
           <Morph name={`cover-${project.slug}`}>
-            <div className="relative aspect-square overflow-hidden rounded bg-surface">
+            <div className="relative aspect-square overflow-hidden rounded-3xl max-sm:rounded-2xl bg-surface">
               <ProjectCover slug={project.slug} />
             </div>
           </Morph>

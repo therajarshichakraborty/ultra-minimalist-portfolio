@@ -22,12 +22,12 @@ function Tile({ href, label, morph, surface, delay, children }: TileProps) {
     <div className="reveal group relative pb-[30px]" style={revealDelay(delay)}>
       <Morph name={morph}>
         <div>
-          <TiltCard>
+          <TiltCard className="rounded-3xl max-sm:rounded-2xl">
             <Link
               href={href}
               aria-label={`explore ${label}`}
               transitionTypes={["nav-forward"]}
-              className={cn("relative block aspect-square overflow-hidden rounded", surface)}
+              className={cn("relative block aspect-square overflow-hidden rounded-3xl max-sm:rounded-2xl", surface)}
             >
               {children}
             </Link>

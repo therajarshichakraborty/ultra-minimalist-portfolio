@@ -16,7 +16,7 @@ export function InteractionCard({ interaction, morph }: InteractionCardProps) {
   const media = (
     <div
       className={cn(
-        "relative isolate aspect-square w-full overflow-hidden rounded",
+        "relative isolate aspect-square w-full overflow-hidden rounded-3xl max-sm:rounded-2xl",
         slug === "little-guy" ? littleGuySurface : "bg-surface",
       )}
     >

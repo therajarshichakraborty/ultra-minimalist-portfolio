@@ -678,7 +678,7 @@
   .tilt-glare {
     position: absolute;
     inset: 0;
-    border-radius: 4px;
+    border-radius: inherit;
     pointer-events: none;
     opacity: 0;
     background: radial-gradient(circle at var(--px, 50%) var(--py, 50%), var(--glare), transparent 55%);
