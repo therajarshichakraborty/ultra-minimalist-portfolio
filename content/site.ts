@@ -42,15 +42,15 @@ export type Channel = {
 };
 
 export const site = {
-  name: "rajarshi chakraborty",
-  signature: "rajarshi",
-  role: "software engineer",
-  location: "kolkata, india",
-  email: "rajarshichakraborty2005@gmail.com",
+  name: "Rajarshi Chakraborty",
+  signature: "Rajarshi",
+  role: "Software Engineer",
+  location: "Kolkata, West Bengal, India",
+  email: "[EMAIL_ADDRESS]",
   url: "https://rajarshis-portfolio.vercel.app",
-  title: "rajarshi chakraborty · software engineer",
+  title: "Rajarshi Chakraborty · Software Engineer",
   description:
-    "rajarshi chakraborty is a software engineer at brand voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
+    "Rajarshi Chakraborty is a Software Engineer at BrandVoy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
   links: {
     linkedin: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
     x: "https://x.com/IamRajarshi_Dev",
@@ -62,7 +62,7 @@ export const site = {
   },
   home: {
     intro:
-      "i build software that has to be right and fast, from live sports data at brand voy to deep learning research at university.",
+      "I build software that has to be right and fast, from live sports data at brand voy to deep learning research at university.",
     experiments: "little experiments",
     projects: "side projects",
     thinking: "thinking about",
@@ -220,36 +220,38 @@ export const experience: Role[] = [
 
 export const education: Education[] = [
   {
-    degree: "b.tech in computer science and engineering",
-    school: "techno main salt lake",
+    degree: "B.Tech in Computer Science and Engineering",
+    school: "Techno Main Salt Lake",
     href: "https://www.technoindiagroup.com/",
-    mark: "t",
-    location: "kolkata, west bengal, india",
-    period: "june 2023 to present",
+    mark: "T",
+    location: "Kolkata, West Bengal, India",
+    period: "June 2023 to Present",
     grades: ["gpa 8.136 / 10 (through semester 6)", "class of 2027"],
     highlight:
-      "co-authored a research paper on deep learning for fruit quality assessment (ciacon 2026) alongside my coursework.",
+      "Co-authored a research paper on deep learning for fruit quality assessment ( CIACON 2026 ) alongside my coursework.",
     coursework: [
-      "data structures and algorithms",
-      "design and analysis of algorithms",
-      "operating systems",
-      "database management systems",
-      "computer networks",
-      "machine learning",
-      "cryptography and network security",
-      "software engineering",
+      "Data Structures and Algorithms",
+      "Design and Analysis of Algorithms",
+      "Operating Systems",
+      "Database Management Systems",
+      "Computer Networks",
+      "Machine Learning",
+      "Cryptography and Network Security",
+      "Software Engineering",
+      "Object Oriented Programming",
+      "Project Management and Entrepreneurship"
     ],
   },
   {
-    degree: "higher secondary (class xii), science",
+    degree: "Higher Secondary (+2)",
     school: "west bengal council of higher secondary education",
     href: "https://wbchse.wb.gov.in/",
-    mark: "w",
-    location: "west bengal, india",
-    period: "april 2020 to march 2023",
-    grades: ["grade a+", "81.2% overall"],
+    mark: "W",
+    location: "West Bengal, India",
+    period: "April 2020 to March 2023",
+    grades: ["Grade A+", "81.2% overall"],
     highlight: "captained the school cricket team through inter school tournaments while studying the core sciences.",
-    coursework: ["physics", "chemistry", "mathematics", "biology", "english", "bengali"],
+    coursework: ["Physics", "Chemistry", "Mathematics", "Biology", "English", "Bengali"],
   },
 ];
 

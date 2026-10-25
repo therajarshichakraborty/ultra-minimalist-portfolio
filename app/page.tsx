@@ -18,13 +18,13 @@ export default function Home() {
         <header>
           <h1 className="leading-[1.65]">
             <Reveal>
-              hi i&apos;m <NameSignature name={site.name} signature={site.signature} />
+              Hi I&apos;m <NameSignature name={site.name} signature={site.signature} />
             </Reveal>
           </h1>
           <p className="mt-1 leading-[1.55]">
             <Reveal delay={70}>{site.role}</Reveal>
           </p>
-          <p className="mt-8 max-w-[480px] text-pretty">
+          <p className="mt-8 max-w-120 text-pretty">
             <Reveal delay={140} step={14}>
               {site.home.intro} sometimes i make{" "}
               <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
