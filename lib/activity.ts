@@ -22,7 +22,6 @@ export type GithubActivity = {
   stars: number | null;
   repos: number | null;
   followers: number | null;
-  languages: { name: string; count: number }[];
 };
 
 export type LeetcodeActivity = {
@@ -141,7 +140,7 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
   const [current, user, repos] = await Promise.all([
     githubCalendar(username),
     json<{ public_repos: number; followers: number; created_at: string }>(`https://api.github.com/users/${username}`, { headers }),
-    json<{ language: string | null; stargazers_count: number; fork: boolean }[]>(
+    json<{ stargazers_count: number; fork: boolean }[]>(
       `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=pushed`,
       { headers },
     ),
@@ -168,12 +167,6 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
     cacheLife("minutes");
   }
 
-  const own = repos?.filter((repo) => !repo.fork) ?? [];
-  const counts = new Map<string, number>();
-  for (const repo of own) {
-    if (repo.language) counts.set(repo.language, (counts.get(repo.language) ?? 0) + 1);
-  }
-
   return {
     username,
     calendars,
@@ -181,7 +174,6 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
     stars: repos ? repos.filter((repo) => !repo.fork).reduce((sum, repo) => sum + repo.stargazers_count, 0) : null,
     repos: user?.public_repos ?? null,
     followers: user?.followers ?? null,
-    languages: [...counts].map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
   };
 }
 

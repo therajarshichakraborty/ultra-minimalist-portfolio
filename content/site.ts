@@ -62,13 +62,13 @@ export type Channel = {
 export const site = {
   name: "rajarshi chakraborty",
   signature: "rajarshi",
-  role: "design engineer",
+  role: "software engineer",
   location: "kolkata, india",
   email: "rajarshichakraborty2005@gmail.com",
   url: "https://example.com",
-  title: "rajarshi chakraborty · design engineer",
+  title: "rajarshi chakraborty · software engineer",
   description:
-    "rajarshi chakraborty is a design engineer building interfaces for the web, with a focus on motion, feedback, and the small details that make software feel considered.",
+    "rajarshi chakraborty is a software engineer at brand voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
   theme: "light" as Theme,
   links: {
     linkedin: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
@@ -98,20 +98,56 @@ export const site = {
   },
 };
 
+export type Skill = {
+  name: string;
+  icon: string;
+};
+
 export const about = {
   photo: "https://avatars.githubusercontent.com/u/274300136?v=4",
   greeting: "hey, i'm rajarshi.",
   story: [
-    "i'm a computer science undergrad at techno main salt lake in kolkata, and a software developer who builds scalable full stack applications and ai powered products.",
-    "most of what i ship is typescript. i like owning a feature end to end, from the data model to the last pixel, and i care about the details that make software feel considered: how an interface moves, how it responds, and what it does when something goes wrong.",
-    "away from the editor, i co-authored a research paper on deep learning for fruit quality assessment, and i captained my school cricket team through inter school tournaments.",
+    "I like the moment a system breaks and nobody knows why yet. That’s usually where I do my best work.",
+    "Tracing a slow page back to one missing index, or a flaky deploy back to a race condition nobody wrote down, is exactly the kind of puzzle I enjoy. It shaped how I build: understand the whole path end to end, then make it simple enough that the next person never has to dig. Fast matters. Understandable matters more.",
+    "Lately that curiosity has pulled me toward AI agents, systems that reason, call tools and fail in brand-new ways. Making them dependable enough to trust with real work is the problem I find most interesting right now.",
+    "[Got something that’s broken in a way nobody can explain?](/contact)",
+    "Back in school I captained the cricket team, which turned out to be good training for engineering: read the conditions, back your team and stay calm when the plan falls apart.",
+    "Today I’m a Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. When a match is live, the numbers have to be right and they have to be fast, and that standard has stuck with me in everything I build.",
+    "I’m also finishing my B.Tech in Computer Science at Techno Main Salt Lake, where I research time-series forecasting and co-authored a research paper on deep learning. Away from the keyboard, I’ve co-led IGNITE at Samarth TMSL and helped run EDGE, our technical fest, with Geekonix. Organizing events for hundreds of people taught me as much about building things as any codebase.",
+    "The rest of the time I’m solving problems on LeetCode or writing up what I’ve learned on [my blog](/notes).",
   ],
   now: [
-    "building full stack products at brand voy",
+    "building live sports products at brand voy",
     "finishing my b.tech in computer science, class of 2027",
     "solving problems on leetcode most days",
     "writing short notes about building interfaces",
   ],
+  skillsTitle: "tools i ship production software with",
+  skills: [
+    [
+      { name: "TypeScript", icon: "typescript" },
+      { name: "Python", icon: "python" },
+      { name: "Node", icon: "nodedotjs" },
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Express", icon: "express" },
+      { name: "NestJS", icon: "nestjs" },
+      { name: "Hono", icon: "hono" },
+      { name: "Java", icon: "openjdk" },
+      { name: "C++", icon: "cplusplus" },
+      { name: "PostgreSQL", icon: "postgresql" },
+    ],
+    [
+      { name: "Redis", icon: "redis" },
+      { name: "Docker", icon: "docker" },
+      { name: "GCP", icon: "googlecloud" },
+      { name: "Cloudflare", icon: "cloudflare" },
+      { name: "Terraform", icon: "terraform" },
+      { name: "GitHub Actions", icon: "githubactions" },
+      { name: "Jenkins", icon: "jenkins" },
+      { name: "Kafka", icon: "apachekafka" },
+      { name: "RabbitMQ", icon: "rabbitmq" },
+    ],
+  ] as Skill[][],
 };
 
 export const education: Education[] = [
@@ -196,7 +232,7 @@ export const projects: Project[] = [
     tagline: "triage that travels from the street to the er.",
     year: "2026",
     stack: ["swiftui", "typescript", "websocket"],
-    role: "design engineer",
+    role: "software engineer",
     team: "two engineers, one researcher",
     timeline: "ten weeks",
     summary:
@@ -230,7 +266,7 @@ export const projects: Project[] = [
     tagline: "components for interfaces that think out loud.",
     year: "2026",
     stack: ["react", "typescript", "css"],
-    role: "design engineer",
+    role: "software engineer",
     team: "solo",
     timeline: "ongoing",
     summary:
@@ -399,7 +435,7 @@ export const resume = {
     "design engineer building web and ios interfaces with react, typescript, and swiftui. focused on interaction patterns, reusable components, and motion that explains what the system is doing.",
   experience: [
     {
-      role: "design engineer",
+      role: "software engineer",
       company: "northwind studio",
       period: "2025 to now",
       description: "prototype and ship interaction models for ai products, from first sketch to production react components.",

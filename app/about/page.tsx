@@ -1,57 +1,66 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { Chip } from "@/components/chip";
+import { ArrowRightIcon } from "@/components/icons";
 import { PageHeader } from "@/components/page-header";
 import { ResumeChip } from "@/components/resume/resume-chip";
 import { revealDelay } from "@/components/reveal";
+import { SkillsMarquee } from "@/components/skills-marquee";
 import { TiltCard } from "@/components/tilt-card";
 import { PageTransition } from "@/components/transitions";
 import { about, site } from "@/content/site";
-import { getGithubActivity } from "@/lib/activity";
 
 export const metadata: Metadata = {
   title: "about",
   description: `${about.greeting} ${about.story[0]}`,
 };
 
-const colors: Record<string, string> = {
-  TypeScript: "#3178c6",
-  JavaScript: "#f1e05a",
-  Python: "#3572a5",
-  "Jupyter Notebook": "#da5b0b",
-  Java: "#b07219",
-  HTML: "#e34c26",
-  CSS: "#663399",
-  Go: "#00add8",
-  Rust: "#dea584",
-  "C++": "#f34b7d",
-  C: "#555555",
-  Shell: "#89e051",
-  Kotlin: "#a97bff",
-  Swift: "#f05138",
-  Dart: "#00b4ab",
-};
+const link = /\[([^\]]+)\]\(([^)]+)\)/g;
+const whole = /^\[([^\]]+)\]\(([^)]+)\)$/;
 
-const color = (language: string | null) => (language ? (colors[language] ?? "#8b5cf6") : "#8b5cf6");
+function Inline({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  let last = 0;
+  for (const match of text.matchAll(link)) {
+    const index = match.index ?? 0;
+    if (index > last) parts.push(text.slice(last, index));
+    parts.push(
+      <Chip key={index} href={match[2]}>
+        {match[1]}
+      </Chip>,
+    );
+    last = index + match[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return <>{parts}</>;
+}
 
-function Section({ title, aside, delay, children }: { title: string; aside?: ReactNode; delay: number; children: ReactNode }) {
+function Paragraph({ text }: { text: string }) {
+  const callout = whole.exec(text);
+  if (callout) {
+    return (
+      <p>
+        <Link
+          href={callout[2]}
+          transitionTypes={["nav-forward"]}
+          className="callout group inline-flex items-baseline gap-2 text-[17px] leading-snug font-medium tracking-[-0.015em] text-pretty"
+        >
+          <span className="callout-text">{callout[1]}</span>
+          <ArrowRightIcon className="size-4 shrink-0 translate-y-0.5 transition-transform duration-300 ease-out-quint group-hover:translate-x-1" />
+        </Link>
+      </p>
+    );
+  }
   return (
-    <section className="reveal mt-14" style={revealDelay(delay)}>
-      <div className="mb-4 flex items-baseline justify-between gap-4">
-        <h2 className="font-medium">{title}</h2>
-        {aside ? <span className="text-meta text-muted">{aside}</span> : null}
-      </div>
-      {children}
-    </section>
+    <p className="text-pretty">
+      <Inline text={text} />
+    </p>
   );
 }
 
-export default async function AboutPage() {
-  const github = await getGithubActivity(site.profiles.github);
-  const languages = github?.languages ?? [];
-  const total = languages.reduce((sum, language) => sum + language.count, 0);
-
+export default function AboutPage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
@@ -62,7 +71,7 @@ export default async function AboutPage() {
         <section className="reveal mt-10 flex items-center gap-5" style={revealDelay(140)}>
           <div className="group shrink-0">
             <TiltCard max={10} className="rounded-2xl">
-              <div className="relative size-[104px] overflow-hidden rounded-2xl bg-surface shadow-media ring-1 ring-line">
+              <div className="relative size-[104px] overflow-hidden rounded-2xl bg-surface shadow-media ring-1 ring-line max-sm:size-[88px]">
                 <Image
                   src={about.photo}
                   alt={`portrait of ${site.name}`}
@@ -85,24 +94,20 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        <div className="reveal mt-10 grid gap-6" style={revealDelay(200)}>
+        <div className="reveal story mt-10 grid gap-6" style={revealDelay(200)}>
           {about.story.map((paragraph) => (
-            <p key={paragraph} className="text-pretty">
-              {paragraph}
-            </p>
+            <Paragraph key={paragraph} text={paragraph} />
           ))}
         </div>
 
-        <Section
-          title="now"
-          delay={260}
-          aside={
-            <span className="inline-flex items-center gap-1.5">
+        <section className="reveal mt-14" style={revealDelay(260)}>
+          <div className="mb-4 flex items-baseline justify-between gap-4">
+            <h2 className="font-medium">now</h2>
+            <span className="inline-flex items-center gap-1.5 text-meta text-muted">
               <span className="live-dot" aria-hidden="true" />
               currently
             </span>
-          }
-        >
+          </div>
           <ul className="grid gap-2.5">
             {about.now.map((item) => (
               <li key={item} className="flex items-baseline gap-3">
@@ -111,30 +116,12 @@ export default async function AboutPage() {
               </li>
             ))}
           </ul>
-        </Section>
+        </section>
 
-        {languages.length ? (
-          <Section title="languages i ship in" aside={`across ${total} repositories`} delay={300}>
-            <div aria-hidden="true" className="flex h-2 gap-0.5 overflow-hidden rounded-full">
-              {languages.map((language) => (
-                <span
-                  key={language.name}
-                  className="language-bar h-full first:rounded-l-full last:rounded-r-full"
-                  style={{ width: `${(language.count / total) * 100}%`, background: color(language.name) }}
-                />
-              ))}
-            </div>
-            <ul className="mt-3.5 flex flex-wrap gap-x-5 gap-y-1.5 text-meta">
-              {languages.map((language) => (
-                <li key={language.name} className="flex items-center gap-1.5">
-                  <span aria-hidden="true" className="size-2 rounded-full" style={{ background: color(language.name) }} />
-                  <span className="lowercase">{language.name}</span>
-                  <span className="text-muted tabular-nums">{Math.round((language.count / total) * 100)}%</span>
-                </li>
-              ))}
-            </ul>
-          </Section>
-        ) : null}
+        <section className="reveal mt-16" style={revealDelay(300)}>
+          <h2 className="mb-5 text-center text-muted">{about.skillsTitle}</h2>
+          <SkillsMarquee rows={about.skills} label={about.skillsTitle} />
+        </section>
 
         <section className="reveal mt-16 border-t border-line pt-8" style={revealDelay(340)}>
           <p className="text-pretty">

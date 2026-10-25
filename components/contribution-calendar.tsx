@@ -103,7 +103,7 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
           <h2 className="flex items-center gap-2">
             {icon}
             <span className="font-medium">{title}</span>
-            <span className="badge badge-green tabular-nums">
+            <span className="badge tabular-nums">
               <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                 <rect width="18" height="18" x="3" y="4" rx="2" />
                 <path d="M16 2v4M8 2v4M3 10h18" />
@@ -124,7 +124,7 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
             </span>
             {calendar.activeDays !== undefined ? (
               <span className="inline-flex items-center gap-1">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-[#8b5cf6]" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-muted" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   <rect width="18" height="18" x="3" y="4" rx="2" />
                   <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
@@ -133,7 +133,7 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
             ) : null}
             {calendar.streak !== undefined ? (
               <span className="inline-flex items-center gap-1">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-[#f97316]" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-muted" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
                 </svg>
                 max streak <span className="font-medium text-ink">{calendar.streak}</span>
