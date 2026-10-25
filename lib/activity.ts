@@ -22,6 +22,7 @@ export type GithubActivity = {
   stars: number | null;
   repos: number | null;
   followers: number | null;
+  languages: { name: string; count: number }[];
 };
 
 export type LeetcodeActivity = {
@@ -70,13 +71,18 @@ function summarize(key: string, label: string, days: Day[], extra?: Partial<Cale
   return { key, label, days, total: days.reduce((sum, day) => sum + day.count, 0), ...extra };
 }
 
-async function request(url: string, init?: RequestInit) {
-  try {
-    const response = await fetch(url, { ...init, signal: AbortSignal.timeout(9000) });
-    return response.ok ? response : null;
-  } catch {
-    return null;
+async function request(url: string, init?: RequestInit, attempts = 2): Promise<Response | null> {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const response = await fetch(url, { ...init, signal: AbortSignal.timeout(12000) });
+      if (response.ok) return response;
+      if (response.status < 500 && response.status !== 429) return null;
+    } catch {
+      if (attempt === attempts) return null;
+    }
+    if (attempt < attempts) await new Promise((resolve) => setTimeout(resolve, 600 * attempt));
   }
+  return null;
 }
 
 async function json<T>(url: string, init?: RequestInit): Promise<T | null> {
@@ -124,7 +130,6 @@ async function githubCalendar(username: string, year?: number): Promise<Day[]> {
 
 export async function getGithubActivity(username: string): Promise<GithubActivity | null> {
   "use cache";
-  cacheLife("hours");
 
   const token = process.env.GITHUB_TOKEN;
   const headers: HeadersInit = {
@@ -136,10 +141,16 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
   const [current, user, repos] = await Promise.all([
     githubCalendar(username),
     json<{ public_repos: number; followers: number; created_at: string }>(`https://api.github.com/users/${username}`, { headers }),
-    json<{ stargazers_count: number; fork: boolean }[]>(`https://api.github.com/users/${username}/repos?per_page=100&type=owner`, { headers }),
+    json<{ language: string | null; stargazers_count: number; fork: boolean }[]>(
+      `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=pushed`,
+      { headers },
+    ),
   ]);
 
-  if (!current.length && !user) return null;
+  if (!current.length && !user) {
+    cacheLife("minutes");
+    return null;
+  }
 
   const thisYear = new Date(Date.now()).getUTCFullYear();
   const firstYear = Math.max(Number(user?.created_at?.slice(0, 4)) || thisYear - maxYears + 1, thisYear - maxYears + 1);
@@ -151,6 +162,18 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
     ...years.map((year, index) => summarize(String(year), String(year), past[index])).filter((calendar) => calendar.days.length),
   ].filter((calendar) => calendar.days.length);
 
+  if (current.length && user && repos) {
+    cacheLife("hours");
+  } else {
+    cacheLife("minutes");
+  }
+
+  const own = repos?.filter((repo) => !repo.fork) ?? [];
+  const counts = new Map<string, number>();
+  for (const repo of own) {
+    if (repo.language) counts.set(repo.language, (counts.get(repo.language) ?? 0) + 1);
+  }
+
   return {
     username,
     calendars,
@@ -158,6 +181,7 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
     stars: repos ? repos.filter((repo) => !repo.fork).reduce((sum, repo) => sum + repo.stargazers_count, 0) : null,
     repos: user?.public_repos ?? null,
     followers: user?.followers ?? null,
+    languages: [...counts].map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
   };
 }
 
@@ -220,11 +244,13 @@ function leetcodeDays(raw: string | undefined, dates: string[]): Day[] {
 
 export async function getLeetcodeActivity(username: string): Promise<LeetcodeActivity | null> {
   "use cache";
-  cacheLife("hours");
 
   const result = await leetcode(username, profileQuery, {});
   const user = result?.data?.matchedUser;
-  if (!user) return null;
+  if (!user) {
+    cacheLife("minutes");
+    return null;
+  }
 
   const now = new Date(Date.now());
   const years = [...(user.userCalendar?.activeYears ?? [])].sort((a, b) => b - a).slice(0, maxYears);
@@ -235,14 +261,23 @@ export async function getLeetcodeActivity(username: string): Promise<LeetcodeAct
       activeDays: user.userCalendar?.totalActiveDays,
       streak: user.userCalendar?.streak,
     }),
-    ...years.map((year, index) => {
+    ...years.flatMap((year, index) => {
       const calendar = yearly[index]?.data?.matchedUser?.userCalendar;
-      return summarize(String(year), String(year), leetcodeDays(calendar?.submissionCalendar, span(year, now)), {
-        activeDays: calendar?.totalActiveDays,
-        streak: calendar?.streak,
-      });
+      if (!calendar) return [];
+      return [
+        summarize(String(year), String(year), leetcodeDays(calendar.submissionCalendar, span(year, now)), {
+          activeDays: calendar.totalActiveDays,
+          streak: calendar.streak,
+        }),
+      ];
     }),
   ];
+
+  if (yearly.every(Boolean)) {
+    cacheLife("hours");
+  } else {
+    cacheLife("minutes");
+  }
 
   const totals = new Map(result?.data?.allQuestionsCount?.map((item) => [item.difficulty.toLowerCase(), item.count]) ?? []);
   const solved = new Map(user.submitStatsGlobal.acSubmissionNum.map((item) => [item.difficulty.toLowerCase(), item.count]));

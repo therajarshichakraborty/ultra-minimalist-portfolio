@@ -125,7 +125,7 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
         <button
           type="submit"
           disabled={status === "sending"}
-          className="group inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-bg shadow-lift transition-[transform,opacity] duration-200 ease-snap active:scale-[0.97] disabled:opacity-60"
+          className="moving-border group relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-bg shadow-lift transition-[transform,opacity] duration-200 ease-snap active:scale-[0.97] disabled:opacity-60"
         >
           {status === "sent" ? <CheckIcon className="size-4" /> : null}
           {status === "sending" ? "sending" : status === "sent" ? "sent, thank you" : "send message"}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { HoverList } from "@/components/hover-list";
 import { PageHeader } from "@/components/page-header";
 import { revealDelay } from "@/components/reveal";
 import { PageTransition } from "@/components/transitions";
@@ -21,13 +22,14 @@ export default async function NotesPage() {
         <PageHeader title="notes" meta={notes.length}>
           {site.pages.notes}
         </PageHeader>
-        <ul className="reveal mt-8 grid gap-1" style={revealDelay(180)}>
-          {notes.map((note) => (
-            <li key={note.slug}>
+        <div className="reveal mt-8" style={revealDelay(180)}>
+          <HoverList className="-mx-2 grid gap-1">
+            {notes.map((note) => (
               <Link
+                key={note.slug}
                 href={`/notes/${note.slug}`}
                 transitionTypes={["nav-forward"]}
-                className="group grid min-h-11 items-baseline gap-x-6 gap-y-0.5 py-2 sm:grid-cols-[minmax(0,1fr)_auto]"
+                className="group grid min-h-11 items-baseline gap-x-6 gap-y-0.5 rounded-lg px-2 py-2 sm:grid-cols-[minmax(0,1fr)_auto]"
               >
                 <span className="min-w-0">
                   <span className="rounded bg-chip px-1 py-px leading-[18px] box-decoration-clone transition-colors duration-150 group-hover:bg-chip-hover group-focus-visible:bg-chip-hover group-active:bg-chip-press">
@@ -38,9 +40,9 @@ export default async function NotesPage() {
                   {formatDate(note.date)}
                 </time>
               </Link>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </HoverList>
+        </div>
       </main>
     </PageTransition>
   );

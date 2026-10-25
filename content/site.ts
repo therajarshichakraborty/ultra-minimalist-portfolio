@@ -92,9 +92,26 @@ export const site = {
     notes: "short notes on building interfaces, written when something finally clicks.",
     activity: "a live log of what i ship and what i practice, pulled from github and leetcode every hour.",
     education: "the fundamentals behind the work, from the core sciences to computer science and research.",
+    about: "the person behind the work: where i am, what i am building, and what keeps me curious.",
     contact:
       "whether it is a role, a freelance project, or an idea that will not leave you alone, tell me about it. every message lands in my own inbox, and i read each one myself.",
   },
+};
+
+export const about = {
+  photo: "https://avatars.githubusercontent.com/u/274300136?v=4",
+  greeting: "hey, i'm rajarshi.",
+  story: [
+    "i'm a computer science undergrad at techno main salt lake in kolkata, and a software developer who builds scalable full stack applications and ai powered products.",
+    "most of what i ship is typescript. i like owning a feature end to end, from the data model to the last pixel, and i care about the details that make software feel considered: how an interface moves, how it responds, and what it does when something goes wrong.",
+    "away from the editor, i co-authored a research paper on deep learning for fruit quality assessment, and i captained my school cricket team through inter school tournaments.",
+  ],
+  now: [
+    "building full stack products at brand voy",
+    "finishing my b.tech in computer science, class of 2027",
+    "solving problems on leetcode most days",
+    "writing short notes about building interfaces",
+  ],
 };
 
 export const education: Education[] = [

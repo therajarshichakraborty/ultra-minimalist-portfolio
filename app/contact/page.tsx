@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { ContactForm } from "@/components/contact-form";
+import { HoverList } from "@/components/hover-list";
 import { ArrowUpRightIcon, GithubIcon, LinkedinIcon, MailIcon } from "@/components/icons";
 import { PageHeader } from "@/components/page-header";
 import { revealDelay } from "@/components/reveal";
@@ -52,16 +53,16 @@ export default function ContactPage() {
 
         <section className="reveal mt-14" style={revealDelay(260)}>
           <h2 className="font-medium">or reach me directly</h2>
-          <ul className="mt-3">
+          <HoverList className="-mx-2 mt-3 grid gap-0.5">
             {contact.channels.map((channel) => {
               const external = channel.href.startsWith("http");
               return (
-                <li key={channel.label} className="border-b border-line last:border-0">
                   <a
+                    key={channel.label}
                     href={channel.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noreferrer" : undefined}
-                    className="group -mx-2 grid grid-cols-[36px_1fr_16px] items-center gap-3 rounded px-2 py-3 transition-colors duration-150 hover:bg-surface focus-visible:bg-surface"
+                    className="group grid grid-cols-[36px_1fr_16px] items-center gap-3 rounded-lg px-2 py-2.5"
                   >
                     <span className="grid size-9 place-items-center rounded-full bg-bg text-ink ring-1 ring-line transition-transform duration-300 ease-out-quint group-hover:scale-105">
                       {icons[channel.kind]}
@@ -72,10 +73,9 @@ export default function ContactPage() {
                     </span>
                     <ArrowUpRightIcon className="size-3.5 text-muted transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
                   </a>
-                </li>
               );
             })}
-          </ul>
+          </HoverList>
         </section>
       </main>
     </PageTransition>

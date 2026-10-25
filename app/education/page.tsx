@@ -29,7 +29,7 @@ export default function EducationPage() {
         <ol className="mt-10">
           {education.map((item, index) => (
             <li key={item.degree} className="reveal timeline relative grid grid-cols-[32px_1fr] gap-x-4 pb-12 last:pb-0" style={revealDelay(180 + index * 90)}>
-              <span aria-hidden="true" className="relative z-1 grid size-8 place-items-center rounded-full bg-bg font-medium ring-1 ring-line shadow-media">
+              <span aria-hidden="true" className="timeline-mark relative z-1 grid size-8 place-items-center rounded-full bg-bg font-medium ring-1 ring-line">
                 {item.mark}
               </span>
               <div className="min-w-0 pt-1">

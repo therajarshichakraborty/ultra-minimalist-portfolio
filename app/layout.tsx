@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Mrs_Saint_Delafield } from "next/font/google";
 import { DotField } from "@/components/dot-field";
+import { FloatingDock } from "@/components/floating-dock";
 import { IntroGate } from "@/components/intro-gate";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <DotField />
         {children}
+        <FloatingDock />
         <IntroGate />
       </body>
     </html>

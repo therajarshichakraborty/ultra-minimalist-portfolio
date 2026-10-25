@@ -53,7 +53,7 @@ export default function Home() {
           </p>
           <p className="mt-8 text-pretty">
             <Reveal delay={480} step={14}>
-              more about me: my <Chip href="/activity">coding activity</Chip>,{" "}
+              more: <Chip href="/about">about me</Chip>, my <Chip href="/activity">coding activity</Chip>,{" "}
               <Chip href="/education">education</Chip>, and a <Chip href="/contact">contact form</Chip>.
             </Reveal>
           </p>

@@ -1287,7 +1287,8 @@
     bottom: 4px;
     left: 15.5px;
     width: 1px;
-    background: linear-gradient(to bottom, var(--line), color-mix(in srgb, var(--ink) 18%, transparent), var(--line));
+    background: linear-gradient(to bottom, #a855f7, #ec4899 60%, transparent);
+    opacity: 0.55;
   }
 
   .timeline:last-child::before {
@@ -1337,5 +1338,111 @@
 @keyframes shimmer {
   to {
     background-position: 100% 0;
+  }
+}
+
+main {
+  padding-bottom: max(120px, calc(env(safe-area-inset-bottom) + 96px));
+}
+
+@media print {
+  main {
+    padding-bottom: 0;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    .moving-border::before {
+      animation: spin-border 3.2s linear infinite;
+    }
+  }
+
+  .hover-pill {
+    background: var(--surface);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .moving-border {
+    isolation: isolate;
+  }
+
+  .moving-border::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    z-index: -2;
+    border-radius: inherit;
+    background: conic-gradient(from var(--border-angle), transparent 0deg, #ec4899 70deg, #a855f7 140deg, transparent 200deg);
+  }
+
+  .moving-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: var(--ink);
+  }
+
+  .timeline-mark {
+    box-shadow:
+      0 0 0 4px var(--bg),
+      0 0 0 5px color-mix(in srgb, #a855f7 35%, transparent),
+      0 6px 18px -4px color-mix(in srgb, #a855f7 45%, transparent);
+  }
+
+}
+
+@keyframes spin-border {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@layer components {
+  .live-dot {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+  }
+
+  .live-dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .live-dot::after {
+      animation: ping 1.8s var(--ease-out-quint) infinite;
+    }
+
+    .language-bar {
+      animation: grow 1200ms var(--ease-out-quint) 400ms both;
+      transform-origin: left;
+    }
+  }
+}
+
+@keyframes ping {
+  from {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
   }
 }
