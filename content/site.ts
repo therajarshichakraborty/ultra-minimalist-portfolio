@@ -72,7 +72,7 @@ export const site = {
   theme: "light" as Theme,
   links: {
     linkedin: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
-    x: "https://x.com/",
+    x: "https://x.com/IamRajarshi_Dev",
     github: "https://github.com/therajarshichakraborty",
   },
   profiles: {
