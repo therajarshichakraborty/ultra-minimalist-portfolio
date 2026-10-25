@@ -1117,3 +1117,146 @@
     transform: scale(0.98);
   }
 }
+
+@layer components {
+  .heat-cell {
+    display: block;
+    background: var(--chip);
+    transition: transform 160ms var(--ease-snap);
+  }
+
+  .heat-cell[data-level="1"] {
+    background: color-mix(in srgb, var(--ink) 22%, var(--bg));
+  }
+
+  .heat-cell[data-level="2"] {
+    background: color-mix(in srgb, var(--ink) 42%, var(--bg));
+  }
+
+  .heat-cell[data-level="3"] {
+    background: color-mix(in srgb, var(--ink) 66%, var(--bg));
+  }
+
+  .heat-cell[data-level="4"] {
+    background: var(--ink);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .heatmap .heat-cell:hover {
+      transform: scale(1.45);
+      outline: 1px solid var(--bg);
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .heatmap .heat-cell {
+      animation: cell-in 520ms var(--ease-out-quint) both;
+      animation-delay: calc(var(--i, 0) * 9ms + 200ms);
+    }
+
+    .activity-line {
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      animation: draw 1400ms var(--ease-out-quint) 250ms forwards;
+    }
+
+    .activity-area {
+      animation: fade-in 900ms ease 700ms both;
+    }
+
+    .difficulty-bar {
+      animation: grow 1100ms var(--ease-out-quint) 300ms both;
+      transform-origin: left;
+    }
+  }
+
+  .difficulty-bar {
+    background: var(--ink);
+  }
+
+  .difficulty-bar[data-difficulty="easy"] {
+    background: #34c759;
+  }
+
+  .difficulty-bar[data-difficulty="medium"] {
+    background: #ffb020;
+  }
+
+  .difficulty-bar[data-difficulty="hard"] {
+    background: #ff453a;
+  }
+
+  .stat {
+    transition:
+      transform 300ms var(--ease-out-quint),
+      box-shadow 300ms var(--ease-out-quint);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .stat:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--lift-shadow);
+    }
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 36px;
+    bottom: 4px;
+    left: 15.5px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--line), color-mix(in srgb, var(--ink) 18%, transparent), var(--line));
+  }
+
+  .timeline:last-child::before {
+    display: none;
+  }
+
+  .contact-accent {
+    background: linear-gradient(90deg, #ec4899, #a855f7 45%, #6366f1);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .contact-accent {
+      animation: shimmer 6s ease-in-out infinite alternate;
+    }
+  }
+}
+
+@keyframes cell-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 100% 0;
+  }
+}
