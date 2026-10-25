@@ -32,7 +32,7 @@ export default async function NotesPage() {
                 className="group grid min-h-11 items-baseline gap-x-6 gap-y-0.5 rounded-lg px-2 py-2 sm:grid-cols-[minmax(0,1fr)_auto]"
               >
                 <span className="min-w-0">
-                  <span className="rounded bg-chip px-1 py-px leading-[18px] box-decoration-clone transition-colors duration-150 group-hover:bg-chip-hover group-focus-visible:bg-chip-hover group-active:bg-chip-press">
+                  <span className="rounded bg-chip box-decoration-clone px-1 py-px leading-[18px] transition-colors duration-150 group-hover:bg-chip-hover group-focus-visible:bg-chip-hover group-active:bg-chip-press">
                     {note.title}
                   </span>
                 </span>

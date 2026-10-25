@@ -63,7 +63,8 @@ function leveler(counts: number[]) {
   const sorted = counts.filter((count) => count > 0).sort((a, b) => a - b);
   const at = (q: number) => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * q))] ?? 1;
   const steps = [at(0.25), at(0.5), at(0.75)];
-  return (count: number) => (count <= 0 ? 0 : count <= steps[0] ? 1 : count <= steps[1] ? 2 : count <= steps[2] ? 3 : 4);
+  return (count: number) =>
+    count <= 0 ? 0 : count <= steps[0] ? 1 : count <= steps[1] ? 2 : count <= steps[2] ? 3 : 4;
 }
 
 function summarize(key: string, label: string, days: Day[], extra?: Partial<Calendar>): Calendar {
@@ -139,7 +140,9 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
 
   const [current, user, repos] = await Promise.all([
     githubCalendar(username),
-    json<{ public_repos: number; followers: number; created_at: string }>(`https://api.github.com/users/${username}`, { headers }),
+    json<{ public_repos: number; followers: number; created_at: string }>(`https://api.github.com/users/${username}`, {
+      headers,
+    }),
     json<{ stargazers_count: number; fork: boolean }[]>(
       `https://api.github.com/users/${username}/repos?per_page=100&type=owner&sort=pushed`,
       { headers },
@@ -158,7 +161,9 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
 
   const calendars = [
     summarize("current", "current", current),
-    ...years.map((year, index) => summarize(String(year), String(year), past[index])).filter((calendar) => calendar.days.length),
+    ...years
+      .map((year, index) => summarize(String(year), String(year), past[index]))
+      .filter((calendar) => calendar.days.length),
   ].filter((calendar) => calendar.days.length);
 
   if (current.length && user && repos) {
@@ -271,8 +276,12 @@ export async function getLeetcodeActivity(username: string): Promise<LeetcodeAct
     cacheLife("minutes");
   }
 
-  const totals = new Map(result?.data?.allQuestionsCount?.map((item) => [item.difficulty.toLowerCase(), item.count]) ?? []);
-  const solved = new Map(user.submitStatsGlobal.acSubmissionNum.map((item) => [item.difficulty.toLowerCase(), item.count]));
+  const totals = new Map(
+    result?.data?.allQuestionsCount?.map((item) => [item.difficulty.toLowerCase(), item.count]) ?? [],
+  );
+  const solved = new Map(
+    user.submitStatsGlobal.acSubmissionNum.map((item) => [item.difficulty.toLowerCase(), item.count]),
+  );
 
   return {
     username,

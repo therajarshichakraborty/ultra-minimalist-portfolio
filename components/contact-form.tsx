@@ -74,7 +74,15 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           {label("name", "name")}
-          <input id={`${id}-name`} name="name" autoComplete="name" placeholder="jane doe" aria-invalid={invalid.name || undefined} required className={field} />
+          <input
+            id={`${id}-name`}
+            name="name"
+            autoComplete="name"
+            placeholder="jane doe"
+            aria-invalid={invalid.name || undefined}
+            required
+            className={field}
+          />
         </div>
         <div>
           {label("email", "email")}
@@ -100,7 +108,16 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
               </option>
             ))}
           </select>
-          <svg viewBox="0 0 24 24" aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={1.75}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="m6 9 6 6 6-6" />
           </svg>
         </span>
@@ -118,7 +135,11 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
           className={`${field} resize-y`}
         />
         <p id={`${id}-hint`} className="mt-1.5 text-meta text-muted">
-          {invalid.message ? "a few more words, please. at least ten characters." : endpoint ? "sent straight to my inbox." : "opens your mail app with everything filled in."}
+          {invalid.message
+            ? "a few more words, please. at least ten characters."
+            : endpoint
+              ? "sent straight to my inbox."
+              : "opens your mail app with everything filled in."}
         </p>
       </div>
       <div className="flex items-center gap-4">

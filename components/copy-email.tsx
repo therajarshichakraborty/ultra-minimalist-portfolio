@@ -51,7 +51,7 @@ export function CopyEmail({ email }: { email: string }) {
 
   return (
     <>
-      <button type="button" onClick={copy} title={`copy ${email}`} data-state={state} className="chip copy-email">
+      <button type="button" onClick={copy} title={`copy ${email}`} data-state={state} className="copy-email chip">
         <ChipIcon name="email">
           <span className="copy-glyphs">
             <MailIcon data-glyph="mail" />

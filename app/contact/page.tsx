@@ -13,7 +13,14 @@ export const metadata: Metadata = {
   description: `get in touch with ${site.name}.`,
 };
 
-const stroke = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.75, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const stroke = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
 
 const icons: Record<Channel["kind"], ReactNode> = {
   email: <MailIcon className="size-4" />,
@@ -57,22 +64,22 @@ export default function ContactPage() {
             {contact.channels.map((channel) => {
               const external = channel.href.startsWith("http");
               return (
-                  <a
-                    key={channel.label}
-                    href={channel.href}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noreferrer" : undefined}
-                    className="group grid grid-cols-[36px_1fr_16px] items-center gap-3 rounded-lg px-2 py-2.5"
-                  >
-                    <span className="grid size-9 place-items-center rounded-full bg-bg text-ink ring-1 ring-line transition-transform duration-300 ease-out-quint group-hover:scale-105">
-                      {icons[channel.kind]}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block">{channel.label}</span>
-                      <span className="block truncate text-muted">{channel.value}</span>
-                    </span>
-                    <ArrowUpRightIcon className="size-3.5 text-muted transition-transform duration-200 ease-snap group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
-                  </a>
+                <a
+                  key={channel.label}
+                  href={channel.href}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noreferrer" : undefined}
+                  className="group grid grid-cols-[36px_1fr_16px] items-center gap-3 rounded-lg px-2 py-2.5"
+                >
+                  <span className="grid size-9 place-items-center rounded-full bg-bg text-ink ring-1 ring-line transition-transform duration-300 ease-out-quint group-hover:scale-105">
+                    {icons[channel.kind]}
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block">{channel.label}</span>
+                    <span className="block truncate text-muted">{channel.value}</span>
+                  </span>
+                  <ArrowUpRightIcon className="size-3.5 text-muted transition-transform duration-200 ease-snap group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink" />
+                </a>
               );
             })}
           </HoverList>

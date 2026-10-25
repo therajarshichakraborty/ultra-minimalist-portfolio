@@ -33,7 +33,7 @@ type PageHeaderProps = {
 export function PageHeader({ title, meta, backHref = "/", backLabel, children }: PageHeaderProps) {
   return (
     <header className="relative">
-      <div className="reveal absolute left-0 top-px sm:left-auto sm:right-[calc(100%+20px)]" style={revealDelay(0)}>
+      <div className="reveal absolute top-px left-0 sm:right-[calc(100%+20px)] sm:left-auto" style={revealDelay(0)}>
         <BackLink href={backHref} label={backLabel} />
       </div>
       <div className="reveal flex items-baseline justify-between gap-4 pl-10 sm:pl-0" style={revealDelay(60)}>

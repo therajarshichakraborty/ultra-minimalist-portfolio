@@ -31,7 +31,15 @@ type ContributionCalendarProps = {
   title?: string;
 };
 
-export function ContributionCalendar({ calendars, variant, unit, handle, href, icon, title }: ContributionCalendarProps) {
+export function ContributionCalendar({
+  calendars,
+  variant,
+  unit,
+  handle,
+  href,
+  icon,
+  title,
+}: ContributionCalendarProps) {
   const [key, setKey] = useState(calendars[0]?.key ?? "current");
   const [tip, setTip] = useState<Tip>(null);
   const frame = useRef<HTMLDivElement>(null);
@@ -66,33 +74,48 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
     });
   };
 
-  const picker = calendars.length > 1 ? (
-    <label className="relative inline-flex shrink-0 items-center">
-      <span className="sr-only">choose a year</span>
-      <select
-        value={calendar.key}
-        onChange={(event) => {
-          setTip(null);
-          setKey(event.target.value);
-        }}
-        className="appearance-none rounded-md bg-bg py-1 pr-7 pl-2.5 text-meta font-medium text-ink ring-1 ring-line transition-shadow duration-150 outline-none hover:ring-[color-mix(in_srgb,var(--ink)_20%,transparent)] focus-visible:ring-2 focus-visible:ring-ink"
-      >
-        {calendars.map((item) => (
-          <option key={item.key} value={item.key}>
-            {item.label}
-          </option>
-        ))}
-      </select>
-      <svg viewBox="0 0 24 24" aria-hidden="true" className="pointer-events-none absolute right-2 size-3 text-muted" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-        <path d="m6 9 6 6 6-6" />
-      </svg>
-    </label>
-  ) : null;
+  const picker =
+    calendars.length > 1 ? (
+      <label className="relative inline-flex shrink-0 items-center">
+        <span className="sr-only">choose a year</span>
+        <select
+          value={calendar.key}
+          onChange={(event) => {
+            setTip(null);
+            setKey(event.target.value);
+          }}
+          className="appearance-none rounded-md bg-bg py-1 pr-7 pl-2.5 text-meta font-medium text-ink ring-1 ring-line transition-shadow duration-150 outline-none hover:ring-[color-mix(in_srgb,var(--ink)_20%,transparent)] focus-visible:ring-2 focus-visible:ring-ink"
+        >
+          {calendars.map((item) => (
+            <option key={item.key} value={item.key}>
+              {item.label}
+            </option>
+          ))}
+        </select>
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className="pointer-events-none absolute right-2 size-3 text-muted"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
+      </label>
+    ) : null;
 
   const link = (
-    <a href={href} target="_blank" rel="noreferrer" className="group inline-flex shrink-0 items-center gap-1 text-meta text-muted transition-colors hover:text-ink focus-visible:text-ink">
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group inline-flex shrink-0 items-center gap-1 text-meta text-muted transition-colors hover:text-ink focus-visible:text-ink"
+    >
       {handle}
-      <ArrowUpRightIcon className="size-3 transition-transform duration-200 ease-snap group-hover:-translate-y-px group-hover:translate-x-px" />
+      <ArrowUpRightIcon className="size-3 transition-transform duration-200 ease-snap group-hover:translate-x-px group-hover:-translate-y-px" />
     </a>
   );
 
@@ -104,7 +127,16 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
             {icon}
             <span className="font-medium">{title}</span>
             <span className="badge tabular-nums">
-              <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                className="size-3"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <rect width="18" height="18" x="3" y="4" rx="2" />
                 <path d="M16 2v4M8 2v4M3 10h18" />
               </svg>
@@ -120,11 +152,21 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
         <header className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
           <p className="flex flex-wrap items-center gap-x-4 gap-y-1 text-meta text-muted tabular-nums">
             <span>
-              <span className="font-medium text-ink">{number.format(calendar.total)}</span> {plural(calendar.total)} {period}
+              <span className="font-medium text-ink">{number.format(calendar.total)}</span> {plural(calendar.total)}{" "}
+              {period}
             </span>
             {calendar.activeDays !== undefined ? (
               <span className="inline-flex items-center gap-1">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-muted" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="size-3 text-muted"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <rect width="18" height="18" x="3" y="4" rx="2" />
                   <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
@@ -133,7 +175,16 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
             ) : null}
             {calendar.streak !== undefined ? (
               <span className="inline-flex items-center gap-1">
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="size-3 text-muted" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="size-3 text-muted"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
                 </svg>
                 max streak <span className="font-medium text-ink">{calendar.streak}</span>
@@ -180,7 +231,7 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
             ) : (
               <span className="flex items-center gap-2 text-muted">
                 total
-                <span className="rounded-full bg-bg px-2.5 py-0.5 font-medium text-ink ring-1 ring-line tabular-nums">
+                <span className="rounded-full bg-bg px-2.5 py-0.5 font-medium text-ink tabular-nums ring-1 ring-line">
                   {number.format(calendar.total)} {plural(calendar.total)}
                 </span>
               </span>
@@ -201,7 +252,8 @@ export function ContributionCalendar({ calendars, variant, unit, handle, href, i
         >
           {tip ? (
             <>
-              <span className="font-medium">{tip.count === 0 ? "no" : number.format(tip.count)}</span> {plural(tip.count)} on {pretty(tip.date)}
+              <span className="font-medium">{tip.count === 0 ? "no" : number.format(tip.count)}</span>{" "}
+              {plural(tip.count)} on {pretty(tip.date)}
             </>
           ) : null}
         </span>

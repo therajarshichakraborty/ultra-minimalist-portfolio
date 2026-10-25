@@ -49,7 +49,14 @@ export function ActivityChart({ days, label = "contributions" }: { days: Day[]; 
       className="activity-chart block h-auto w-full min-w-[560px] overflow-visible"
     >
       <defs>
-        <linearGradient id="activity-stroke" x1={pad.left} x2={width - pad.right} y1="0" y2="0" gradientUnits="userSpaceOnUse">
+        <linearGradient
+          id="activity-stroke"
+          x1={pad.left}
+          x2={width - pad.right}
+          y1="0"
+          y2="0"
+          gradientUnits="userSpaceOnUse"
+        >
           <stop offset="0%" stopColor="#f43f5e" />
           <stop offset="45%" stopColor="#ec4899" />
           <stop offset="78%" stopColor="#c026d3" />
@@ -79,7 +86,11 @@ export function ActivityChart({ days, label = "contributions" }: { days: Day[]; 
       <text x={pad.left + plotWidth / 2} y={height - 4} textAnchor="middle" className="chart-title">
         days
       </text>
-      <text transform={`translate(14 ${pad.top + plotHeight / 2}) rotate(-90)`} textAnchor="middle" className="chart-title">
+      <text
+        transform={`translate(14 ${pad.top + plotHeight / 2}) rotate(-90)`}
+        textAnchor="middle"
+        className="chart-title"
+      >
         {label}
       </text>
       <path
@@ -92,7 +103,14 @@ export function ActivityChart({ days, label = "contributions" }: { days: Day[]; 
         className="activity-line"
       />
       {points.map(([cx, cy], index) => (
-        <circle key={recent[index].date} cx={cx} cy={cy} r={index === peak ? 3.5 : 2.5} className="chart-dot" style={{ animationDelay: `${600 + index * 25}ms` }}>
+        <circle
+          key={recent[index].date}
+          cx={cx}
+          cy={cy}
+          r={index === peak ? 3.5 : 2.5}
+          className="chart-dot"
+          style={{ animationDelay: `${600 + index * 25}ms` }}
+        >
           <title>{`${recent[index].count} on ${recent[index].date}`}</title>
         </circle>
       ))}

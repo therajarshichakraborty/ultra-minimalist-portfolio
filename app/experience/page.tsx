@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { BrandIcon } from "@/components/brand-icon";
 import { Chip } from "@/components/chip";
 import { PageHeader } from "@/components/page-header";
@@ -49,9 +49,41 @@ function Emphasis({ text }: { text: string }) {
   return <>{parts}</>;
 }
 
+function Stack({ skills }: { skills: string[] }) {
+  const tools = skills.filter((skill) => logos[skill]);
+  if (!tools.length) return null;
+
+  return (
+    <ul className="tool-row mt-4 flex flex-wrap gap-2" aria-label="tech stack">
+      {tools.map((skill, index) => (
+        <li
+          key={skill}
+          role="img"
+          aria-label={skill}
+          tabIndex={0}
+          data-name={skill}
+          className="tool"
+          style={{ "--i": index } as CSSProperties}
+        >
+          <BrandIcon slug={logos[skill]} className="tool-icon size-[18px]" />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function PinIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="inline-block size-3.5 align-[-2px]">
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.75}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="inline-block size-3.5 align-[-2px]"
+    >
       <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
       <circle cx="12" cy="10" r="3" />
     </svg>
@@ -118,17 +150,7 @@ export default function ExperiencePage() {
                   ))}
                 </ul>
 
-                <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="skills">
-                  {item.skills.map((skill) => (
-                    <li
-                      key={skill}
-                      className="skill-tag flex items-center gap-1.5 rounded-full bg-bg py-0.5 pr-2.5 pl-2 text-meta text-ink ring-1 ring-line"
-                    >
-                      {logos[skill] ? <BrandIcon slug={logos[skill]} className="size-3 shrink-0" /> : null}
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
+                <Stack skills={item.skills} />
               </article>
             </li>
           ))}

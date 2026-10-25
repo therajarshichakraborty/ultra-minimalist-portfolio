@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 export type ChipIconName = "email" | "linkedin" | "x" | "github" | "resume" | "notes" | "open-source";
 
-export type ChipBrand = "linkedin" | "github" | "x" | "oss";
+export type ChipBrand = "linkedin" | "github" | "x";
 
 export function ChipIcon({ name, children }: { name?: ChipIconName; children: ReactNode }) {
   return (

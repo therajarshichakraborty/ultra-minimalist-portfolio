@@ -1,15 +1,18 @@
+export type ProjectSection = {
+  heading: string;
+  body: string[];
+};
+
 export type Project = {
   slug: string;
   title: string;
   tagline: string;
   year: string;
   stack: string[];
-  role: string;
-  team: string;
-  timeline: string;
   summary: string;
-  sections: { heading: string; body: string[] }[];
-  image?: { src: string; alt: string };
+  links: { live?: string; repo: string };
+  image: { src: string; alt: string };
+  sections?: ProjectSection[];
 };
 
 export type Interaction = {
@@ -17,18 +20,6 @@ export type Interaction = {
   title: string;
   date: string;
   description: string;
-};
-
-export type Contribution = {
-  number: number;
-  title: string;
-  summary: string;
-};
-
-export type OpenSourceProject = {
-  name: string;
-  repo: string;
-  contributions: Contribution[];
 };
 
 export type Education = {
@@ -56,7 +47,7 @@ export const site = {
   role: "software engineer",
   location: "kolkata, india",
   email: "rajarshichakraborty2005@gmail.com",
-  url: "https://example.com",
+  url: "https://rajarshis-portfolio.vercel.app",
   title: "rajarshi chakraborty · software engineer",
   description:
     "rajarshi chakraborty is a software engineer at brand voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
@@ -70,15 +61,15 @@ export const site = {
     leetcode: "rajarshi_2005",
   },
   home: {
-    intro: "i design and build interfaces for the web and ios, and i care most about how they move and respond.",
+    intro:
+      "i build software that has to be right and fast, from live sports data at brand voy to deep learning research at university.",
     experiments: "little experiments",
-    openSource: "open source",
+    projects: "side projects",
     thinking: "thinking about",
   },
   pages: {
     interactions: "small studies in motion and feedback. they are all live, so go ahead and touch.",
-    work: "things i designed and built, start to finish.",
-    openSource: "small fixes to the tools i use every day. keyboard input, focus, and the details of ui behavior.",
+    work: "side projects i designed, built and shipped, each one live on the web.",
     notes: "short notes on building interfaces, written when something finally clicks.",
     activity: "a live log of what i ship and what i practice, pulled from github and leetcode every hour.",
     education: "the fundamentals behind the work, from the core sciences to computer science and research.",
@@ -171,7 +162,18 @@ export const experience: Role[] = [
       "Optimize data handling and app workflows so pages stay fast under high-volume, live-match traffic.",
       "Own features end to end, from requirements and implementation to testing, deployment and production support.",
     ],
-    skills: ["TypeScript", "Next.js", "React Native", "Expo", "Node.js", "Express", "PostgreSQL", "Docker", "Kubernetes", "Git"],
+    skills: [
+      "TypeScript",
+      "Next.js",
+      "React Native",
+      "Expo",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Docker",
+      "Kubernetes",
+      "Git",
+    ],
   },
   {
     company: "Techno Main Salt Lake",
@@ -185,7 +187,7 @@ export const experience: Role[] = [
       "Turned research notebooks into a modular Python pipeline, cutting the retrain-to-redeploy cycle from 3+ days to under 4 hours.",
       "Cleaned a 60,000+ row dataset and tuned 120+ configurations, lifting LSTM validation accuracy by 19.4% and cutting MAE by 22%.",
     ],
-    skills: ["Python", "PyTorch", "NumPy", "Pandas", "Scikit-Learn", "Node.js", "Time Series Analysis"],
+    skills: ["Python", "PyTorch", "NumPy", "Pandas", "Scikit-Learn", "Node.js"],
   },
   {
     company: "Samarth TMSL",
@@ -199,7 +201,7 @@ export const experience: Role[] = [
       "Led cross-functional teams of 20+ volunteers across logistics, design, outreach and operations, delivering every event on schedule.",
       "Wrote 15+ articles, workshop decks and guides, helping grow social media engagement by 40%.",
     ],
-    skills: ["Leadership", "Event Management", "Content Writing", "Public Speaking", "Community Building"],
+    skills: [],
   },
   {
     company: "Geekonix",
@@ -212,7 +214,7 @@ export const experience: Role[] = [
       "Coordinated scheduling, venues and resources for 300+ participants a day with a 30+ member volunteer team.",
       "Spotted bottlenecks in registration and check-in mid-event and fixed them on the spot, cutting average wait time by 25%.",
     ],
-    skills: ["Event Operations", "Team Management", "Logistics", "Coordination"],
+    skills: [],
   },
 ];
 
@@ -225,7 +227,8 @@ export const education: Education[] = [
     location: "kolkata, west bengal, india",
     period: "june 2023 to present",
     grades: ["gpa 8.136 / 10 (through semester 6)", "class of 2027"],
-    highlight: "co-authored a research paper on deep learning for fruit quality assessment (ciacon 2026) alongside my coursework.",
+    highlight:
+      "co-authored a research paper on deep learning for fruit quality assessment (ciacon 2026) alongside my coursework.",
     coursework: [
       "data structures and algorithms",
       "design and analysis of algorithms",
@@ -293,98 +296,74 @@ export const contact = {
 
 export const projects: Project[] = [
   {
-    slug: "relay",
-    title: "relay",
-    tagline: "triage that travels from the street to the er.",
+    slug: "reviewray",
+    title: "ReviewRay",
+    tagline: "AI code reviews posted straight onto your pull requests.",
     year: "2026",
-    stack: ["swiftui", "typescript", "websocket"],
-    role: "software engineer",
-    team: "two engineers, one researcher",
-    timeline: "ten weeks",
+    stack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Prisma", "Neon", "Inngest", "OpenRouter", "AI SDK"],
     summary:
-      "three connected apps for field medics, incident command, and hospital intake. they share one live patient record, so nobody has to ask the same question twice.",
-    sections: [
-      {
-        heading: "the problem",
-        body: [
-          "during a mass casualty incident, the same patient gets described three times: once by the medic on scene, once over the radio, and once at the hospital door. every handoff loses a detail.",
-          "we wanted a record that moves with the patient instead of being rebuilt at each stop.",
-        ],
-      },
-      {
-        heading: "what i built",
-        body: [
-          "a swiftui app for medics that captures triage in four taps, a command dashboard that maps every patient in real time, and an intake view for the emergency room.",
-          "all three talk to a small typescript server over websockets. when a medic changes a triage color, command and the hospital see it in under a second.",
-        ],
-      },
-      {
-        heading: "what changed",
-        body: [
-          "in a timed drill with forty seven simulated patients, handoff time dropped by more than half, and nobody had to repeat a vital sign.",
-        ],
-      },
-    ],
+      "ReviewRay is an automated, AI-powered code review engine designed to streamline pull request workflows. Built on OpenAI and Inngest, it provides real-time, context-aware code analysis and continuous feedback.",
+    links: {
+      live: "https://review-ray.vercel.app",
+      repo: "https://github.com/therajarshichakraborty/ReviewRay",
+    },
+    image: { src: "/work/reviewray.png", alt: "the ReviewRay landing page" },
   },
   {
-    slug: "kit",
-    title: "kit",
-    tagline: "components for interfaces that think out loud.",
+    slug: "talktoyourgithub",
+    title: "TalkToYourGitHub",
+    tagline: "Ask your repositories questions in plain language.",
     year: "2026",
-    stack: ["react", "typescript", "css"],
-    role: "software engineer",
-    team: "solo",
-    timeline: "ongoing",
+    stack: ["Next.js", "TypeScript", "PostgreSQL", "Neon", "Pinecone", "Inngest", "OpenAI", "Vercel AI SDK"],
     summary:
-      "a small library of react components for ai interfaces: composers, streaming messages, tool approvals, and progress that tells you what the system is actually doing.",
-    sections: [
-      {
-        heading: "the problem",
-        body: [
-          "most ai products reinvent the same pieces, and most of them get the hard states wrong. interruptions, retries, and approvals are where trust is won or lost.",
-        ],
-      },
-      {
-        heading: "what i built",
-        body: [
-          "every component documents its states, keyboard behavior, and focus order, with a live preview next to copyable source.",
-          "the streaming message never shifts the layout while tokens arrive, and the approval card keeps focus on the decision instead of jumping to the next message.",
-        ],
-      },
-      {
-        heading: "what changed",
-        body: ["a few teams now use it as a starting point, and the patterns found their way into two open source libraries."],
-      },
-    ],
+      "Query your commits, branches, pull requests, and issues using plain questions. TalkToYourGitHub combines a live GitHub API proxy, RAG vector embeddings, LangChain text splitting, and background Inngest pipelines to give you an AI assistant that truly understands your codebase.",
+    links: {
+      live: "https://talk-to-your-github.vercel.app",
+      repo: "https://github.com/therajarshichakraborty/TalkToYourGithub",
+    },
+    image: { src: "/work/talktoyourgithub.png", alt: "the TalkToYourGitHub landing page" },
   },
   {
-    slug: "tide",
-    title: "tide",
-    tagline: "a weather alert that turns into a plan.",
-    year: "2025",
-    stack: ["swiftui", "figma"],
-    role: "design lead",
-    team: "three designers",
-    timeline: "48 hours",
+    slug: "exeos-ai",
+    title: "ExeOS AI",
+    tagline: "An autonomous executive assistant for email, calendar and tasks.",
+    year: "2026",
+    stack: ["Next.js", "PostgreSQL", "Drizzle ORM", "Clerk", "OpenRouter", "Vercel AI SDK", "shadcn/ui"],
     summary:
-      "a homeowner dashboard that turns a storm warning into a short, ordered checklist, built as a swiftui prototype during a weekend hackathon.",
-    sections: [
-      {
-        heading: "the problem",
-        body: ["storm alerts tell you what is coming, not what to do. people either panic or ignore them."],
-      },
-      {
-        heading: "what i built",
-        body: [
-          "a risk view that reads the forecast against the home itself, and a plan that sorts tasks by how long they take and how much they matter.",
-          "we designed the flow in figma in an afternoon, then built a working swiftui version overnight.",
-        ],
-      },
-      {
-        heading: "what changed",
-        body: ["it won first place, and the checklist pattern became the backbone of a later project."],
-      },
-    ],
+      "ExeOS-AI is an AI-powered executive operating system that intelligently manages email, calendars, tasks, and workflows, helping professionals stay organized, automate routine work, and focus on what matters most.",
+    links: {
+      live: "https://exe-os-ai.vercel.app",
+      repo: "https://github.com/therajarshichakraborty/ExeOS-AI",
+    },
+    image: { src: "/work/exeos-ai.png", alt: "the ExecOS landing page" },
+  },
+  {
+    slug: "zenith-cli",
+    title: "Zenith CLI",
+    tagline: "Language models in the terminal, automating engineering workflows.",
+    year: "2026",
+    stack: ["Node.js", "TypeScript", "Commander.js", "Next.js", "Better Auth", "OpenAI", "Tailwind CSS"],
+    summary:
+      "A high-performance command line application that integrates advanced language models directly into the terminal to automate software engineering workflows.",
+    links: {
+      live: "https://zenith-cli-azure.vercel.app",
+      repo: "https://github.com/therajarshichakraborty/Zenith-CLI",
+    },
+    image: { src: "/work/zenith-cli.png", alt: "the ZenithCLI landing page" },
+  },
+  {
+    slug: "synapse-ui",
+    title: "Synapse UI",
+    tagline: "A production-ready component library for modern web apps.",
+    year: "2026",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "shadcn/ui", "Bun"],
+    summary:
+      "A modern, production-ready UI component library built for scalable web applications using Next.js, TypeScript, TailwindCSS, Shadcn/UI, and Bun.",
+    links: {
+      live: "https://synapse-ui-rho.vercel.app",
+      repo: "https://github.com/therajarshichakraborty/Synapse-UI",
+    },
+    image: { src: "/work/synapse-ui.png", alt: "the Synapse UI landing page" },
   },
 ];
 
@@ -439,63 +418,6 @@ export const interactions: Interaction[] = [
   },
 ];
 
-export const openSource: OpenSourceProject[] = [
-  {
-    name: "radix primitives",
-    repo: "radix-ui/primitives",
-    contributions: [
-      {
-        number: 3412,
-        title: "return focus after nested popovers close",
-        summary: "focus lands back on the trigger, even two layers deep.",
-      },
-      {
-        number: 3398,
-        title: "keep scroll position when a dialog opens",
-        summary: "the page behind a dialog no longer jumps to the top.",
-      },
-    ],
-  },
-  {
-    name: "react aria",
-    repo: "adobe/react-spectrum",
-    contributions: [
-      {
-        number: 8841,
-        title: "stable caret while editing tags",
-        summary: "adding or removing a tag keeps the caret where you left it.",
-      },
-    ],
-  },
-  {
-    name: "motion",
-    repo: "motiondivision/motion",
-    contributions: [
-      {
-        number: 3120,
-        title: "respect reduced motion in layout animations",
-        summary: "shared layout transitions fade instead of fly when asked to.",
-      },
-    ],
-  },
-  {
-    name: "shadcn/ui",
-    repo: "shadcn-ui/ui",
-    contributions: [
-      {
-        number: 6532,
-        title: "announce toast actions to screen readers",
-        summary: "toast buttons now say what they will do before you press them.",
-      },
-      {
-        number: 6490,
-        title: "fix command menu focus on mobile safari",
-        summary: "the first result stays highlighted while the keyboard is open.",
-      },
-    ],
-  },
-];
-
 export const resume = {
   summary:
     "software engineer at brand voy, building live sports products on high-volume cricket and football data. finishing a b.tech in computer science at techno main salt lake, where i research deep learning for time-series forecasting.",
@@ -505,8 +427,6 @@ export const resume = {
     { group: "data and ml", items: "python, pytorch, numpy, pandas, scikit-learn, time series analysis" },
   ],
 };
-
-export const contributionCount = openSource.reduce((total, project) => total + project.contributions.length, 0);
 
 export function getProject(slug: string) {
   return projects.find((project) => project.slug === slug);

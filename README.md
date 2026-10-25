@@ -24,36 +24,34 @@ pnpm dev
 
 Open http://localhost:3000.
 
-| command | what it does |
-| --- | --- |
-| `pnpm dev` | start the dev server |
-| `pnpm build` | production build |
-| `pnpm start` | serve the production build |
-| `pnpm lint` | run ESLint |
+| command          | what it does                            |
+| ---------------- | --------------------------------------- |
+| `pnpm dev`       | start the dev server                    |
+| `pnpm build`     | production build                        |
+| `pnpm start`     | serve the production build              |
+| `pnpm lint`      | run ESLint                              |
 | `pnpm typecheck` | generate route types and run TypeScript |
 
 ## Make it yours
 
 Almost everything lives in one file: `content/site.ts`.
 
-| what | where |
-| --- | --- |
-| name, signature, role, location, email, url | `site` in `content/site.ts` |
-| social links | `site.links` |
-| home sentence and chip labels | `site.home` |
-| page intros | `site.pages` |
-| projects and case studies | `projects` |
-| interaction demos list | `interactions` |
-| open source contributions | `openSource` |
-| experience | `experience` and `experienceIntro` |
-| education | `education` |
-| about page | `about` |
-| contact page | `contact` |
-| github and leetcode usernames | `site.profiles` |
-| résumé summary and skills | `resume` |
-| notes | one `.mdx` file per note in `content/notes` |
-| project illustrations | `components/covers` or add `image: { src, alt }` to a project and drop the file in `public` |
-| favicon | `app/icon.svg` |
+| what                                        | where                                       |
+| ------------------------------------------- | ------------------------------------------- |
+| name, signature, role, location, email, url | `site` in `content/site.ts`                 |
+| social links                                | `site.links`                                |
+| home sentence and chip labels               | `site.home`                                 |
+| page intros                                 | `site.pages`                                |
+| projects, screenshots in `public/work`      | `projects`                                  |
+| interaction demos list                      | `interactions`                              |
+| experience                                  | `experience` and `experienceIntro`          |
+| education                                   | `education`                                 |
+| about page                                  | `about`                                     |
+| contact page                                | `contact`                                   |
+| github and leetcode usernames               | `site.profiles`                             |
+| résumé summary and skills                   | `resume`                                    |
+| notes                                       | one `.mdx` file per note in `content/notes` |
+| favicon                                     | `app/icon.svg`                              |
 
 Each note starts with its metadata:
 

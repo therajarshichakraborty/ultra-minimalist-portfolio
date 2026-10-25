@@ -45,13 +45,16 @@ export function useBlink(ref: RefObject<HTMLElement | SVGElement | null>) {
     if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let timer = 0;
     const schedule = () => {
-      timer = window.setTimeout(() => {
-        node.dataset.blink = "true";
-        window.setTimeout(() => {
-          node.dataset.blink = "false";
-        }, 180);
-        schedule();
-      }, 2800 + Math.random() * 3200);
+      timer = window.setTimeout(
+        () => {
+          node.dataset.blink = "true";
+          window.setTimeout(() => {
+            node.dataset.blink = "false";
+          }, 180);
+          schedule();
+        },
+        2800 + Math.random() * 3200,
+      );
     };
     schedule();
     return () => window.clearTimeout(timer);

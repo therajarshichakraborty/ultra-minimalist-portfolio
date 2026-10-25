@@ -36,7 +36,7 @@ function Tile({ href, label, morph, surface, delay, children }: TileProps) {
       </Morph>
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute top-[calc(100%-20px)] left-0 leading-[1.5] tracking-[-0.015em] text-faint transition-colors duration-150 group-has-[:focus-visible]:text-ink group-hover:text-ink"
+        className="pointer-events-none absolute top-[calc(100%-20px)] left-0 leading-[1.5] tracking-[-0.015em] text-faint transition-colors duration-150 group-hover:text-ink group-has-[:focus-visible]:text-ink"
       >
         {label}
       </span>

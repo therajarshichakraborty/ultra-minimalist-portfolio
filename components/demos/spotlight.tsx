@@ -19,12 +19,19 @@ export function SpotlightDemo() {
   };
 
   return (
-    <div onPointerMove={move} onPointerDown={move} onPointerLeave={leave} className="absolute inset-0 grid place-items-center">
+    <div
+      onPointerMove={move}
+      onPointerDown={move}
+      onPointerLeave={leave}
+      className="absolute inset-0 grid place-items-center"
+    >
       <div ref={card} data-lit="false" className="spotlight relative w-[72%] rounded-xl bg-bg p-5 ring-1 ring-line">
         <span aria-hidden="true" className="spotlight-glow" />
         <span aria-hidden="true" className="spotlight-edge" />
         <p className="relative font-medium">spotlight</p>
-        <p className="relative mt-1 text-pretty text-muted">the border follows your pointer, like a flashlight along the edge.</p>
+        <p className="relative mt-1 text-pretty text-muted">
+          the border follows your pointer, like a flashlight along the edge.
+        </p>
       </div>
     </div>
   );

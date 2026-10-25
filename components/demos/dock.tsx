@@ -1,6 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion, MotionConfig, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  MotionConfig,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import { useRef, useState, type ComponentType, type SVGProps } from "react";
 import { FileTextIcon, GithubIcon, MailIcon, MergeIcon, PencilLineIcon } from "@/components/icons";
 

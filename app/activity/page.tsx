@@ -17,7 +17,14 @@ export const metadata: Metadata = {
 
 const number = new Intl.NumberFormat("en-US");
 
-const stroke = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const stroke = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.8,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
 
 function LeetcodeIcon({ className }: { className?: string }) {
   return (
@@ -35,7 +42,17 @@ function Block({ delay, children }: { delay: number; children: ReactNode }) {
   );
 }
 
-function Heading({ icon, title, pill, aside }: { icon: ReactNode; title: string; pill?: ReactNode; aside?: ReactNode }) {
+function Heading({
+  icon,
+  title,
+  pill,
+  aside,
+}: {
+  icon: ReactNode;
+  title: string;
+  pill?: ReactNode;
+  aside?: ReactNode;
+}) {
   return (
     <header className="mb-4 flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
       <h2 className="flex items-center gap-2">
@@ -57,7 +74,7 @@ function Outbound({ href, children }: { href: string; children: ReactNode }) {
       className="group inline-flex items-center gap-1 text-meta text-muted tabular-nums transition-colors hover:text-ink focus-visible:text-ink"
     >
       {children}
-      <ArrowUpRightIcon className="size-3 transition-transform duration-200 ease-snap group-hover:-translate-y-px group-hover:translate-x-px" />
+      <ArrowUpRightIcon className="size-3 transition-transform duration-200 ease-snap group-hover:translate-x-px group-hover:-translate-y-px" />
     </a>
   );
 }
@@ -74,7 +91,9 @@ function Figure({ label, value, detail }: { label: string; value: string; detail
   return (
     <div className="min-w-0">
       <p className="text-meta text-muted">{label}</p>
-      <p className="mt-1 text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums max-sm:text-[20px]">{value}</p>
+      <p className="mt-1 text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums max-sm:text-[20px]">
+        {value}
+      </p>
       {detail ? <p className="mt-1.5 truncate text-meta text-muted">{detail}</p> : null}
     </div>
   );
@@ -133,10 +152,21 @@ export default async function ActivityPage() {
         ) : null}
 
         {github ? (
-          <div className="reveal mt-10 grid grid-cols-3 gap-6 border-y border-line py-6 max-sm:gap-4" style={revealDelay(260)}>
+          <div
+            className="reveal mt-10 grid grid-cols-3 gap-6 border-y border-line py-6 max-sm:gap-4"
+            style={revealDelay(260)}
+          >
             <Figure label="contributions" value={number.format(github.total)} detail="last 12 months" />
-            <Figure label="stars" value={github.stars === null ? "n/a" : number.format(github.stars)} detail="across repositories" />
-            <Figure label="repositories" value={github.repos === null ? "n/a" : number.format(github.repos)} detail="public on github" />
+            <Figure
+              label="stars"
+              value={github.stars === null ? "n/a" : number.format(github.stars)}
+              detail="across repositories"
+            />
+            <Figure
+              label="repositories"
+              value={github.repos === null ? "n/a" : number.format(github.repos)}
+              detail="public on github"
+            />
           </div>
         ) : null}
 
@@ -161,7 +191,12 @@ export default async function ActivityPage() {
                     <p className="text-meta text-muted">{item.difficulty === "all" ? "solved" : item.difficulty}</p>
                     <p className="mt-1 text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums max-sm:text-[20px]">
                       {number.format(item.count)}
-                      {item.total ? <span className="text-meta font-normal tracking-normal text-muted"> / {number.format(item.total)}</span> : null}
+                      {item.total ? (
+                        <span className="text-meta font-normal tracking-normal text-muted">
+                          {" "}
+                          / {number.format(item.total)}
+                        </span>
+                      ) : null}
                     </p>
                     <span aria-hidden="true" className="mt-3 block h-0.5 overflow-hidden rounded-full bg-chip">
                       <span

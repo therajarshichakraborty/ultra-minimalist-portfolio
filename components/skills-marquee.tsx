@@ -15,7 +15,11 @@ export function SkillsMarquee({ rows, label }: { rows: Skill[][]; label: string 
   return (
     <div className="marquee relative left-1/2 w-[min(760px,100vw)] -translate-x-1/2" aria-label={label}>
       {rows.map((row, index) => (
-        <div key={index} className="marquee-row overflow-hidden py-1.5" style={{ "--speed": `${28 + index * 6}s` } as CSSProperties}>
+        <div
+          key={index}
+          className="marquee-row overflow-hidden py-1.5"
+          style={{ "--speed": `${28 + index * 6}s` } as CSSProperties}
+        >
           <ul data-reverse={index % 2 === 1} className="marquee-track flex w-max gap-2.5">
             {row.map((skill) => (
               <Pill key={skill.name} skill={skill} />

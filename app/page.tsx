@@ -27,9 +27,9 @@ export default function Home() {
           <p className="mt-8 max-w-[480px] text-pretty">
             <Reveal delay={140} step={14}>
               {site.home.intro} sometimes i make{" "}
-              <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, contribute to{" "}
-              <Chip href="/open-source" brand="oss" iconName="open-source" icon={<MergeIcon />}>
-                {site.home.openSource}
+              <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
+              <Chip href="/work" iconName="open-source" icon={<MergeIcon />}>
+                {site.home.projects}
               </Chip>
               , and share what i&apos;m{" "}
               <Chip href="/notes" iconName="notes" icon={<PencilLineIcon />}>

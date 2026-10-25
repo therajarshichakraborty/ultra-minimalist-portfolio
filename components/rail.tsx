@@ -126,7 +126,7 @@ export function Rail({ label, children, className }: RailProps) {
         tabIndex={0}
         onKeyDown={onKeyDown}
         style={track}
-        className="no-scrollbar relative flex snap-x snap-mandatory items-start gap-5 overflow-x-auto overscroll-x-contain pt-1 pb-7 focus-visible:outline-offset-[-2px]"
+        className="relative no-scrollbar flex snap-x snap-mandatory items-start gap-5 overflow-x-auto overscroll-x-contain pt-1 pb-7 focus-visible:outline-offset-[-2px]"
       >
         {slides.map((slide, i) => (
           <div

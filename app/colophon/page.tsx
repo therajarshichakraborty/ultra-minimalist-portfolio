@@ -45,11 +45,24 @@ const principles = [
   "motion should explain something.",
 ];
 
-function Tile({ label, className, delay, children }: { label: string; className?: string; delay: number; children: ReactNode }) {
+function Tile({
+  label,
+  className,
+  delay,
+  children,
+}: {
+  label: string;
+  className?: string;
+  delay: number;
+  children: ReactNode;
+}) {
   return (
     <section
       aria-label={label}
-      className={cn("bento reveal relative overflow-hidden rounded-3xl bg-bg p-5 shadow-media ring-1 ring-line max-sm:rounded-2xl", className)}
+      className={cn(
+        "bento reveal relative overflow-hidden rounded-3xl bg-bg p-5 shadow-media ring-1 ring-line max-sm:rounded-2xl",
+        className,
+      )}
       style={revealDelay(delay)}
     >
       <p className="text-meta text-muted">{label}</p>
@@ -63,7 +76,9 @@ export default function ColophonPage() {
     <PageTransition>
       <main className="mx-auto w-[min(760px,calc(100%-2*var(--gutter)))] py-[clamp(48px,10svh,112px)] sm:w-[min(760px,calc(100%-128px))]">
         <PageHeader title="colophon" meta="how this site is made">
-          <span className="block max-w-[520px]">every detail here is deliberate. this is what the site is made of, and the few rules it follows.</span>
+          <span className="block max-w-[520px]">
+            every detail here is deliberate. this is what the site is made of, and the few rules it follows.
+          </span>
         </PageHeader>
 
         <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-6">
@@ -79,7 +94,9 @@ export default function ColophonPage() {
                   <span className="font-medium text-ink">medium</span>
                   <span className="font-semibold">semibold</span>
                 </p>
-                <p className="mt-1 text-pretty text-muted">set at 15px with a 1.65 line height and a touch of negative tracking.</p>
+                <p className="mt-1 text-pretty text-muted">
+                  set at 15px with a 1.65 line height and a touch of negative tracking.
+                </p>
               </div>
             </div>
           </Tile>
@@ -100,7 +117,11 @@ export default function ColophonPage() {
             <ul className="mt-4 grid grid-cols-6 gap-2 max-sm:grid-cols-3 max-sm:gap-y-4">
               {swatches.map((swatch) => (
                 <li key={swatch.name} className="flex flex-col items-center gap-2">
-                  <span aria-hidden="true" className="size-9 rounded-full ring-1 ring-line" style={{ background: swatch.value }} />
+                  <span
+                    aria-hidden="true"
+                    className="size-9 rounded-full ring-1 ring-line"
+                    style={{ background: swatch.value }}
+                  />
                   <span className="text-meta text-muted">{swatch.name}</span>
                 </li>
               ))}
@@ -110,7 +131,9 @@ export default function ColophonPage() {
                 <span key={level} className="h-full flex-1" style={{ background: `var(--heat-${level})` }} />
               ))}
             </div>
-            <p className="mt-2 text-meta text-muted">violet is reserved for activity data. everything else is ink on paper.</p>
+            <p className="mt-2 text-meta text-muted">
+              violet is reserved for activity data. everything else is ink on paper.
+            </p>
           </Tile>
 
           <Tile label="motion" className="flex flex-col sm:col-span-3" delay={300}>

@@ -39,7 +39,7 @@ function Anchor({ href = "", title, children }: ComponentPropsWithoutRef<"a">) {
 
 function Code({ children }: ComponentPropsWithoutRef<"code">) {
   return (
-    <code className="rounded bg-chip px-1 py-px font-mono text-[13px] tracking-normal box-decoration-clone">
+    <code className="rounded bg-chip box-decoration-clone px-1 py-px font-mono text-[13px] tracking-normal">
       {children}
     </code>
   );
@@ -82,7 +82,9 @@ const components: MDXComponents = {
   h4: ({ children }) => <h4 className={heading}>{children}</h4>,
   a: Anchor,
   ul: ({ children }) => <ul className={cn(block, "list-disc pl-5 marker:text-muted")}>{children}</ul>,
-  ol: ({ children }) => <ol className={cn(block, "list-decimal pl-5 marker:text-muted marker:tabular-nums")}>{children}</ol>,
+  ol: ({ children }) => (
+    <ol className={cn(block, "list-decimal pl-5 marker:text-muted marker:tabular-nums")}>{children}</ol>
+  ),
   li: ({ children }) => <li className="mt-2 pl-1 first:mt-0">{children}</li>,
   blockquote: ({ children }) => (
     <blockquote className={cn(block, "border-l border-line pl-4 text-muted")}>{children}</blockquote>

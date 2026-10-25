@@ -26,7 +26,7 @@ export function CompanionLink({ href, children }: { href: string; children: Reac
   };
 
   return (
-    <Link href={href} transitionTypes={["nav-forward"]} onPointerEnter={enter} className="chip companion pl-[30px]">
+    <Link href={href} transitionTypes={["nav-forward"]} onPointerEnter={enter} className="companion chip pl-[30px]">
       <span ref={face} aria-hidden="true" data-swat={swat} className="companion-face">
         <span className="companion-react">
           <svg viewBox="34 25 56 56" focusable="false" className="companion-body">

@@ -14,7 +14,7 @@ export function ProjectCard({ project }: { project: Project }) {
               href={`/work/${project.slug}`}
               aria-label={`${project.title} case study`}
               transitionTypes={["nav-forward"]}
-              className="relative block aspect-square overflow-hidden rounded-3xl max-sm:rounded-2xl bg-surface"
+              className="relative block aspect-square overflow-hidden rounded-3xl bg-surface max-sm:rounded-2xl"
             >
               <ProjectCover slug={project.slug} />
             </Link>

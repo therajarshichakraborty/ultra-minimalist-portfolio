@@ -22,7 +22,17 @@ const exitMs = 220;
 
 const noop = () => () => {};
 
-function Action({ label, href, onClick, children }: { label: string; href?: string; onClick?: () => void; children: ReactNode }) {
+function Action({
+  label,
+  href,
+  onClick,
+  children,
+}: {
+  label: string;
+  href?: string;
+  onClick?: () => void;
+  children: ReactNode;
+}) {
   const className =
     "relative grid size-7 place-items-center rounded bg-bg text-ink shadow-lift ring-1 ring-line transition-[background-color,transform] duration-150 ease-snap before:absolute before:-inset-1.5 before:content-[''] hover:bg-chip focus-visible:bg-chip active:scale-[0.94]";
   if (href) {
@@ -45,7 +55,11 @@ export function ResumeChip() {
   const [open, setOpen] = useState(false);
   const closing = useRef(0);
   const id = useId();
-  const mounted = useSyncExternalStore(noop, () => true, () => false);
+  const mounted = useSyncExternalStore(
+    noop,
+    () => true,
+    () => false,
+  );
 
   const finish = useCallback(() => {
     const node = dialog.current;

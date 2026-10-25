@@ -1,6 +1,14 @@
 "use client";
 
-import { AnimatePresence, motion, MotionConfig, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
+import {
+  AnimatePresence,
+  motion,
+  MotionConfig,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  type MotionValue,
+} from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState, type MouseEvent, type ReactNode, type Ref } from "react";
@@ -8,7 +16,14 @@ import { GithubIcon, LinkedinIcon, MailIcon, PencilLineIcon, XLogoIcon } from "@
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
-const stroke = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.75, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+const stroke = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.75,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
+} as const;
 
 type Item = {
   label: string;
@@ -121,7 +136,10 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
           </motion.span>
         ) : null}
       </AnimatePresence>
-      <motion.span style={{ width: glyph, height: glyph }} className="grid place-items-center max-sm:size-[17px]! [&>svg]:size-full">
+      <motion.span
+        style={{ width: glyph, height: glyph }}
+        className="grid place-items-center max-sm:size-[17px]! [&>svg]:size-full"
+      >
         {item.icon}
       </motion.span>
       {active ? <span aria-hidden="true" className="absolute -bottom-1.5 size-1 rounded-full bg-ink" /> : null}
@@ -148,7 +166,13 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
   const href = item.href ?? "/";
 
   return item.external ? (
-    <a href={href} ref={ref as Ref<HTMLAnchorElement>} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" {...shared}>
+    <a
+      href={href}
+      ref={ref as Ref<HTMLAnchorElement>}
+      target={href.startsWith("http") ? "_blank" : undefined}
+      rel="noreferrer"
+      {...shared}
+    >
       {tile}
     </a>
   ) : (
@@ -161,11 +185,15 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
 export function FloatingDock() {
   const mouse = useMotionValue(Number.POSITIVE_INFINITY);
   const pathname = usePathname();
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <MotionConfig reducedMotion="user">
-      <nav aria-label="primary" className="dock pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-3 print:hidden">
+      <nav
+        aria-label="primary"
+        className="dock pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-3 print:hidden"
+      >
         <motion.div
           initial={{ y: 24, opacity: 0, filter: "blur(6px)" }}
           animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
