@@ -1,7 +1,7 @@
 import { Demo } from "@/components/demos";
 import { littleGuySurface } from "@/components/little-guy";
 import { Morph } from "@/components/transitions";
-import type { Interaction } from "@/content/interactions";
+import type { Interaction } from "@/content/site";
 import { formatMonth } from "@/lib/format";
 import { cn } from "@/lib/utils";
 

@@ -14,6 +14,7 @@ const inter = Inter({
 const mono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
+  preload: false,
 });
 
 const signature = Mrs_Saint_Delafield({

@@ -10,35 +10,46 @@ type RevealProps = {
   step?: number;
 };
 
-export function Reveal({ children, delay = 0, step = 16 }: RevealProps) {
-  let index = 0;
-  const nodes: ReactNode[] = [];
-  const next = () => revealDelay(delay + index++ * step);
+type Piece = { kind: "space"; value: string } | { kind: "word"; content: ReactNode[] };
 
-  Children.toArray(children).forEach((child, position) => {
-    if (typeof child === "string" || typeof child === "number") {
-      String(child)
-        .split(/(\s+)/)
-        .forEach((part, offset) => {
-          if (!part) return;
-          if (/^\s+$/.test(part)) {
-            nodes.push(part);
-            return;
-          }
-          nodes.push(
-            <span key={`${position}-${offset}`} className="reveal reveal-word" style={next()}>
-              {part}
-            </span>,
-          );
-        });
+export function Reveal({ children, delay = 0, step = 16 }: RevealProps) {
+  const pieces: Piece[] = [];
+
+  Children.toArray(children).forEach((child) => {
+    if (typeof child !== "string" && typeof child !== "number") {
+      pieces.push({ kind: "word", content: [child] });
       return;
     }
-    nodes.push(
-      <span key={position} className="reveal reveal-word" style={next()}>
-        {child}
-      </span>,
-    );
+    String(child)
+      .split(/(\s+)/)
+      .forEach((part, offset) => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) {
+          pieces.push({ kind: "space", value: part });
+          return;
+        }
+        const previous = pieces[pieces.length - 1];
+        if (offset === 0 && previous?.kind === "word") {
+          previous.content.push(part);
+          return;
+        }
+        pieces.push({ kind: "word", content: [part] });
+      });
   });
 
-  return <>{nodes}</>;
+  let index = 0;
+
+  return (
+    <>
+      {pieces.map((piece, position) =>
+        piece.kind === "space" ? (
+          piece.value
+        ) : (
+          <span key={position} className="reveal reveal-word" style={revealDelay(delay + index++ * step)}>
+            {piece.content}
+          </span>
+        ),
+      )}
+    </>
+  );
 }

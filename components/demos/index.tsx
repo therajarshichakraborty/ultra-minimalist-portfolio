@@ -6,7 +6,6 @@ import { LittleGuyDemo } from "@/components/demos/little-guy-demo";
 import { MagneticDemo } from "@/components/demos/magnetic";
 import { ScrambleDemo } from "@/components/demos/scramble";
 import { SpotlightDemo } from "@/components/demos/spotlight";
-import { StackDemo } from "@/components/demos/stack";
 import { TabsDemo } from "@/components/demos/tabs";
 
 const demos = {
@@ -16,7 +15,6 @@ const demos = {
   hold: HoldDemo,
   copy: CopyDemo,
   tabs: TabsDemo,
-  stack: StackDemo,
   scramble: ScrambleDemo,
   spotlight: SpotlightDemo,
 } satisfies Record<string, ComponentType>;

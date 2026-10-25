@@ -3,8 +3,7 @@ import { InteractionCard } from "@/components/interaction-card";
 import { PageHeader } from "@/components/page-header";
 import { Rail } from "@/components/rail";
 import { PageTransition } from "@/components/transitions";
-import { interactions } from "@/content/interactions";
-import { site } from "@/content/site";
+import { interactions, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "interactions",
@@ -17,7 +16,7 @@ export default function InteractionsPage() {
       <main className="flex min-h-svh flex-col justify-center py-8 max-sm:justify-start max-sm:pt-6 max-sm:pb-20">
         <div className="column mb-8">
           <PageHeader title="interactions" meta={interactions.length}>
-            small studies in motion and feedback. they are all live, so go ahead and touch.
+            {site.pages.interactions}
           </PageHeader>
         </div>
         <Rail label="interactions">
