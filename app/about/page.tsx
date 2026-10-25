@@ -128,6 +128,9 @@ export default function AboutPage() {
             want to build something together? <Chip href="/contact">say hello</Chip>, read my <ResumeChip />, or see the{" "}
             <Chip href="/activity">code i ship</Chip>.
           </p>
+          <p className="mt-3 text-meta text-muted">
+            curious how this site is made? read the <Chip href="/colophon">colophon</Chip>.
+          </p>
         </section>
       </main>
     </PageTransition>

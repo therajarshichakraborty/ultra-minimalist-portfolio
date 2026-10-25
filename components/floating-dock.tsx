@@ -3,14 +3,21 @@
 import { AnimatePresence, motion, MotionConfig, useMotionValue, useSpring, useTransform, type MotionValue } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useState, type MouseEvent, type ReactNode, type Ref } from "react";
 import { GithubIcon, LinkedinIcon, MailIcon, PencilLineIcon, XLogoIcon } from "@/components/icons";
+import { switchTheme, useResolvedTheme } from "@/components/theme";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 const stroke = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.75, strokeLinecap: "round", strokeLinejoin: "round" } as const;
 
-type Item = { label: string; href: string; icon: ReactNode; external?: boolean };
+type Item = {
+  label: string;
+  href?: string;
+  icon: ReactNode;
+  external?: boolean;
+  action?: (event: MouseEvent<HTMLButtonElement>) => void;
+};
 
 const pages: Item[] = [
   {
@@ -75,7 +82,7 @@ const socials: Item[] = [
 const spring = { mass: 0.1, stiffness: 170, damping: 13 };
 
 function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>; active: boolean }) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLElement>(null);
   const [hovered, setHovered] = useState(false);
   const distance = useTransform(mouse, (x) => {
     const box = ref.current?.getBoundingClientRect();
@@ -113,7 +120,6 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
   );
 
   const shared = {
-    ref,
     "aria-label": item.label,
     onPointerEnter: () => setHovered(true),
     onPointerLeave: () => setHovered(false),
@@ -122,20 +128,52 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
     className: "rounded-full outline-offset-2",
   };
 
+  if (item.action) {
+    return (
+      <button type="button" ref={ref as Ref<HTMLButtonElement>} onClick={item.action} {...shared}>
+        {tile}
+      </button>
+    );
+  }
+
+  const href = item.href ?? "/";
+
   return item.external ? (
-    <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" {...shared}>
+    <a href={href} ref={ref as Ref<HTMLAnchorElement>} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" {...shared}>
       {tile}
     </a>
   ) : (
-    <Link href={item.href} aria-current={active ? "page" : undefined} {...shared}>
+    <Link href={href} ref={ref as Ref<HTMLAnchorElement>} aria-current={active ? "page" : undefined} {...shared}>
       {tile}
     </Link>
   );
 }
 
+const sun = (
+  <svg {...stroke} aria-hidden="true">
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+  </svg>
+);
+
+const moon = (
+  <svg {...stroke} aria-hidden="true">
+    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+  </svg>
+);
+
 export function FloatingDock() {
   const mouse = useMotionValue(Number.POSITIVE_INFINITY);
   const pathname = usePathname();
+  const theme = useResolvedTheme(site.theme === "dark" ? "dark" : "light");
+  const themeTile: Item = {
+    label: theme === "dark" ? "light mode" : "dark mode",
+    icon: theme === "dark" ? sun : moon,
+    action: (event) => {
+      const box = event.currentTarget.getBoundingClientRect();
+      switchTheme({ x: box.left + box.width / 2, y: box.top + box.height / 2 });
+    },
+  };
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
 
   return (
@@ -150,7 +188,7 @@ export function FloatingDock() {
           className="pointer-events-auto flex h-14 items-end gap-2.5 px-2.5 pb-2 max-sm:h-auto max-sm:items-center max-sm:gap-1.5 max-sm:p-1.5"
         >
           {pages.map((item) => (
-            <Tile key={item.href} item={item} mouse={mouse} active={isActive(item.href)} />
+            <Tile key={item.label} item={item} mouse={mouse} active={isActive(item.href ?? "")} />
           ))}
           <span aria-hidden="true" className="mx-0.5 mb-1.5 h-8 w-px self-end bg-line max-sm:hidden" />
           <div className="flex items-end gap-2.5 max-sm:hidden">
@@ -158,6 +196,8 @@ export function FloatingDock() {
               <Tile key={item.label} item={item} mouse={mouse} active={false} />
             ))}
           </div>
+          <span aria-hidden="true" className="mx-0.5 mb-1.5 h-8 w-px self-end bg-line max-sm:hidden" />
+          <Tile item={themeTile} mouse={mouse} active={false} />
         </motion.div>
       </nav>
     </MotionConfig>

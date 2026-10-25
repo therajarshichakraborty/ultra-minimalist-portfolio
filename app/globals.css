@@ -1472,3 +1472,95 @@ main {
     transform: translateX(-50%);
   }
 }
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--chip-press) transparent;
+}
+
+html[data-theme-switch]::view-transition-old(root),
+html[data-theme-switch]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+html[data-theme-switch]::view-transition-new(root) {
+  animation: theme-reveal 700ms var(--ease-out-quint);
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0px at var(--tx, 50%) var(--ty, 50%));
+  }
+  to {
+    clip-path: circle(var(--tr, 150vmax) at var(--tx, 50%) var(--ty, 50%));
+  }
+}
+
+@layer components {
+  .scroll-progress {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 60;
+    height: 2px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    opacity: 0;
+    transition: opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  .scroll-progress[data-visible="true"] {
+    opacity: 0.85;
+  }
+
+  .bento {
+    transition:
+      transform 400ms var(--ease-out-quint),
+      box-shadow 400ms var(--ease-out-quint);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .bento:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--lift-shadow);
+    }
+  }
+
+  .curve-track {
+    position: relative;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--chip);
+  }
+
+  .curve-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: var(--ink);
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .curve-dot {
+      animation: curve 1800ms var(--curve, linear) infinite alternate;
+    }
+  }
+}
+
+@keyframes curve {
+  0%,
+  12% {
+    left: 0;
+  }
+  88%,
+  100% {
+    left: calc(100% - 10px);
+  }
+}

@@ -3,7 +3,9 @@ import { Geist_Mono, Inter, Mrs_Saint_Delafield } from "next/font/google";
 import { DotField } from "@/components/dot-field";
 import { FloatingDock } from "@/components/floating-dock";
 import { IntroGate } from "@/components/intro-gate";
+import { ScrollProgress } from "@/components/scroll-progress";
 import { site } from "@/content/site";
+import { themeScript } from "@/lib/theme-script";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -77,7 +79,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
       className={cn(inter.variable, mono.variable, signature.variable, "font-sans")}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
+        <ScrollProgress />
         <DotField />
         {children}
         <FloatingDock />
