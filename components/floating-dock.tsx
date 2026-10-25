@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef, useState, type MouseEvent, type ReactNode, type Ref } from "react";
 import { GithubIcon, LinkedinIcon, MailIcon, PencilLineIcon, XLogoIcon } from "@/components/icons";
-import { switchTheme, useResolvedTheme } from "@/components/theme";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +36,16 @@ const pages: Item[] = [
       <svg {...stroke} aria-hidden="true">
         <path d="m16 18 6-6-6-6" />
         <path d="m8 6-6 6 6 6" />
+      </svg>
+    ),
+  },
+  {
+    label: "experience",
+    href: "/experience",
+    icon: (
+      <svg {...stroke} aria-hidden="true">
+        <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        <rect width="20" height="14" x="2" y="6" rx="2" />
       </svg>
     ),
   },
@@ -149,31 +158,9 @@ function Tile({ item, mouse, active }: { item: Item; mouse: MotionValue<number>;
   );
 }
 
-const sun = (
-  <svg {...stroke} aria-hidden="true">
-    <circle cx="12" cy="12" r="4" />
-    <path d="M12 2v2M12 20v2m-7.07-14.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-  </svg>
-);
-
-const moon = (
-  <svg {...stroke} aria-hidden="true">
-    <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
-  </svg>
-);
-
 export function FloatingDock() {
   const mouse = useMotionValue(Number.POSITIVE_INFINITY);
   const pathname = usePathname();
-  const theme = useResolvedTheme(site.theme === "dark" ? "dark" : "light");
-  const themeTile: Item = {
-    label: theme === "dark" ? "light mode" : "dark mode",
-    icon: theme === "dark" ? sun : moon,
-    action: (event) => {
-      const box = event.currentTarget.getBoundingClientRect();
-      switchTheme({ x: box.left + box.width / 2, y: box.top + box.height / 2 });
-    },
-  };
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
 
   return (
@@ -196,8 +183,6 @@ export function FloatingDock() {
               <Tile key={item.label} item={item} mouse={mouse} active={false} />
             ))}
           </div>
-          <span aria-hidden="true" className="mx-0.5 mb-1.5 h-8 w-px self-end bg-line max-sm:hidden" />
-          <Tile item={themeTile} mouse={mouse} active={false} />
         </motion.div>
       </nav>
     </MotionConfig>

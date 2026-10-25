@@ -125,11 +125,24 @@ export default function AboutPage() {
 
         <section className="reveal mt-16 border-t border-line pt-8" style={revealDelay(340)}>
           <p className="text-pretty">
-            want to build something together? <Chip href="/contact">say hello</Chip>, read my <ResumeChip />, or see the{" "}
-            <Chip href="/activity">code i ship</Chip>.
+            want to build something together?{" "}
+            <span className="whitespace-nowrap">
+              <Chip href="/contact">say hello</Chip>,
+            </span>{" "}
+            read my{" "}
+            <span className="whitespace-nowrap">
+              <ResumeChip />,
+            </span>{" "}
+            or see the{" "}
+            <span className="whitespace-nowrap">
+              <Chip href="/activity">code i ship</Chip>.
+            </span>
           </p>
           <p className="mt-3 text-meta text-muted">
-            curious how this site is made? read the <Chip href="/colophon">colophon</Chip>.
+            curious how this site is made? read the{" "}
+            <span className="whitespace-nowrap">
+              <Chip href="/colophon">colophon</Chip>.
+            </span>
           </p>
         </section>
       </main>

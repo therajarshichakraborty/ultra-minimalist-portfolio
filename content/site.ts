@@ -1,5 +1,3 @@
-export type Theme = "light" | "dark" | "system";
-
 export type Project = {
   slug: string;
   title: string;
@@ -33,13 +31,6 @@ export type OpenSourceProject = {
   contributions: Contribution[];
 };
 
-export type Experience = {
-  role: string;
-  company: string;
-  period: string;
-  description: string;
-};
-
 export type Education = {
   degree: string;
   school: string;
@@ -69,7 +60,6 @@ export const site = {
   title: "rajarshi chakraborty · software engineer",
   description:
     "rajarshi chakraborty is a software engineer at brand voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
-  theme: "light" as Theme,
   links: {
     linkedin: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
     x: "https://x.com/IamRajarshi_Dev",
@@ -92,6 +82,7 @@ export const site = {
     notes: "short notes on building interfaces, written when something finally clicks.",
     activity: "a live log of what i ship and what i practice, pulled from github and leetcode every hour.",
     education: "the fundamentals behind the work, from the core sciences to computer science and research.",
+    experience: "shipping production software, running research and leading campus communities.",
     about: "the person behind the work: where i am, what i am building, and what keeps me curious.",
     contact:
       "whether it is a role, a freelance project, or an idea that will not leave you alone, tell me about it. every message lands in my own inbox, and i read each one myself.",
@@ -149,6 +140,81 @@ export const about = {
     ],
   ] as Skill[][],
 };
+
+export type Role = {
+  company: string;
+  role: string;
+  location: string;
+  period: string;
+  current?: boolean;
+  summary: string;
+  highlights: string[];
+  skills: string[];
+};
+
+export const experienceIntro = {
+  heading: "Where I've been building.",
+  text: "Shipping production software, running research and leading the campus communities that taught me how teams actually work.",
+};
+
+export const experience: Role[] = [
+  {
+    company: "Brand Voy",
+    role: "Software Engineer",
+    location: "London, United Kingdom (Remote)",
+    period: "Aug 2026 - Present",
+    current: true,
+    summary:
+      "Building live sports products on high-volume cricket and football data for clients across English and Vietnamese markets.",
+    highlights: [
+      "Ship and maintain production web apps that serve real-time matches, fixtures, scores and statistics.",
+      "Optimize data handling and app workflows so pages stay fast under high-volume, live-match traffic.",
+      "Own features end to end, from requirements and implementation to testing, deployment and production support.",
+    ],
+    skills: ["TypeScript", "Next.js", "React Native", "Expo", "Node.js", "Express", "PostgreSQL", "Docker", "Kubernetes", "Git"],
+  },
+  {
+    company: "Techno Main Salt Lake",
+    role: "UnderGrad Researcher",
+    location: "Kolkata, West Bengal, India",
+    period: "Jan 2026 - Present",
+    current: true,
+    summary: "Researching deep learning for weather time-series forecasting, from raw data to a deployable pipeline.",
+    highlights: [
+      "Built and benchmarked LSTM, ARIMA and RNN models, improving prediction reliability by 28.75% over statistical baselines across 3+ years of backtesting.",
+      "Turned research notebooks into a modular Python pipeline, cutting the retrain-to-redeploy cycle from 3+ days to under 4 hours.",
+      "Cleaned a 60,000+ row dataset and tuned 120+ configurations, lifting LSTM validation accuracy by 19.4% and cutting MAE by 22%.",
+    ],
+    skills: ["Python", "PyTorch", "NumPy", "Pandas", "Scikit-Learn", "Node.js", "Time Series Analysis"],
+  },
+  {
+    company: "Samarth TMSL",
+    role: "Co-Head & Content Writer, IGNITE",
+    location: "Kolkata, West Bengal, India",
+    period: "July 2023 - Present",
+    current: true,
+    summary: "Co-leading the IGNITE division of Samarth TMSL, running its events and writing the content behind them.",
+    highlights: [
+      "Co-organized 6+ large-scale events, including the national-level hackathon Educathon and the annual fest Safalya, drawing 500+ participants.",
+      "Led cross-functional teams of 20+ volunteers across logistics, design, outreach and operations, delivering every event on schedule.",
+      "Wrote 15+ articles, workshop decks and guides, helping grow social media engagement by 40%.",
+    ],
+    skills: ["Leadership", "Event Management", "Content Writing", "Public Speaking", "Community Building"],
+  },
+  {
+    company: "Geekonix",
+    role: "Volunteer & Management Staff",
+    location: "Kolkata, West Bengal, India",
+    period: "Oct 2023 - Dec 2024",
+    summary: "Helped run EDGE, the official technical fest of Techno Main Salt Lake.",
+    highlights: [
+      "Supported 10+ event tracks across competitive programming, robotics and quizzing over two fest days.",
+      "Coordinated scheduling, venues and resources for 300+ participants a day with a 30+ member volunteer team.",
+      "Spotted bottlenecks in registration and check-in mid-event and fixed them on the spot, cutting average wait time by 25%.",
+    ],
+    skills: ["Event Operations", "Team Management", "Logistics", "Coordination"],
+  },
+];
 
 export const education: Education[] = [
   {
@@ -432,38 +498,12 @@ export const openSource: OpenSourceProject[] = [
 
 export const resume = {
   summary:
-    "design engineer building web and ios interfaces with react, typescript, and swiftui. focused on interaction patterns, reusable components, and motion that explains what the system is doing.",
-  experience: [
-    {
-      role: "software engineer",
-      company: "northwind studio",
-      period: "2025 to now",
-      description: "prototype and ship interaction models for ai products, from first sketch to production react components.",
-    },
-    {
-      role: "product designer",
-      company: "fieldwork",
-      period: "2023 to 2025",
-      description: "led the design system and built its react implementation, cutting new feature design time roughly in half.",
-    },
-    {
-      role: "frontend engineer",
-      company: "parcel labs",
-      period: "2021 to 2023",
-      description: "built the merchant dashboard and the motion guidelines the team still uses.",
-    },
-  ] as Experience[],
+    "software engineer at brand voy, building live sports products on high-volume cricket and football data. finishing a b.tech in computer science at techno main salt lake, where i research deep learning for time-series forecasting.",
   skills: [
-    { group: "engineering", items: "react, next.js, typescript, swiftui, css, motion" },
-    { group: "design", items: "figma, interaction design, prototyping, design systems, accessibility" },
-    { group: "tools", items: "git, vitest, playwright, gsap" },
+    { group: "engineering", items: "typescript, next.js, react native, expo, node.js, express, postgresql" },
+    { group: "infrastructure", items: "docker, kubernetes, git" },
+    { group: "data and ml", items: "python, pytorch, numpy, pandas, scikit-learn, time series analysis" },
   ],
-  education: {
-    school: "school of visual arts",
-    degree: "bfa, interaction design",
-    location: "new york, ny",
-    year: "2021",
-  },
 };
 
 export const contributionCount = openSource.reduce((total, project) => total + project.contributions.length, 0);

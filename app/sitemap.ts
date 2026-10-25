@@ -4,7 +4,7 @@ import { getNotes } from "@/lib/notes";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const notes = await getNotes();
-  const pages = ["", "/interactions", "/work", "/open-source", "/notes", "/resume", "/about", "/activity", "/education", "/contact", "/colophon"];
+  const pages = ["", "/interactions", "/work", "/open-source", "/notes", "/resume", "/about", "/experience", "/activity", "/education", "/contact", "/colophon"];
 
   return [
     ...pages.map((path) => ({ url: `${site.url}${path}` })),

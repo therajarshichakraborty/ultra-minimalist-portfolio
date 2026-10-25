@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { domain, projects, resume, site } from "@/content/site";
+import { domain, education, experience, projects, resume, site } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
@@ -44,9 +44,9 @@ export function ResumePaper({ className }: { className?: string }) {
         ))}
       </Section>
       <Section title="experience">
-        {resume.experience.map((item) => (
+        {experience.map((item) => (
           <Row key={`${item.company}-${item.period}`} title={`${item.role}, ${item.company}`} meta={item.period}>
-            {item.description}
+            {item.summary}
           </Row>
         ))}
       </Section>
@@ -58,9 +58,11 @@ export function ResumePaper({ className }: { className?: string }) {
         ))}
       </Section>
       <Section title="education">
-        <Row title={resume.education.school} meta={resume.education.year}>
-          {resume.education.degree}, {resume.education.location}
-        </Row>
+        {education.map((item) => (
+          <Row key={item.degree} title={item.school} meta={item.period}>
+            {item.degree}, {item.grades.join(", ")}
+          </Row>
+        ))}
       </Section>
     </article>
   );

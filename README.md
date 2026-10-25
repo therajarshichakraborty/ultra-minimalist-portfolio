@@ -11,9 +11,9 @@ A calm, single column portfolio for designers and engineers, built with Next.js 
 - Aceternity style touches: dot grid with a cursor spotlight, word by word text reveal, 3D tilt cards with glare, focus cards, tracing beam on notes, floating dock, magnetic button, encrypted text, glowing border
 - View transition morphs: the home cards grow into the pages they open
 - Live interaction demos, coded project covers, MDX notes
-- Light, dark or system theme from one setting
 - Open Graph image, icons, sitemap, robots, manifest and JSON-LD generated from your content
-- Static by default, accessible, reduced motion aware, no comments and no runtime data fetching
+- Pages for about, experience, education, activity (live github and leetcode data, refreshed hourly), contact and a colophon
+- Static by default, light only, accessible, reduced motion aware, no comments
 
 ## Quick start
 
@@ -38,14 +38,19 @@ Almost everything lives in one file: `content/site.ts`.
 
 | what | where |
 | --- | --- |
-| name, signature, role, location, email, url, theme | `site` in `content/site.ts` |
+| name, signature, role, location, email, url | `site` in `content/site.ts` |
 | social links | `site.links` |
 | home sentence and chip labels | `site.home` |
 | page intros | `site.pages` |
 | projects and case studies | `projects` |
 | interaction demos list | `interactions` |
 | open source contributions | `openSource` |
-| résumé | `resume` |
+| experience | `experience` and `experienceIntro` |
+| education | `education` |
+| about page | `about` |
+| contact page | `contact` |
+| github and leetcode usernames | `site.profiles` |
+| résumé summary and skills | `resume` |
 | notes | one `.mdx` file per note in `content/notes` |
 | project illustrations | `components/covers` or add `image: { src, alt }` to a project and drop the file in `public` |
 | favicon | `app/icon.svg` |
@@ -63,10 +68,6 @@ the body is plain markdown.
 ```
 
 New notes appear in the list, the sitemap and the static build automatically.
-
-### Theme
-
-Set `site.theme` to `"light"`, `"dark"` or `"system"`. All colors are CSS variables in `app/globals.css`, so a palette change is a few lines.
 
 ### Interaction demos
 

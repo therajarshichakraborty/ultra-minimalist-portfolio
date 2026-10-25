@@ -62,78 +62,6 @@
   color-scheme: light;
 }
 
-:root[data-theme="dark"] {
-  --bg: #0a0a0a;
-  --ink: #ededed;
-  --muted: #a1a1a1;
-  --faint: #8f8f8f;
-  --chip: #1b1b1b;
-  --chip-hover: #262626;
-  --chip-press: #2e2e2e;
-  --surface: #141414;
-  --line: rgb(255 255 255 / 0.08);
-  --dot: rgb(255 255 255 / 0.08);
-  --dot-strong: rgb(255 255 255 / 0.3);
-  --media-shadow: 0 3px 12px rgb(0 0 0 / 0.5);
-  --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -6px rgb(0 0 0 / 0.6);
-  --glare: rgb(255 255 255 / 0.14);
-  --linkedin: #70b5f9;
-  --linkedin-tint: rgb(112 181 249 / 0.14);
-  --linkedin-press: rgb(112 181 249 / 0.22);
-  --github: #f0f6fc;
-  --github-tint: rgb(240 246 252 / 0.12);
-  --github-press: rgb(240 246 252 / 0.18);
-  --x-fill: #ffffff;
-  --x-ink: #000000;
-  --x-press: #d9d9d9;
-  --oss: #a371f7;
-  --oss-tint: rgb(163 113 247 / 0.16);
-  --oss-press: rgb(163 113 247 / 0.24);
-  --heat-0: #1d1a2b;
-  --heat-1: #3b2a6e;
-  --heat-2: #5b3fb0;
-  --heat-3: #8b5cf6;
-  --heat-4: #c4b5fd;
-  color-scheme: dark;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root[data-theme="system"] {
-    --bg: #0a0a0a;
-    --ink: #ededed;
-    --muted: #a1a1a1;
-    --faint: #8f8f8f;
-    --chip: #1b1b1b;
-    --chip-hover: #262626;
-    --chip-press: #2e2e2e;
-    --surface: #141414;
-    --line: rgb(255 255 255 / 0.08);
-    --dot: rgb(255 255 255 / 0.08);
-    --dot-strong: rgb(255 255 255 / 0.3);
-    --media-shadow: 0 3px 12px rgb(0 0 0 / 0.5);
-    --lift-shadow: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -6px rgb(0 0 0 / 0.6);
-    --glare: rgb(255 255 255 / 0.14);
-    --linkedin: #70b5f9;
-    --linkedin-tint: rgb(112 181 249 / 0.14);
-    --linkedin-press: rgb(112 181 249 / 0.22);
-    --github: #f0f6fc;
-    --github-tint: rgb(240 246 252 / 0.12);
-    --github-press: rgb(240 246 252 / 0.18);
-    --x-fill: #ffffff;
-    --x-ink: #000000;
-    --x-press: #d9d9d9;
-    --oss: #a371f7;
-    --oss-tint: rgb(163 113 247 / 0.16);
-    --oss-press: rgb(163 113 247 / 0.24);
-    --heat-0: #1d1a2b;
-    --heat-1: #3b2a6e;
-    --heat-2: #5b3fb0;
-    --heat-3: #8b5cf6;
-    --heat-4: #c4b5fd;
-    color-scheme: dark;
-  }
-}
-
 @media (max-width: 600px) {
   :root {
     --column: 360px;
@@ -1476,25 +1404,6 @@ main {
 html {
   scrollbar-width: thin;
   scrollbar-color: var(--chip-press) transparent;
-}
-
-html[data-theme-switch]::view-transition-old(root),
-html[data-theme-switch]::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-html[data-theme-switch]::view-transition-new(root) {
-  animation: theme-reveal 700ms var(--ease-out-quint);
-}
-
-@keyframes theme-reveal {
-  from {
-    clip-path: circle(0px at var(--tx, 50%) var(--ty, 50%));
-  }
-  to {
-    clip-path: circle(var(--tr, 150vmax) at var(--tx, 50%) var(--ty, 50%));
-  }
 }
 
 @layer components {

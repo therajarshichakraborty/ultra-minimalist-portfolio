@@ -5,7 +5,6 @@ import { FloatingDock } from "@/components/floating-dock";
 import { IntroGate } from "@/components/intro-gate";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { site } from "@/content/site";
-import { themeScript } from "@/lib/theme-script";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -54,34 +53,19 @@ export const metadata: Metadata = {
   },
 };
 
-const light = "#ffffff";
-const dark = "#0a0a0a";
-
 export const viewport: Viewport = {
-  colorScheme: site.theme === "system" ? "light dark" : site.theme,
-  themeColor:
-    site.theme === "system"
-      ? [
-          { media: "(prefers-color-scheme: light)", color: light },
-          { media: "(prefers-color-scheme: dark)", color: dark },
-        ]
-      : site.theme === "dark"
-        ? dark
-        : light,
+  colorScheme: "light",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      data-theme={site.theme}
       data-intro=""
       suppressHydrationWarning
       className={cn(inter.variable, mono.variable, signature.variable, "font-sans")}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body>
         <ScrollProgress />
         <DotField />
