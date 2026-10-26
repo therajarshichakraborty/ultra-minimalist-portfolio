@@ -14,7 +14,7 @@ import { about, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${about.greeting} ${about.story[0]}`,
+  description: `${about.greeting} ${site.pages.about}`,
 };
 
 const link = /\[([^\]]+)\]\(([^)]+)\)/g;

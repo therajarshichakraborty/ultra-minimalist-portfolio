@@ -21,13 +21,24 @@ export default function Home() {
               Hi, I&apos;m <NameSignature name={site.name} signature={site.signature} />
             </Reveal>
           </h1>
-          <p className="mt-1 leading-[1.55]">
+          <p className="mt-1 leading-[1.55] text-muted">
             <Reveal delay={70}>{site.role}</Reveal>
           </p>
-          <p className="mt-8 max-w-120 text-pretty">
-            <Reveal delay={140} step={14}>
-              {site.home.intro} Sometimes I make{" "}
-              <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
+          <p className="mt-8 max-w-120 text-[17px] leading-[1.55] font-medium tracking-[-0.015em] text-pretty">
+            <Reveal delay={140} step={12}>
+              {site.home.lead}
+            </Reveal>
+          </p>
+          {site.home.story.map((paragraph, index) => (
+            <p key={paragraph} className="mt-5 max-w-120 text-pretty text-muted">
+              <Reveal delay={240 + index * 60} step={4}>
+                {paragraph}
+              </Reveal>
+            </p>
+          ))}
+          <p className="mt-5 max-w-120 text-pretty">
+            <Reveal delay={380} step={14}>
+              Sometimes I make <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
               <Chip href="/work" iconName="open-source" icon={<MergeIcon />}>
                 {site.home.projects}
               </Chip>
@@ -39,7 +50,7 @@ export default function Home() {
             </Reveal>
           </p>
           <p className="mt-8 tracking-normal">
-            <Reveal delay={380} step={14}>
+            <Reveal delay={460} step={14}>
               <CopyEmail email={site.email} /> to say hi. Find me on{" "}
               <Chip href={site.links.linkedin} external brand="linkedin" iconName="linkedin" icon={<LinkedinIcon />}>
                 LinkedIn
@@ -52,7 +63,7 @@ export default function Home() {
             </Reveal>
           </p>
           <p className="mt-8 text-pretty">
-            <Reveal delay={480} step={14}>
+            <Reveal delay={540} step={14}>
               More: <Chip href="/about">about me</Chip>, my <Chip href="/experience">experience</Chip>,{" "}
               <Chip href="/activity">coding activity</Chip>, <Chip href="/education">education</Chip>, and a{" "}
               <Chip href="/contact">contact form</Chip>.
