@@ -69,8 +69,9 @@ export function ResumePaper({ className }: { className?: string }) {
       </Section>
       <Section title="Research">
         {publications.map((publication) => (
-          <Row key={publication.paperId} title={publication.title} meta={publication.date}>
-            {publication.venue.name}, {publication.venue.full} ({publication.venue.note})
+          <Row key={publication.title} title={publication.title} meta={publication.date}>
+            {publication.venue.name}, {publication.venue.full}
+            {publication.venue.note ? ` (${publication.venue.note})` : null}
           </Row>
         ))}
       </Section>

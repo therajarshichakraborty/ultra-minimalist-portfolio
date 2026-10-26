@@ -99,14 +99,15 @@ export type Author = {
 
 export type Publication = {
   status: string;
-  paperId: string;
+  paperId?: string;
   date: string;
   title: string;
   authors: Author[];
-  venue: { name: string; full: string; note: string };
+  // prefix defaults to "Published in"; use e.g. "Submitted to" for a paper under review.
+  venue: { name: string; full: string; note?: string; prefix?: string };
   abstract: string;
-  identifiers: { label: string; value: string }[];
-  links: { paper: string; publisher: string };
+  identifiers?: { label: string; value: string }[];
+  links: { paper?: string; publisher?: string; publisherLabel?: string };
 };
 
 export const about = {
@@ -167,6 +168,7 @@ export const research = {
     "Committed to advancing technology through research, technical publications and engineering contributions across multiple domains.",
 };
 
+// Newest first. Optional fields (paperId, identifiers, links) can be left out when a paper has none.
 export const publications: Publication[] = [
   {
     status: "Published",
@@ -193,6 +195,7 @@ export const publications: Publication[] = [
     links: {
       paper: "/pdfs/research-paper.pdf",
       publisher: "https://ieeexplore.ieee.org/document/11688352",
+      publisherLabel: "IEEE Xplore",
     },
   },
 ];
