@@ -35,7 +35,7 @@ export function SiteFooter() {
   const letters = site.signature.toUpperCase().split("");
 
   return (
-    <footer className="relative overflow-hidden border-t border-line print:hidden">
+    <footer className="relative overflow-hidden print:hidden">
       <div className="column flex flex-col items-center pt-16 text-center">
         <Link href="/" className="font-medium">
           {site.name}
