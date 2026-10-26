@@ -4,8 +4,6 @@ import { useRef, useState } from "react";
 import { useBlink, useGaze } from "@/components/use-gaze";
 import { cn } from "@/lib/utils";
 
-export const littleGuySurface = "bg-bg shadow-media ring-1 ring-line";
-
 type LittleGuyProps = {
   className?: string;
   playful?: boolean;
@@ -69,7 +67,7 @@ export function LittleGuy({ className, playful = false }: LittleGuyProps) {
   return (
     <button
       type="button"
-      aria-label="startle the little guy"
+      aria-label="Startle the little guy"
       onClick={startle}
       className={cn(
         "absolute inset-0 grid place-items-center outline-offset-[-6px] [-webkit-tap-highlight-color:transparent]",

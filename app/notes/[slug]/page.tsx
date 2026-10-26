@@ -34,7 +34,7 @@ export default async function NotePage({ params }: PageProps<"/notes/[slug]">) {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title={note.title} meta={formatDate(note.date)} backHref="/notes" backLabel="back to notes" />
+        <PageHeader title={note.title} meta={formatDate(note.date)} backHref="/notes" backLabel="Back to notes" />
         <TracingBeam>
           <article className="reveal mt-8 leading-[1.75]" style={revealDelay(180)}>
             <Content />
@@ -42,7 +42,7 @@ export default async function NotePage({ params }: PageProps<"/notes/[slug]">) {
         </TracingBeam>
         {older ? (
           <footer className="mt-16 flex items-baseline justify-between gap-4 border-t border-line pt-6">
-            <span className="text-meta text-muted">older</span>
+            <span className="text-meta text-muted">Older</span>
             <Link
               href={`/notes/${older.slug}`}
               transitionTypes={["nav-forward"]}

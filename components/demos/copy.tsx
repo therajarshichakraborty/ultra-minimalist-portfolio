@@ -35,12 +35,12 @@ export function CopyDemo() {
             data-show={copied}
             className="pointer-events-none absolute -top-8 left-1/2 -translate-x-1/2 translate-y-1 rounded bg-ink px-1.5 py-0.5 text-meta text-bg opacity-0 transition-[opacity,translate] duration-200 ease-snap data-[show=true]:translate-y-0 data-[show=true]:opacity-100"
           >
-            copied
+            Copied
           </span>
           <button
             type="button"
             onClick={copy}
-            aria-label={copied ? "copied" : "copy command"}
+            aria-label={copied ? "Copied" : "Copy command"}
             data-copied={copied}
             className="copy-swap relative grid size-7 place-items-center rounded-md text-ink transition-colors duration-150 hover:bg-chip focus-visible:bg-chip active:scale-[0.94]"
           >
@@ -50,7 +50,7 @@ export function CopyDemo() {
         </span>
       </div>
       <span role="status" className="sr-only">
-        {copied ? "command copied" : ""}
+        {copied ? "Command copied" : ""}
       </span>
     </div>
   );

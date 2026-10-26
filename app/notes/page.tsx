@@ -9,8 +9,8 @@ import { formatDate } from "@/lib/format";
 import { getNotes } from "@/lib/notes";
 
 export const metadata: Metadata = {
-  title: "notes",
-  description: `notes by ${site.name}: ${site.pages.notes}`,
+  title: "Notes",
+  description: `Notes by ${site.name}: ${site.pages.notes}`,
 };
 
 export default async function NotesPage() {
@@ -19,7 +19,7 @@ export default async function NotesPage() {
   return (
     <PageTransition>
       <main className="column flex min-h-svh flex-col justify-center py-[clamp(48px,6svh,56px)]">
-        <PageHeader title="notes" meta={notes.length}>
+        <PageHeader title="Notes" meta={notes.length}>
           {site.pages.notes}
         </PageHeader>
         <div className="reveal mt-8" style={revealDelay(180)}>

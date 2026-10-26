@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter, Mrs_Saint_Delafield } from "next/font/google";
+import { Geist_Mono, Inter, Shadows_Into_Light } from "next/font/google";
 import { DotField } from "@/components/dot-field";
 import { FloatingDock } from "@/components/floating-dock";
+import { SiteFooter } from "@/components/site-footer";
 import { IntroGate } from "@/components/intro-gate";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { site } from "@/content/site";
@@ -19,7 +20,7 @@ const mono = Geist_Mono({
   preload: false,
 });
 
-const signature = Mrs_Saint_Delafield({
+const signature = Shadows_Into_Light({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-signature",
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollProgress />
         <DotField />
         {children}
+        <SiteFooter />
         <FloatingDock />
         <IntroGate />
       </body>

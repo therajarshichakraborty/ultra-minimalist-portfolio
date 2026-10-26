@@ -18,42 +18,53 @@ export default function Home() {
         <header>
           <h1 className="leading-[1.65]">
             <Reveal>
-              hi i&apos;m <NameSignature name={site.name} signature={site.signature} />
+              Hi, I&apos;m <NameSignature name={site.name} signature={site.signature} />
             </Reveal>
           </h1>
-          <p className="mt-1 leading-[1.55]">
+          <p className="mt-1 leading-[1.55] text-muted">
             <Reveal delay={70}>{site.role}</Reveal>
           </p>
-          <p className="mt-8 max-w-[480px] text-pretty">
-            <Reveal delay={140} step={14}>
-              {site.home.intro} sometimes i make{" "}
-              <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
+          <p className="mt-8 max-w-120 text-[17px] leading-[1.55] font-medium tracking-[-0.015em] text-pretty">
+            <Reveal delay={140} step={12}>
+              {site.home.lead}
+            </Reveal>
+          </p>
+          {site.home.story.map((paragraph, index) => (
+            <p key={paragraph} className="mt-5 max-w-120 text-pretty text-muted">
+              <Reveal delay={240 + index * 60} step={4}>
+                {paragraph}
+              </Reveal>
+            </p>
+          ))}
+          <p className="mt-5 max-w-120 text-pretty">
+            <Reveal delay={380} step={14}>
+              Sometimes I make <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
               <Chip href="/work" iconName="open-source" icon={<MergeIcon />}>
                 {site.home.projects}
               </Chip>
-              , and share what i&apos;m{" "}
-              <Chip href="/notes" iconName="notes" icon={<PencilLineIcon />}>
+              , and share what I&apos;m{" "}
+              <Chip href="/blog" iconName="notes" icon={<PencilLineIcon />}>
                 {site.home.thinking}
               </Chip>
               .
             </Reveal>
           </p>
           <p className="mt-8 tracking-normal">
-            <Reveal delay={380} step={14}>
-              <CopyEmail email={site.email} /> to say hi. find me on{" "}
+            <Reveal delay={460} step={14}>
+              <CopyEmail email={site.email} /> to say hi. Find me on{" "}
               <Chip href={site.links.linkedin} external brand="linkedin" iconName="linkedin" icon={<LinkedinIcon />}>
-                linkedin
+                LinkedIn
               </Chip>
-              , <Chip href={site.links.x} external brand="x" iconName="x" icon={<XLogoIcon />} label="x" /> and{" "}
+              , <Chip href={site.links.x} external brand="x" iconName="x" icon={<XLogoIcon />} label="X" /> and{" "}
               <Chip href={site.links.github} external brand="github" iconName="github" icon={<GithubIcon />}>
-                github
+                GitHub
               </Chip>
               , or read my <ResumeChip />.
             </Reveal>
           </p>
           <p className="mt-8 text-pretty">
-            <Reveal delay={480} step={14}>
-              more: <Chip href="/about">about me</Chip>, my <Chip href="/experience">experience</Chip>,{" "}
+            <Reveal delay={540} step={14}>
+              More: <Chip href="/about">about me</Chip>, my <Chip href="/experience">experience</Chip>,{" "}
               <Chip href="/activity">coding activity</Chip>, <Chip href="/education">education</Chip>, and a{" "}
               <Chip href="/contact">contact form</Chip>.
             </Reveal>

@@ -79,11 +79,11 @@ export function HoldDemo() {
         <span aria-hidden="true" className="hold-fill" />
         <span className="hold-label relative flex items-center gap-2">
           {state === "done" ? <CheckIcon className="size-4" /> : <TrashIcon />}
-          {state === "done" ? "deleted" : "hold to delete"}
+          {state === "done" ? "Deleted" : "Hold to delete"}
         </span>
       </button>
       <span role="status" className="sr-only">
-        {state === "done" ? "deleted" : ""}
+        {state === "done" ? "Deleted" : ""}
       </span>
     </div>
   );

@@ -50,17 +50,17 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title={project.title} meta={project.year} backHref="/work" backLabel="back to work">
+        <PageHeader title={project.title} meta={project.year} backHref="/work" backLabel="Back to work">
           {project.summary}
         </PageHeader>
 
         <dl className="reveal mt-7 grid gap-2" style={revealDelay(180)}>
           <div className="grid grid-cols-[72px_1fr] items-baseline gap-4">
-            <dt className="text-muted">built with</dt>
+            <dt className="text-muted">Built with</dt>
             <dd className="text-pretty">{project.stack.join(", ")}</dd>
           </div>
           <div className="grid grid-cols-[72px_1fr] items-baseline gap-4">
-            <dt className="text-muted">year</dt>
+            <dt className="text-muted">Year</dt>
             <dd>{project.year}</dd>
           </div>
         </dl>
@@ -69,11 +69,11 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
           {project.links.live ? (
             <Outbound
               href={project.links.live}
-              label="visit live site"
+              label="Visit live site"
               icon={<span aria-hidden="true" className="live-dot" />}
             />
           ) : null}
-          <Outbound href={project.links.repo} label="view source" icon={<GithubIcon className="size-3.5" />} />
+          <Outbound href={project.links.repo} label="View source" icon={<GithubIcon className="size-3.5" />} />
         </div>
 
         <div className="reveal mt-10" style={revealDelay(240)}>
@@ -104,7 +104,7 @@ export default async function ProjectPage({ params }: PageProps<"/work/[slug]">)
         {next && next.slug !== project.slug ? (
           <footer className="mt-16 flex justify-end border-t border-line pt-6">
             <Chip href={`/work/${next.slug}`}>
-              next: {next.title}
+              Next: {next.title}
               <ArrowRightIcon className="ml-1 inline-block size-3.5 align-[-2px]" />
             </Chip>
           </footer>

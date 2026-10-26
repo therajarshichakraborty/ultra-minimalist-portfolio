@@ -7,18 +7,18 @@ import { PageTransition } from "@/components/transitions";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "résumé",
-  description: `the one page résumé of ${site.name}, ${site.role}.`,
+  title: "Résumé",
+  description: `The one-page résumé of ${site.name}, ${site.role}.`,
 };
 
 export default function ResumePage() {
   return (
     <PageTransition>
-      <main className="column py-[clamp(48px,10svh,112px)] print:w-full print:py-0">
+      <main className="mx-auto w-[min(680px,calc(100%-2*var(--gutter)))] py-[clamp(48px,10svh,112px)] print:w-full print:py-0">
         <div className="print:hidden">
-          <PageHeader title="résumé" meta={<PrintButton />} />
+          <PageHeader title="Résumé" meta={<PrintButton />} />
         </div>
-        <div className="reveal mt-10 print:mt-0" style={revealDelay(180)}>
+        <div className="reveal mt-12 print:mt-0" style={revealDelay(180)}>
           <ResumePaper />
         </div>
       </main>

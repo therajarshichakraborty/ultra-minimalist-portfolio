@@ -15,18 +15,18 @@ export default function NotFound() {
           <Reveal delay={60}>404</Reveal>
         </p>
         <h1 className="mt-1">
-          <Reveal delay={100}>this page wandered off.</Reveal>
+          <Reveal delay={100}>This page wandered off.</Reveal>
         </h1>
         <p className="text-muted">
-          <Reveal delay={160}>it may have moved, or it never existed.</Reveal>
+          <Reveal delay={160}>It may have moved, or it never existed.</Reveal>
         </p>
         <p className="mt-6 flex flex-wrap gap-3">
           <Reveal delay={240}>
             <Chip href="/" direction="back">
               <ArrowLeftIcon className="mr-1 inline-block size-3.5 align-[-2px]" />
-              back home
+              Back home
             </Chip>{" "}
-            <Chip href="/work">see the work</Chip>
+            <Chip href="/work">See the work</Chip>
           </Reveal>
         </p>
       </main>

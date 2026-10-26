@@ -7,9 +7,9 @@ import { CheckIcon, MailIcon } from "@/components/icons";
 type State = "idle" | "copied" | "failed";
 
 const labels: Record<State, string> = {
-  idle: "copy",
-  copied: "copied",
-  failed: "retry",
+  idle: "Copy",
+  copied: "Copied",
+  failed: "Retry",
 };
 
 async function write(text: string) {
@@ -51,7 +51,7 @@ export function CopyEmail({ email }: { email: string }) {
 
   return (
     <>
-      <button type="button" onClick={copy} title={`copy ${email}`} data-state={state} className="copy-email chip">
+      <button type="button" onClick={copy} title={`Copy ${email}`} data-state={state} className="copy-email chip">
         <ChipIcon name="email">
           <span className="copy-glyphs">
             <MailIcon data-glyph="mail" />
@@ -74,7 +74,7 @@ export function CopyEmail({ email }: { email: string }) {
         my email
       </button>
       <span role="status" className="sr-only">
-        {state === "copied" ? "email copied to clipboard" : state === "failed" ? "copy failed, try again" : ""}
+        {state === "copied" ? "Email copied to clipboard" : state === "failed" ? "Copy failed, try again" : ""}
       </span>
     </>
   );

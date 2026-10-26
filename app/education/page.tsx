@@ -6,8 +6,8 @@ import { PageTransition } from "@/components/transitions";
 import { education, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "education",
-  description: `education of ${site.name}: ${site.pages.education}`,
+  title: "Education",
+  description: `Education of ${site.name}: ${site.pages.education}`,
 };
 
 function PinIcon() {
@@ -32,7 +32,7 @@ export default function EducationPage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title="education" meta={`${education.length} chapters`}>
+        <PageHeader title="Education" meta={`${education.length} chapters`}>
           {site.pages.education}
         </PageHeader>
         <ol className="mt-10">
@@ -81,7 +81,7 @@ export default function EducationPage() {
                 </p>
                 <p className="mt-3 text-pretty">{item.highlight}</p>
                 <p className="mt-3 text-pretty text-muted">
-                  <span className="text-ink">coursework </span>
+                  <span className="text-ink">Coursework </span>
                   {item.coursework.join(" · ")}
                 </p>
               </div>

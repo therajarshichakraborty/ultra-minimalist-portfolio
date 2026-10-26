@@ -147,10 +147,10 @@ export function Rail({ label, children, className }: RailProps) {
           {index + 1} of {count}
         </p>
         <div className="flex gap-2">
-          <RailButton label="previous" disabled={index <= 0} onClick={() => go(index - 1)}>
+          <RailButton label="Previous" disabled={index <= 0} onClick={() => go(index - 1)}>
             <ChevronLeftIcon className="size-4" />
           </RailButton>
-          <RailButton label="next" disabled={index >= count - 1} onClick={() => go(index + 1)}>
+          <RailButton label="Next" disabled={index >= count - 1} onClick={() => go(index + 1)}>
             <ChevronRightIcon className="size-4" />
           </RailButton>
         </div>

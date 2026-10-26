@@ -5,16 +5,17 @@ import type { ReactNode } from "react";
 import { Chip } from "@/components/chip";
 import { ArrowRightIcon } from "@/components/icons";
 import { PageHeader } from "@/components/page-header";
+import { PublicationEntry } from "@/components/publication-entry";
 import { ResumeChip } from "@/components/resume/resume-chip";
 import { revealDelay } from "@/components/reveal";
 import { SkillsMarquee } from "@/components/skills-marquee";
 import { TiltCard } from "@/components/tilt-card";
 import { PageTransition } from "@/components/transitions";
-import { about, site } from "@/content/site";
+import { about, publications, research, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "about",
-  description: `${about.greeting} ${about.story[0]}`,
+  title: "About",
+  description: `${about.greeting} ${site.pages.about}`,
 };
 
 const link = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -64,7 +65,7 @@ export default function AboutPage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title="about" meta={site.location}>
+        <PageHeader title="About" meta={site.location}>
           {site.pages.about}
         </PageHeader>
 
@@ -74,7 +75,7 @@ export default function AboutPage() {
               <div className="relative size-[104px] overflow-hidden rounded-2xl bg-surface shadow-media ring-1 ring-line max-sm:size-[88px]">
                 <Image
                   src={about.photo}
-                  alt={`portrait of ${site.name}`}
+                  alt={`Portrait of ${site.name}`}
                   fill
                   sizes="104px"
                   priority
@@ -88,9 +89,6 @@ export default function AboutPage() {
             <p className="mt-1 text-muted">
               {site.role} · {site.location}
             </p>
-            <p aria-hidden="true" className="mt-1.5 -rotate-3 font-script text-[30px] leading-none">
-              {site.signature}
-            </p>
           </div>
         </section>
 
@@ -102,10 +100,10 @@ export default function AboutPage() {
 
         <section className="reveal mt-14" style={revealDelay(260)}>
           <div className="mb-4 flex items-baseline justify-between gap-4">
-            <h2 className="font-medium">now</h2>
+            <h2 className="font-medium">Now</h2>
             <span className="inline-flex items-center gap-1.5 text-meta text-muted">
               <span className="live-dot" aria-hidden="true" />
-              currently
+              Currently
             </span>
           </div>
           <ul className="grid gap-2.5">
@@ -118,14 +116,36 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <section className="reveal mt-16" style={revealDelay(300)}>
+        <section id="research" className="reveal mt-20 scroll-mt-16" style={revealDelay(290)}>
+          <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="h-px flex-1 bg-linear-to-r from-transparent to-line" />
+            <span className="rounded-full bg-ink px-3 py-0.5 text-meta font-medium text-bg tabular-nums">
+              {research.eyebrow}
+              {publications.length > 1 ? ` · ${publications.length}` : null}
+            </span>
+            <span aria-hidden="true" className="h-px flex-1 bg-linear-to-l from-transparent to-line" />
+          </div>
+          <h2 className="mt-5 text-center text-[28px] leading-[1.15] font-medium tracking-[-0.03em] text-balance sm:text-[34px]">
+            {research.heading}
+          </h2>
+          <p className="mx-auto mt-3 max-w-110 text-center text-pretty text-muted">{research.intro}</p>
+          <ol className="mt-10 divide-y divide-line">
+            {publications.map((publication, index) => (
+              <li key={publication.title} className="py-10 first:pt-0 last:pb-0">
+                <PublicationEntry publication={publication} number={publications.length > 1 ? index + 1 : undefined} />
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="reveal mt-20" style={revealDelay(320)}>
           <h2 className="mb-5 text-center text-muted">{about.skillsTitle}</h2>
           <SkillsMarquee rows={about.skills} label={about.skillsTitle} />
         </section>
 
         <section className="reveal mt-16 border-t border-line pt-8" style={revealDelay(340)}>
           <p className="text-pretty">
-            want to build something together?{" "}
+            Want to build something together?{" "}
             <span className="whitespace-nowrap">
               <Chip href="/contact">say hello</Chip>,
             </span>{" "}
@@ -135,11 +155,11 @@ export default function AboutPage() {
             </span>{" "}
             or see the{" "}
             <span className="whitespace-nowrap">
-              <Chip href="/activity">code i ship</Chip>.
+              <Chip href="/activity">code I ship</Chip>.
             </span>
           </p>
           <p className="mt-3 text-meta text-muted">
-            curious how this site is made? read the{" "}
+            Curious how this site is made? Read the{" "}
             <span className="whitespace-nowrap">
               <Chip href="/colophon">colophon</Chip>.
             </span>

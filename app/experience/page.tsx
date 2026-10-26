@@ -8,7 +8,7 @@ import { PageTransition } from "@/components/transitions";
 import { experience, experienceIntro } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "experience",
+  title: "Experience",
   description: `${experienceIntro.heading} ${experienceIntro.text}`,
 };
 
@@ -54,7 +54,7 @@ function Stack({ skills }: { skills: string[] }) {
   if (!tools.length) return null;
 
   return (
-    <ul className="tool-row mt-4 flex flex-wrap gap-2" aria-label="tech stack">
+    <ul className="tool-row mt-4 flex flex-wrap gap-2" aria-label="Tech stack">
       {tools.map((skill, index) => (
         <li
           key={skill}
@@ -94,7 +94,7 @@ export default function ExperiencePage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title="experience" meta={`${experience.length} roles`}>
+        <PageHeader title="Experience" meta={`${experience.length} roles`}>
           <span className="block text-[28px] leading-[1.15] font-medium tracking-[-0.03em] text-balance sm:text-[34px]">
             {experienceIntro.heading}
           </span>
@@ -112,7 +112,7 @@ export default function ExperiencePage() {
                 aria-hidden="true"
                 className="timeline-mark relative z-1 grid size-8 place-items-center rounded-full bg-bg font-medium ring-1 ring-line"
               >
-                {item.company.charAt(0).toLowerCase()}
+                {item.company.charAt(0).toUpperCase()}
               </span>
               <article className="min-w-0 pt-1">
                 <header>
@@ -122,7 +122,7 @@ export default function ExperiencePage() {
                       {item.current ? (
                         <>
                           <span className="live-dot" aria-hidden="true" />
-                          <span className="sr-only">current role, </span>
+                          <span className="sr-only">Current role, </span>
                         </>
                       ) : null}
                       {item.period}
@@ -158,7 +158,7 @@ export default function ExperiencePage() {
 
         <footer className="reveal mt-16 border-t border-line pt-8" style={revealDelay(520)}>
           <p className="text-pretty">
-            looking for the academic side? see my{" "}
+            Looking for the academic side? See my{" "}
             <span className="whitespace-nowrap">
               <Chip href="/education">education</Chip>,
             </span>{" "}

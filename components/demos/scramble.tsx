@@ -57,7 +57,7 @@ export function ScrambleDemo() {
         <p className="mt-1 text-muted">{site.role}</p>
       </div>
       <button type="button" onClick={run} onFocus={run} className="chip">
-        replay
+        Replay
       </button>
     </div>
   );

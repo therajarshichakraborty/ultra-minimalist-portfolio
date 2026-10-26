@@ -11,7 +11,7 @@ import {
 import { ArrowUpRightIcon } from "@/components/icons";
 import type { Calendar } from "@/lib/activity";
 
-const months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const number = new Intl.NumberFormat("en-US");
 
 function pretty(date: string) {
@@ -77,7 +77,7 @@ export function ContributionCalendar({
   const picker =
     calendars.length > 1 ? (
       <label className="relative inline-flex shrink-0 items-center">
-        <span className="sr-only">choose a year</span>
+        <span className="sr-only">Choose a year</span>
         <select
           value={calendar.key}
           onChange={(event) => {
@@ -187,7 +187,7 @@ export function ContributionCalendar({
                 >
                   <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
                 </svg>
-                max streak <span className="font-medium text-ink">{calendar.streak}</span>
+                Max streak <span className="font-medium text-ink">{calendar.streak}</span>
               </span>
             ) : null}
           </p>
@@ -207,7 +207,7 @@ export function ContributionCalendar({
           blockRadius={2.5}
           fontSize={12}
           className="w-full max-w-none text-muted"
-          labels={{ months, legend: { less: "less", more: "more" } }}
+          labels={{ months, legend: { less: "Less", more: "More" } }}
         >
           <ContributionGraphCalendar
             aria-describedby={`${id}-summary`}
@@ -230,7 +230,7 @@ export function ContributionCalendar({
               </span>
             ) : (
               <span className="flex items-center gap-2 text-muted">
-                total
+                Total
                 <span className="rounded-full bg-bg px-2.5 py-0.5 font-medium text-ink tabular-nums ring-1 ring-line">
                   {number.format(calendar.total)} {plural(calendar.total)}
                 </span>
@@ -252,7 +252,7 @@ export function ContributionCalendar({
         >
           {tip ? (
             <>
-              <span className="font-medium">{tip.count === 0 ? "no" : number.format(tip.count)}</span>{" "}
+              <span className="font-medium">{tip.count === 0 ? "No" : number.format(tip.count)}</span>{" "}
               {plural(tip.count)} on {pretty(tip.date)}
             </>
           ) : null}

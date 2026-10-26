@@ -42,8 +42,8 @@ export function MagneticDemo() {
           className="rounded-full bg-ink px-5 py-2.5 text-bg shadow-lift"
         >
           <motion.span style={{ x: lx, y: ly }} className="block">
-            <span className="hidden pointer-fine:inline">hover me</span>
-            <span className="pointer-fine:hidden">tap me</span>
+            <span className="hidden pointer-fine:inline">Hover me</span>
+            <span className="pointer-fine:hidden">Tap me</span>
           </motion.span>
         </motion.button>
       </div>

@@ -1,3 +1,5 @@
+import type { LogoName } from "@/components/tech-logo";
+
 export type ProjectSection = {
   heading: string;
   body: string[];
@@ -42,15 +44,16 @@ export type Channel = {
 };
 
 export const site = {
-  name: "rajarshi chakraborty",
-  signature: "rajarshi",
-  role: "software engineer",
-  location: "kolkata, india",
+  name: "Rajarshi Chakraborty",
+  signature: "Rajarshi",
+  role: "Software Engineer",
+  tagline: "Full-stack and AI engineer building scalable, production-grade applications.",
+  location: "Kolkata, West Bengal, India",
   email: "rajarshichakraborty2005@gmail.com",
   url: "https://rajarshis-portfolio.vercel.app",
-  title: "rajarshi chakraborty · software engineer",
+  title: "Rajarshi Chakraborty · Software Engineer",
   description:
-    "rajarshi chakraborty is a software engineer at brand voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
+    "Rajarshi Chakraborty is a Software Engineer at Brand Voy building live sports products, drawn to systems that are fast, dependable, and easy to understand.",
   links: {
     linkedin: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
     x: "https://x.com/IamRajarshi_Dev",
@@ -61,75 +64,187 @@ export const site = {
     leetcode: "rajarshi_2005",
   },
   home: {
-    intro:
-      "i build software that has to be right and fast, from live sports data at brand voy to deep learning research at university.",
+    lead: "I like the moment a system breaks and nobody knows why yet. That’s usually where I do my best work.",
+    story: [
+      "Tracing a slow page back to one missing index, or a flaky deploy back to a race condition nobody wrote down, is exactly the kind of puzzle I enjoy. It shaped how I build: understand the whole path end to end, then make it simple enough that the next person never has to dig. Fast matters. Understandable matters more.",
+      "Lately that curiosity has pulled me toward AI agents, systems that reason, call tools and fail in brand-new ways. Making them dependable enough to trust with real work is the problem I find most interesting right now.",
+    ],
     experiments: "little experiments",
     projects: "side projects",
     thinking: "thinking about",
   },
   pages: {
-    interactions: "small studies in motion and feedback. they are all live, so go ahead and touch.",
-    work: "side projects i designed, built and shipped, each one live on the web.",
-    notes: "short notes on building interfaces, written when something finally clicks.",
-    activity: "a live log of what i ship and what i practice, pulled from github and leetcode every hour.",
-    education: "the fundamentals behind the work, from the core sciences to computer science and research.",
-    experience: "shipping production software, running research and leading campus communities.",
-    about: "the person behind the work: where i am, what i am building, and what keeps me curious.",
+    interactions: "Small studies in motion and feedback. They are all live, so go ahead and touch.",
+    work: "Side projects I designed, built and shipped, each one live on the web.",
+    notes: "Short notes on building interfaces, written when something finally clicks.",
+    activity: "A live log of what I ship and what I practice, pulled from GitHub and LeetCode every hour.",
+    education: "The fundamentals behind the work, from the core sciences to computer science and research.",
+    experience: "Shipping production software, running research and leading campus communities.",
+    about: "The person behind the work: where I am, what I am building, and what keeps me curious.",
     contact:
-      "whether it is a role, a freelance project, or an idea that will not leave you alone, tell me about it. every message lands in my own inbox, and i read each one myself.",
+      "Whether it is a role, a freelance project, or an idea that will not leave you alone, tell me about it. Every message lands in my own inbox, and I read each one myself.",
   },
 };
 
 export type Skill = {
   name: string;
-  icon: string;
+  icon: LogoName;
+};
+
+export type Author = {
+  name: string;
+  affiliation: string;
+  self?: boolean;
+};
+
+export type Publication = {
+  status: string;
+  paperId?: string;
+  date: string;
+  title: string;
+  authors: Author[];
+  // prefix defaults to "Published in"; use e.g. "Submitted to" for a paper under review.
+  venue: { name: string; full: string; note?: string; prefix?: string };
+  abstract: string;
+  identifiers?: { label: string; value: string }[];
+  links: { paper?: string; publisher?: string; publisherLabel?: string };
 };
 
 export const about = {
-  photo: "https://avatars.githubusercontent.com/u/274300136?v=4",
-  greeting: "hey, i'm rajarshi.",
+  photo: "/rajarshi.png",
+  greeting: "Hey, I’m Rajarshi.",
   story: [
-    "I like the moment a system breaks and nobody knows why yet. That’s usually where I do my best work.",
-    "Tracing a slow page back to one missing index, or a flaky deploy back to a race condition nobody wrote down, is exactly the kind of puzzle I enjoy. It shaped how I build: understand the whole path end to end, then make it simple enough that the next person never has to dig. Fast matters. Understandable matters more.",
-    "Lately that curiosity has pulled me toward AI agents, systems that reason, call tools and fail in brand-new ways. Making them dependable enough to trust with real work is the problem I find most interesting right now.",
-    "[Got something that’s broken in a way nobody can explain?](/contact)",
     "Back in school I captained the cricket team, which turned out to be good training for engineering: read the conditions, back your team and stay calm when the plan falls apart.",
     "Today I’m a Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. When a match is live, the numbers have to be right and they have to be fast, and that standard has stuck with me in everything I build.",
     "I’m also finishing my B.Tech in Computer Science at Techno Main Salt Lake, where I research time-series forecasting and co-authored a research paper on deep learning. Away from the keyboard, I’ve co-led IGNITE at Samarth TMSL and helped run EDGE, our technical fest, with Geekonix. Organizing events for hundreds of people taught me as much about building things as any codebase.",
-    "The rest of the time I’m solving problems on LeetCode or writing up what I’ve learned on [my blog](/notes).",
+    "The rest of the time I’m solving problems on LeetCode or writing up what I’ve learned on [my blog](/blog).",
+    "[Got something that’s broken in a way nobody can explain?](/contact)",
   ],
   now: [
-    "building live sports products at brand voy",
-    "finishing my b.tech in computer science, class of 2027",
-    "solving problems on leetcode most days",
-    "writing short notes about building interfaces",
+    "Building live sports products at Brand Voy",
+    "Finishing my B.Tech in Computer Science, class of 2027",
+    "Solving problems on LeetCode most days",
+    "Writing about JavaScript, Node.js, Git and AI on Hashnode",
   ],
-  skillsTitle: "tools i ship production software with",
+  skillsTitle: "Tools I ship production software with",
   skills: [
     [
       { name: "TypeScript", icon: "typescript" },
-      { name: "Python", icon: "python" },
-      { name: "Node", icon: "nodedotjs" },
-      { name: "FastAPI", icon: "fastapi" },
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "Node.js", icon: "nodejs" },
       { name: "Express", icon: "express" },
       { name: "NestJS", icon: "nestjs" },
       { name: "Hono", icon: "hono" },
-      { name: "Java", icon: "openjdk" },
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Python", icon: "python" },
+      { name: "Java", icon: "java" },
       { name: "C++", icon: "cplusplus" },
       { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Prisma", icon: "prisma" },
     ],
     [
       { name: "Redis", icon: "redis" },
+      { name: "Kafka", icon: "kafka" },
+      { name: "RabbitMQ", icon: "rabbitmq" },
+      { name: "PyTorch", icon: "pytorch" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
       { name: "Docker", icon: "docker" },
-      { name: "GCP", icon: "googlecloud" },
+      { name: "Kubernetes", icon: "kubernetes" },
+      { name: "Google Cloud", icon: "googlecloud" },
       { name: "Cloudflare", icon: "cloudflare" },
       { name: "Terraform", icon: "terraform" },
       { name: "GitHub Actions", icon: "githubactions" },
       { name: "Jenkins", icon: "jenkins" },
-      { name: "Kafka", icon: "apachekafka" },
-      { name: "RabbitMQ", icon: "rabbitmq" },
+      { name: "Git", icon: "git" },
     ],
   ] as Skill[][],
+};
+
+export const research = {
+  eyebrow: "Publications",
+  heading: "Research I’ve published",
+  intro:
+    "Committed to advancing technology through research, technical publications and engineering contributions across multiple domains.",
+};
+
+// Newest first. Optional fields (paperId, identifiers, links) can be left out when a paper has none.
+export const publications: Publication[] = [
+  {
+    status: "Published",
+    paperId: "2074",
+    date: "July 2026",
+    title: "Deep Learning Enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
+    authors: [
+      { name: "Rajarshi Chakraborty", affiliation: "UnderGrad Researcher, Techno Main Salt Lake, Kolkata", self: true },
+      { name: "Dr. Subhankar Chatterjee", affiliation: "Professor, Techno Main Salt Lake, Kolkata" },
+      { name: "Aditi Nandi Tokder", affiliation: "Assistant Professor, Techno Main Salt Lake, Kolkata" },
+      { name: "Dr. Anirban Bose", affiliation: "Assistant Professor, Dr. B. C. Roy Engineering College, Durgapur" },
+    ],
+    venue: {
+      name: "CIACON 2026",
+      full: "International Conference on Control, Instrumentation, Energy & Communication",
+      note: "IEEE Xplore",
+    },
+    abstract:
+      "Proposes a novel deep learning framework that integrates hyper-spectral features using a fusion network to assess fruit quality with high precision, combining external appearance defects with internal chemical composition data.",
+    identifiers: [
+      { label: "Electronic ISBN", value: "979-8-3315-5231-2" },
+      { label: "Print on Demand (PoD) ISBN", value: "979-8-3315-5232-9" },
+    ],
+    links: {
+      paper: "/pdfs/research-paper.pdf",
+      publisher: "https://ieeexplore.ieee.org/document/11688352",
+      publisherLabel: "IEEE Xplore",
+    },
+  },
+];
+
+export const blog = {
+  heading: "Things I learned",
+  accent: "the hard way.",
+  topics: "JavaScript, Node.js, networking, Git and AI",
+  profile: "https://hashnode.com/@Rajarshi2005",
+  series: [
+    { name: "The Debug Monk", host: "the-debug-monk.hashnode.dev" },
+    { name: "WebDev Cohort 2026", host: "webdev-cohort-2026.hashnode.dev" },
+    { name: "Git For All", host: "git-for-all.hashnode.dev" },
+  ],
+};
+
+export const footer = {
+  groups: [
+    {
+      title: "Pages",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Work", href: "/work" },
+        { label: "Blog", href: "/blog" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "More",
+      links: [
+        { label: "Résumé", href: "/resume" },
+        { label: "Experience", href: "/experience" },
+        { label: "Research", href: "/about#research" },
+        { label: "Education", href: "/education" },
+        { label: "DSA journey", href: "/activity" },
+      ],
+    },
+    {
+      title: "Elsewhere",
+      links: [
+        { label: "GitHub", href: site.links.github },
+        { label: "LinkedIn", href: site.links.linkedin },
+        { label: "X", href: site.links.x },
+        { label: "Hashnode", href: blog.profile },
+        { label: "LeetCode", href: `https://leetcode.com/u/${site.profiles.leetcode}/` },
+      ],
+    },
+  ],
 };
 
 export type Role = {
@@ -220,73 +335,75 @@ export const experience: Role[] = [
 
 export const education: Education[] = [
   {
-    degree: "b.tech in computer science and engineering",
-    school: "techno main salt lake",
+    degree: "B.Tech in Computer Science and Engineering",
+    school: "Techno Main Salt Lake",
     href: "https://www.technoindiagroup.com/",
-    mark: "t",
-    location: "kolkata, west bengal, india",
-    period: "june 2023 to present",
-    grades: ["gpa 8.136 / 10 (through semester 6)", "class of 2027"],
+    mark: "T",
+    location: "Kolkata, West Bengal, India",
+    period: "June 2023 to Present",
+    grades: ["GPA 8.136 / 10 (through semester 6)", "Class of 2027"],
     highlight:
-      "co-authored a research paper on deep learning for fruit quality assessment (ciacon 2026) alongside my coursework.",
+      "Co-authored a research paper on deep learning for fruit quality assessment (CIACON 2026) alongside my coursework.",
     coursework: [
-      "data structures and algorithms",
-      "design and analysis of algorithms",
-      "operating systems",
-      "database management systems",
-      "computer networks",
-      "machine learning",
-      "cryptography and network security",
-      "software engineering",
+      "Data Structures and Algorithms",
+      "Design and Analysis of Algorithms",
+      "Operating Systems",
+      "Database Management Systems",
+      "Computer Networks",
+      "Machine Learning",
+      "Cryptography and Network Security",
+      "Software Engineering",
+      "Object Oriented Programming",
+      "Project Management and Entrepreneurship",
     ],
   },
   {
-    degree: "higher secondary (class xii), science",
-    school: "west bengal council of higher secondary education",
+    degree: "Higher Secondary (+2)",
+    school: "West Bengal Council of Higher Secondary Education",
     href: "https://wbchse.wb.gov.in/",
-    mark: "w",
-    location: "west bengal, india",
-    period: "april 2020 to march 2023",
-    grades: ["grade a+", "81.2% overall"],
-    highlight: "captained the school cricket team through inter school tournaments while studying the core sciences.",
-    coursework: ["physics", "chemistry", "mathematics", "biology", "english", "bengali"],
+    mark: "W",
+    location: "West Bengal, India",
+    period: "April 2020 to March 2023",
+    grades: ["Grade A+", "81.2% overall"],
+    highlight: "Captained the school cricket team through inter school tournaments while studying the core sciences.",
+    coursework: ["Physics", "Chemistry", "Mathematics", "Biology", "English", "Bengali"],
   },
 ];
 
 export const contact = {
-  heading: "got an idea?",
-  accent: "let's make it real.",
-  topics: ["project inquiry", "full time role", "freelance work", "collaboration", "just saying hi"],
+  heading: "Got an idea?",
+  accent: "Let's make it real.",
+  topics: ["Project inquiry", "Full-time role", "Freelance work", "Collaboration", "Just saying hi"],
   formEndpoint: process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "",
   channels: [
     {
-      label: "primary email",
+      label: "Primary email",
       value: "rajarshichakraborty2005@gmail.com",
       href: "mailto:rajarshichakraborty2005@gmail.com",
       kind: "email",
     },
     {
-      label: "secondary email",
+      label: "Secondary email",
       value: "rajarshi29032005@gmail.com",
       href: "mailto:rajarshi29032005@gmail.com",
       kind: "email",
     },
-    { label: "phone", value: "+91 8001950250", href: "tel:+918001950250", kind: "phone" },
-    { label: "whatsapp", value: "message me directly", href: "https://wa.me/918001950250", kind: "whatsapp" },
+    { label: "Phone", value: "+91 8001950250", href: "tel:+918001950250", kind: "phone" },
+    { label: "WhatsApp", value: "Message me directly", href: "https://wa.me/918001950250", kind: "whatsapp" },
     {
-      label: "linkedin",
+      label: "LinkedIn",
       value: "in/rajarshi-c-06a3402b7",
       href: "https://www.linkedin.com/in/rajarshi-c-06a3402b7",
       kind: "linkedin",
     },
     {
-      label: "github",
+      label: "GitHub",
       value: "@therajarshichakraborty",
       href: "https://github.com/therajarshichakraborty",
       kind: "github",
     },
     {
-      label: "leetcode",
+      label: "LeetCode",
       value: "@rajarshi_2005",
       href: "https://leetcode.com/u/rajarshi_2005/",
       kind: "leetcode",
@@ -370,61 +487,61 @@ export const projects: Project[] = [
 export const interactions: Interaction[] = [
   {
     slug: "little-guy",
-    title: "little guy",
+    title: "Little guy",
     date: "2026-10",
-    description: "a companion that watches your cursor. tap him and he jumps.",
+    description: "A companion that watches your cursor. Tap him and he jumps.",
   },
   {
     slug: "dock",
-    title: "dock",
+    title: "Dock",
     date: "2026-09",
-    description: "magnification that follows the pointer, with springs instead of steps.",
+    description: "Magnification that follows the pointer, with springs instead of steps.",
   },
   {
     slug: "magnetic",
-    title: "magnetic",
+    title: "Magnetic",
     date: "2026-09",
-    description: "a button that leans toward you before you touch it.",
+    description: "A button that leans toward you before you touch it.",
   },
   {
     slug: "hold",
-    title: "hold to delete",
+    title: "Hold to delete",
     date: "2026-09",
-    description: "destructive actions ask for a second of commitment.",
+    description: "Destructive actions ask for a second of commitment.",
   },
   {
     slug: "copy",
-    title: "copy",
+    title: "Copy",
     date: "2026-08",
-    description: "feedback that swaps in place, so nothing around it moves.",
+    description: "Feedback that swaps in place, so nothing around it moves.",
   },
   {
     slug: "tabs",
-    title: "tabs",
+    title: "Tabs",
     date: "2026-08",
-    description: "one indicator that travels between options instead of blinking.",
+    description: "One indicator that travels between options instead of blinking.",
   },
   {
     slug: "scramble",
-    title: "scramble",
+    title: "Scramble",
     date: "2026-07",
-    description: "text that decodes itself one character at a time.",
+    description: "Text that decodes itself one character at a time.",
   },
   {
     slug: "spotlight",
-    title: "spotlight",
+    title: "Spotlight",
     date: "2026-06",
-    description: "a border that lights up wherever your pointer is.",
+    description: "A border that lights up wherever your pointer is.",
   },
 ];
 
 export const resume = {
   summary:
-    "software engineer at brand voy, building live sports products on high-volume cricket and football data. finishing a b.tech in computer science at techno main salt lake, where i research deep learning for time-series forecasting.",
+    "Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. Finishing a B.Tech in Computer Science at Techno Main Salt Lake, where I research deep learning for time-series forecasting and co-authored an IEEE paper on fruit quality assessment.",
   skills: [
-    { group: "engineering", items: "typescript, next.js, react native, expo, node.js, express, postgresql" },
-    { group: "infrastructure", items: "docker, kubernetes, git" },
-    { group: "data and ml", items: "python, pytorch, numpy, pandas, scikit-learn, time series analysis" },
+    { group: "Engineering", items: "TypeScript, Next.js, React Native, Expo, Node.js, Express, PostgreSQL" },
+    { group: "Infrastructure", items: "Docker, Kubernetes, Git" },
+    { group: "Data and ML", items: "Python, PyTorch, NumPy, Pandas, scikit-learn, time-series analysis" },
   ],
 };
 

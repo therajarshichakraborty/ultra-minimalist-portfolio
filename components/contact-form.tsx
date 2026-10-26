@@ -73,19 +73,19 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
     <form noValidate onSubmit={submit} className="grid gap-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          {label("name", "name")}
+          {label("name", "Name")}
           <input
             id={`${id}-name`}
             name="name"
             autoComplete="name"
-            placeholder="jane doe"
+            placeholder="Jane Doe"
             aria-invalid={invalid.name || undefined}
             required
             className={field}
           />
         </div>
         <div>
-          {label("email", "email")}
+          {label("email", "Email")}
           <input
             id={`${id}-email`}
             name="email"
@@ -99,7 +99,7 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
         </div>
       </div>
       <div>
-        {label("topic", "topic")}
+        {label("topic", "Topic")}
         <span className="relative block">
           <select id={`${id}-topic`} name="topic" defaultValue={topics[0]} className={`${field} appearance-none pr-9`}>
             {topics.map((topic) => (
@@ -123,12 +123,12 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
         </span>
       </div>
       <div>
-        {label("message", "message")}
+        {label("message", "Message")}
         <textarea
           id={`${id}-message`}
           name="message"
           rows={6}
-          placeholder="tell me a little about your idea, project or question"
+          placeholder="Tell me a little about your idea, project or question"
           aria-invalid={invalid.message || undefined}
           aria-describedby={`${id}-hint`}
           required
@@ -136,10 +136,10 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
         />
         <p id={`${id}-hint`} className="mt-1.5 text-meta text-muted">
           {invalid.message
-            ? "a few more words, please. at least ten characters."
+            ? "A few more words, please. At least ten characters."
             : endpoint
-              ? "sent straight to my inbox."
-              : "opens your mail app with everything filled in."}
+              ? "Sent straight to my inbox."
+              : "Opens your mail app with everything filled in."}
         </p>
       </div>
       <div className="flex items-center gap-4">
@@ -149,13 +149,13 @@ export function ContactForm({ email, topics, endpoint }: ContactFormProps) {
           className="moving-border group relative inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-bg shadow-lift transition-[transform,opacity] duration-200 ease-snap active:scale-[0.97] disabled:opacity-60"
         >
           {status === "sent" ? <CheckIcon className="size-4" /> : null}
-          {status === "sending" ? "sending" : status === "sent" ? "sent, thank you" : "send message"}
+          {status === "sending" ? "Sending" : status === "sent" ? "Sent, thank you" : "Send message"}
           {status === "idle" || status === "error" ? (
             <ArrowRightIcon className="size-4 transition-transform duration-200 ease-snap group-hover:translate-x-0.5" />
           ) : null}
         </button>
         <p role="status" className="text-meta text-muted">
-          {status === "error" ? `something went wrong. write to ${email} instead.` : ""}
+          {status === "error" ? `Something went wrong. Write to ${email} instead.` : ""}
         </p>
       </div>
     </form>

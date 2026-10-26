@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ProjectCover } from "@/components/covers";
-import { LittleGuy, littleGuySurface } from "@/components/little-guy";
+import { LittleGuy } from "@/components/little-guy";
 import { revealDelay } from "@/components/reveal";
+import { littleGuySurface } from "@/components/surfaces";
 import { TiltCard } from "@/components/tilt-card";
 import { Morph } from "@/components/transitions";
 import { projects } from "@/content/site";
@@ -25,7 +26,7 @@ function Tile({ href, label, morph, surface, delay, children }: TileProps) {
           <TiltCard className="rounded-3xl max-sm:rounded-2xl">
             <Link
               href={href}
-              aria-label={`explore ${label}`}
+              aria-label={`Explore ${label.toLowerCase()}`}
               transitionTypes={["nav-forward"]}
               className={cn("relative block aspect-square overflow-hidden rounded-3xl max-sm:rounded-2xl", surface)}
             >
@@ -49,11 +50,11 @@ export function HomeCards() {
 
   return (
     <div className="mt-10 grid grid-cols-2 gap-4 max-sm:gap-3">
-      <Tile href="/interactions" label="interactions" morph="cover-interactions" surface={littleGuySurface} delay={520}>
+      <Tile href="/interactions" label="Interactions" morph="cover-interactions" surface={littleGuySurface} delay={520}>
         <LittleGuy />
       </Tile>
       {featured ? (
-        <Tile href="/work" label="work" morph={`cover-${featured.slug}`} surface="bg-surface" delay={600}>
+        <Tile href="/work" label="Work" morph={`cover-${featured.slug}`} surface="bg-surface" delay={600}>
           <ProjectCover slug={featured.slug} />
         </Tile>
       ) : null}
