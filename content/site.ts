@@ -518,7 +518,7 @@ export const interactions: Interaction[] = [
 
 export const resume = {
   summary:
-    "Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. Finishing a B.Tech in Computer Science at Techno Main Salt Lake, where I research deep learning for time-series forecasting.",
+    "Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. Finishing a B.Tech in Computer Science at Techno Main Salt Lake, where I research deep learning for time-series forecasting and co-authored an IEEE paper on fruit quality assessment.",
   skills: [
     { group: "Engineering", items: "TypeScript, Next.js, React Native, Expo, Node.js, Express, PostgreSQL" },
     { group: "Infrastructure", items: "Docker, Kubernetes, Git" },
