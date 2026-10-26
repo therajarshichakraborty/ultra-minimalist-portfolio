@@ -30,7 +30,7 @@ export default function OpengraphImage() {
       </svg>
       <div style={{ display: "flex", flexDirection: "column", gap: 14, background: "#fff", padding: "16px 0" }}>
         <div style={{ display: "flex", fontSize: 60, letterSpacing: -2, color: "#000" }}>
-          <span>hi i&apos;m&nbsp;</span>
+          <span>Hi, I&apos;m&nbsp;</span>
           <span style={{ fontWeight: 700 }}>{site.name}</span>
         </div>
         <div style={{ fontSize: 40, color: "#696969", letterSpacing: -1 }}>{site.role}</div>

@@ -160,7 +160,7 @@ export async function getGithubActivity(username: string): Promise<GithubActivit
   const past = await Promise.all(years.map((year) => githubCalendar(username, year)));
 
   const calendars = [
-    summarize("current", "current", current),
+    summarize("current", "Current", current),
     ...years
       .map((year, index) => summarize(String(year), String(year), past[index]))
       .filter((calendar) => calendar.days.length),
@@ -254,7 +254,7 @@ export async function getLeetcodeActivity(username: string): Promise<LeetcodeAct
   const yearly = await Promise.all(years.map((year) => leetcode(username, yearQuery, { year })));
 
   const calendars: Calendar[] = [
-    summarize("current", "current", leetcodeDays(user.userCalendar?.submissionCalendar, span(undefined, now)), {
+    summarize("current", "Current", leetcodeDays(user.userCalendar?.submissionCalendar, span(undefined, now)), {
       activeDays: user.userCalendar?.totalActiveDays,
       streak: user.userCalendar?.streak,
     }),

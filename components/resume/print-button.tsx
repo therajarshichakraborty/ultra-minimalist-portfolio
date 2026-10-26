@@ -16,7 +16,7 @@ export function PrintButton() {
   return (
     <button type="button" onClick={() => window.print()} className="chip text-meta leading-[18px] text-ink">
       <PrinterIcon className="mr-1 inline-block size-3 align-[-1px]" />
-      print
+      Print
     </button>
   );
 }

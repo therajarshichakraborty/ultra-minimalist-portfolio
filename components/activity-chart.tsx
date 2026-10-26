@@ -27,7 +27,7 @@ function nice(value: number) {
   return unit * 5;
 }
 
-export function ActivityChart({ days, label = "contributions" }: { days: Day[]; label?: string }) {
+export function ActivityChart({ days, label = "Contributions" }: { days: Day[]; label?: string }) {
   const recent = days.slice(-31);
   if (recent.length < 2) return null;
 
@@ -84,7 +84,7 @@ export function ActivityChart({ days, label = "contributions" }: { days: Day[]; 
       <line x1={pad.left} x2={width - pad.right} y1={floor} y2={floor} className="chart-axis" />
       <line x1={pad.left} x2={pad.left} y1={pad.top} y2={floor} className="chart-axis" />
       <text x={pad.left + plotWidth / 2} y={height - 4} textAnchor="middle" className="chart-title">
-        days
+        Days
       </text>
       <text
         transform={`translate(14 ${pad.top + plotHeight / 2}) rotate(-90)`}

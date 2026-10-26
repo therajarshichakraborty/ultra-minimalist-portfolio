@@ -11,11 +11,13 @@ import { site } from "@/content/site";
 import { getGithubActivity, getLeetcodeActivity } from "@/lib/activity";
 
 export const metadata: Metadata = {
-  title: "activity",
-  description: `github contributions and leetcode practice of ${site.name}, updated every hour.`,
+  title: "Activity",
+  description: `GitHub contributions and LeetCode practice of ${site.name}, updated every hour.`,
 };
 
 const number = new Intl.NumberFormat("en-US");
+
+const difficulties = { all: "Solved", easy: "Easy", medium: "Medium", hard: "Hard" } as const;
 
 const stroke = {
   viewBox: "0 0 24 24",
@@ -82,7 +84,7 @@ function Outbound({ href, children }: { href: string; children: ReactNode }) {
 function Unavailable({ what }: { what: string }) {
   return (
     <p className="rounded-lg px-4 py-8 text-center text-muted ring-1 ring-line ring-inset">
-      {what} is taking a break right now. it will be back in a minute.
+      {what} is taking a break right now. It will be back in a minute.
     </p>
   );
 }
@@ -113,7 +115,7 @@ export default async function ActivityPage() {
   return (
     <PageTransition>
       <main className="mx-auto w-[min(760px,calc(100%-2*var(--gutter)))] py-[clamp(48px,10svh,112px)] sm:w-[min(760px,calc(100%-128px))]">
-        <PageHeader title="activity" meta="updated hourly">
+        <PageHeader title="Activity" meta="Updated hourly">
           <span className="block max-w-[520px]">{site.pages.activity}</span>
         </PageHeader>
 
@@ -123,21 +125,21 @@ export default async function ActivityPage() {
               calendars={github.calendars}
               variant="github"
               unit="contribution"
-              title="contribution calendar"
+              title="Contribution calendar"
               icon={<GithubIcon className="size-4" />}
               handle={`@${site.profiles.github}`}
               href={githubUrl}
             />
           ) : (
-            <Unavailable what="github" />
+            <Unavailable what="GitHub" />
           )}
         </Block>
 
         {current?.days.length ? (
           <Block delay={220}>
             <Heading
-              title="activity graph"
-              pill="last 31 days"
+              title="Activity graph"
+              pill="Last 31 days"
               icon={
                 <svg {...stroke} aria-hidden="true">
                   <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
@@ -156,25 +158,25 @@ export default async function ActivityPage() {
             className="reveal mt-10 grid grid-cols-3 gap-6 border-y border-line py-6 max-sm:gap-4"
             style={revealDelay(260)}
           >
-            <Figure label="contributions" value={number.format(github.total)} detail="last 12 months" />
+            <Figure label="Contributions" value={number.format(github.total)} detail="Last 12 months" />
             <Figure
-              label="stars"
-              value={github.stars === null ? "n/a" : number.format(github.stars)}
-              detail="across repositories"
+              label="Stars"
+              value={github.stars === null ? "N/A" : number.format(github.stars)}
+              detail="Across repositories"
             />
             <Figure
-              label="repositories"
-              value={github.repos === null ? "n/a" : number.format(github.repos)}
-              detail="public on github"
+              label="Repositories"
+              value={github.repos === null ? "N/A" : number.format(github.repos)}
+              detail="Public on GitHub"
             />
           </div>
         ) : null}
 
         <Block delay={300}>
           <Heading
-            title="leetcode"
+            title="LeetCode"
             icon={<LeetcodeIcon />}
-            pill={leetcode?.ranking ? `rank ${number.format(leetcode.ranking)}` : undefined}
+            pill={leetcode?.ranking ? `Rank ${number.format(leetcode.ranking)}` : undefined}
           />
           {leetcode?.calendars.length ? (
             <>
@@ -188,7 +190,7 @@ export default async function ActivityPage() {
               <div className="mt-8 grid grid-cols-2 gap-x-8 gap-y-6 border-t border-line pt-6 sm:grid-cols-4">
                 {leetcode.solved.map((item) => (
                   <div key={item.difficulty}>
-                    <p className="text-meta text-muted">{item.difficulty === "all" ? "solved" : item.difficulty}</p>
+                    <p className="text-meta text-muted">{difficulties[item.difficulty]}</p>
                     <p className="mt-1 text-[24px] leading-none font-semibold tracking-[-0.03em] tabular-nums max-sm:text-[20px]">
                       {number.format(item.count)}
                       {item.total ? (
@@ -209,7 +211,7 @@ export default async function ActivityPage() {
               </div>
             </>
           ) : (
-            <Unavailable what="leetcode" />
+            <Unavailable what="LeetCode" />
           )}
         </Block>
       </main>

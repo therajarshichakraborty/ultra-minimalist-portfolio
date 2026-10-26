@@ -35,7 +35,7 @@ type Item = {
 
 const pages: Item[] = [
   {
-    label: "home",
+    label: "Home",
     href: "/",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -45,7 +45,7 @@ const pages: Item[] = [
     ),
   },
   {
-    label: "work",
+    label: "Work",
     href: "/work",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -55,7 +55,7 @@ const pages: Item[] = [
     ),
   },
   {
-    label: "experience",
+    label: "Experience",
     href: "/experience",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -65,7 +65,7 @@ const pages: Item[] = [
     ),
   },
   {
-    label: "activity",
+    label: "Activity",
     href: "/activity",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -74,7 +74,7 @@ const pages: Item[] = [
     ),
   },
   {
-    label: "education",
+    label: "Education",
     href: "/education",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -84,9 +84,9 @@ const pages: Item[] = [
       </svg>
     ),
   },
-  { label: "notes", href: "/notes", icon: <PencilLineIcon /> },
+  { label: "Notes", href: "/notes", icon: <PencilLineIcon /> },
   {
-    label: "contact",
+    label: "Contact",
     href: "/contact",
     icon: (
       <svg {...stroke} aria-hidden="true">
@@ -97,10 +97,10 @@ const pages: Item[] = [
 ];
 
 const socials: Item[] = [
-  { label: "github", href: site.links.github, icon: <GithubIcon />, external: true },
-  { label: "linkedin", href: site.links.linkedin, icon: <LinkedinIcon />, external: true },
-  { label: "x", href: site.links.x, icon: <XLogoIcon />, external: true },
-  { label: "email", href: `mailto:${site.email}`, icon: <MailIcon />, external: true },
+  { label: "GitHub", href: site.links.github, icon: <GithubIcon />, external: true },
+  { label: "LinkedIn", href: site.links.linkedin, icon: <LinkedinIcon />, external: true },
+  { label: "X", href: site.links.x, icon: <XLogoIcon />, external: true },
+  { label: "Email", href: `mailto:${site.email}`, icon: <MailIcon />, external: true },
 ];
 
 const spring = { mass: 0.1, stiffness: 170, damping: 13 };
@@ -191,7 +191,7 @@ export function FloatingDock() {
   return (
     <MotionConfig reducedMotion="user">
       <nav
-        aria-label="primary"
+        aria-label="Primary"
         className="dock pointer-events-none fixed inset-x-0 bottom-4 z-40 flex justify-center px-3 print:hidden"
       >
         <motion.div

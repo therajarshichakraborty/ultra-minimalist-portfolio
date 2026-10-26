@@ -18,7 +18,7 @@ export default function Home() {
         <header>
           <h1 className="leading-[1.65]">
             <Reveal>
-              Hi I&apos;m <NameSignature name={site.name} signature={site.signature} />
+              Hi, I&apos;m <NameSignature name={site.name} signature={site.signature} />
             </Reveal>
           </h1>
           <p className="mt-1 leading-[1.55]">
@@ -26,12 +26,12 @@ export default function Home() {
           </p>
           <p className="mt-8 max-w-120 text-pretty">
             <Reveal delay={140} step={14}>
-              {site.home.intro} sometimes i make{" "}
+              {site.home.intro} Sometimes I make{" "}
               <CompanionLink href="/interactions">{site.home.experiments}</CompanionLink>, ship{" "}
               <Chip href="/work" iconName="open-source" icon={<MergeIcon />}>
                 {site.home.projects}
               </Chip>
-              , and share what i&apos;m{" "}
+              , and share what I&apos;m{" "}
               <Chip href="/notes" iconName="notes" icon={<PencilLineIcon />}>
                 {site.home.thinking}
               </Chip>
@@ -40,20 +40,20 @@ export default function Home() {
           </p>
           <p className="mt-8 tracking-normal">
             <Reveal delay={380} step={14}>
-              <CopyEmail email={site.email} /> to say hi. find me on{" "}
+              <CopyEmail email={site.email} /> to say hi. Find me on{" "}
               <Chip href={site.links.linkedin} external brand="linkedin" iconName="linkedin" icon={<LinkedinIcon />}>
-                linkedin
+                LinkedIn
               </Chip>
-              , <Chip href={site.links.x} external brand="x" iconName="x" icon={<XLogoIcon />} label="x" /> and{" "}
+              , <Chip href={site.links.x} external brand="x" iconName="x" icon={<XLogoIcon />} label="X" /> and{" "}
               <Chip href={site.links.github} external brand="github" iconName="github" icon={<GithubIcon />}>
-                github
+                GitHub
               </Chip>
               , or read my <ResumeChip />.
             </Reveal>
           </p>
           <p className="mt-8 text-pretty">
             <Reveal delay={480} step={14}>
-              more: <Chip href="/about">about me</Chip>, my <Chip href="/experience">experience</Chip>,{" "}
+              More: <Chip href="/about">about me</Chip>, my <Chip href="/experience">experience</Chip>,{" "}
               <Chip href="/activity">coding activity</Chip>, <Chip href="/education">education</Chip>, and a{" "}
               <Chip href="/contact">contact form</Chip>.
             </Reveal>

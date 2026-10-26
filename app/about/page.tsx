@@ -13,7 +13,7 @@ import { PageTransition } from "@/components/transitions";
 import { about, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "about",
+  title: "About",
   description: `${about.greeting} ${about.story[0]}`,
 };
 
@@ -64,7 +64,7 @@ export default function AboutPage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title="about" meta={site.location}>
+        <PageHeader title="About" meta={site.location}>
           {site.pages.about}
         </PageHeader>
 
@@ -74,7 +74,7 @@ export default function AboutPage() {
               <div className="relative size-[104px] overflow-hidden rounded-2xl bg-surface shadow-media ring-1 ring-line max-sm:size-[88px]">
                 <Image
                   src={about.photo}
-                  alt={`portrait of ${site.name}`}
+                  alt={`Portrait of ${site.name}`}
                   fill
                   sizes="104px"
                   priority
@@ -102,10 +102,10 @@ export default function AboutPage() {
 
         <section className="reveal mt-14" style={revealDelay(260)}>
           <div className="mb-4 flex items-baseline justify-between gap-4">
-            <h2 className="font-medium">now</h2>
+            <h2 className="font-medium">Now</h2>
             <span className="inline-flex items-center gap-1.5 text-meta text-muted">
               <span className="live-dot" aria-hidden="true" />
-              currently
+              Currently
             </span>
           </div>
           <ul className="grid gap-2.5">
@@ -125,7 +125,7 @@ export default function AboutPage() {
 
         <section className="reveal mt-16 border-t border-line pt-8" style={revealDelay(340)}>
           <p className="text-pretty">
-            want to build something together?{" "}
+            Want to build something together?{" "}
             <span className="whitespace-nowrap">
               <Chip href="/contact">say hello</Chip>,
             </span>{" "}
@@ -139,7 +139,7 @@ export default function AboutPage() {
             </span>
           </p>
           <p className="mt-3 text-meta text-muted">
-            curious how this site is made? read the{" "}
+            Curious how this site is made? Read the{" "}
             <span className="whitespace-nowrap">
               <Chip href="/colophon">colophon</Chip>.
             </span>

@@ -6,8 +6,8 @@ import { PageTransition } from "@/components/transitions";
 import { interactions, site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "interactions",
-  description: `small studies in motion and feedback by ${site.name}. every one is live in the browser, so you can touch them.`,
+  title: "Interactions",
+  description: `Small studies in motion and feedback by ${site.name}. Every one is live in the browser, so you can touch them.`,
 };
 
 export default function InteractionsPage() {
@@ -15,11 +15,11 @@ export default function InteractionsPage() {
     <PageTransition>
       <main className="flex min-h-svh flex-col justify-center py-8 max-sm:justify-start max-sm:pt-6 max-sm:pb-20">
         <div className="column mb-8">
-          <PageHeader title="interactions" meta={interactions.length}>
+          <PageHeader title="Interactions" meta={interactions.length}>
             {site.pages.interactions}
           </PageHeader>
         </div>
-        <Rail label="interactions">
+        <Rail label="Interactions">
           {interactions.map((interaction, index) => (
             <InteractionCard
               key={interaction.slug}

@@ -4,9 +4,9 @@ import { AnimatePresence, motion, MotionConfig } from "motion/react";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 
 const data = {
-  day: { total: "1,204", bars: [32, 48, 40, 62, 54, 70, 46, 58, 66, 52] },
-  week: { total: "8,930", bars: [58, 64, 50, 72, 80, 66, 74, 88, 70, 76] },
-  month: { total: "36,412", bars: [40, 56, 68, 60, 78, 84, 72, 92, 86, 96] },
+  day: { label: "Day", total: "1,204", bars: [32, 48, 40, 62, 54, 70, 46, 58, 66, 52] },
+  week: { label: "Week", total: "8,930", bars: [58, 64, 50, 72, 80, 66, 74, 88, 70, 76] },
+  month: { label: "Month", total: "36,412", bars: [40, 56, 68, 60, 78, 84, 72, 92, 86, 96] },
 };
 
 type Tab = keyof typeof data;
@@ -35,7 +35,7 @@ export function TabsDemo() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 px-8">
-        <div role="tablist" aria-label="range" onKeyDown={onKeyDown} className="relative flex rounded-md bg-chip p-0.5">
+        <div role="tablist" aria-label="Range" onKeyDown={onKeyDown} className="relative flex rounded-md bg-chip p-0.5">
           {tabs.map((tab, index) => (
             <button
               key={tab}
@@ -58,13 +58,13 @@ export function TabsDemo() {
                   className="absolute inset-0 rounded bg-bg shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--line)]"
                 />
               ) : null}
-              <span className="relative">{tab}</span>
+              <span className="relative">{data[tab].label}</span>
             </button>
           ))}
         </div>
         <div role="tabpanel" id={`${id}-panel`} aria-labelledby={`${id}-${active}`} className="w-full max-w-[240px]">
           <div className="flex items-baseline justify-between">
-            <span className="text-meta text-muted">visits</span>
+            <span className="text-meta text-muted">Visits</span>
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
                 key={active}

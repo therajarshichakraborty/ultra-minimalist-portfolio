@@ -9,8 +9,8 @@ import { PageTransition } from "@/components/transitions";
 import { contact, site, type Channel } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "contact",
-  description: `get in touch with ${site.name}.`,
+  title: "Contact",
+  description: `Get in touch with ${site.name}.`,
 };
 
 const stroke = {
@@ -47,19 +47,19 @@ export default function ContactPage() {
   return (
     <PageTransition>
       <main className="column py-[clamp(48px,10svh,112px)]">
-        <PageHeader title="contact" meta="replies within a day">
+        <PageHeader title="Contact" meta="Replies within a day">
           <span className="block text-[28px] leading-[1.15] font-medium tracking-[-0.03em] text-balance sm:text-[34px]">
             {contact.heading} <span className="contact-accent">{contact.accent}</span>
           </span>
           <span className="mt-4 block">{site.pages.contact}</span>
         </PageHeader>
 
-        <section className="reveal mt-10" style={revealDelay(200)} aria-label="message form">
+        <section className="reveal mt-10" style={revealDelay(200)} aria-label="Message form">
           <ContactForm email={site.email} topics={contact.topics} endpoint={contact.formEndpoint} />
         </section>
 
         <section className="reveal mt-14" style={revealDelay(260)}>
-          <h2 className="font-medium">or reach me directly</h2>
+          <h2 className="font-medium">Or reach me directly</h2>
           <HoverList className="-mx-2 mt-3 grid gap-0.5">
             {contact.channels.map((channel) => {
               const external = channel.href.startsWith("http");

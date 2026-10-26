@@ -147,13 +147,13 @@ export function ResumeChip() {
                   <ResumePaper className="p-6 sm:p-9" />
                 </div>
                 <div className="absolute -top-3.5 right-3 flex gap-2">
-                  <Action label="open full page" href="/resume">
+                  <Action label="Open full page" href="/resume">
                     <ExpandIcon className="size-3.5" />
                   </Action>
-                  <Action label="print" href="/resume?print=1">
+                  <Action label="Print" href="/resume?print=1">
                     <PrinterIcon className="size-3.5" />
                   </Action>
-                  <Action label="close" onClick={close}>
+                  <Action label="Close" onClick={close}>
                     <CloseIcon className="size-3.5" />
                   </Action>
                 </div>

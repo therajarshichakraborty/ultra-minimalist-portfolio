@@ -69,7 +69,7 @@ export function LittleGuy({ className, playful = false }: LittleGuyProps) {
   return (
     <button
       type="button"
-      aria-label="startle the little guy"
+      aria-label="Startle the little guy"
       onClick={startle}
       className={cn(
         "absolute inset-0 grid place-items-center outline-offset-[-6px] [-webkit-tap-highlight-color:transparent]",

@@ -33,31 +33,31 @@ export function ResumePaper({ className }: { className?: string }) {
           {site.location} · {site.email} · {domain()}
         </p>
       </header>
-      <Section title="summary">
+      <Section title="Summary">
         <p className="text-pretty">{resume.summary}</p>
       </Section>
-      <Section title="selected work">
+      <Section title="Selected work">
         {projects.map((project) => (
           <Row key={project.slug} title={project.title} meta={`${project.stack.join(", ")} · ${project.year}`}>
             {project.tagline}
           </Row>
         ))}
       </Section>
-      <Section title="experience">
+      <Section title="Experience">
         {experience.map((item) => (
           <Row key={`${item.company}-${item.period}`} title={`${item.role}, ${item.company}`} meta={item.period}>
             {item.summary}
           </Row>
         ))}
       </Section>
-      <Section title="skills">
+      <Section title="Skills">
         {resume.skills.map((skill) => (
           <Row key={skill.group} title={skill.group}>
             {skill.items}
           </Row>
         ))}
       </Section>
-      <Section title="education">
+      <Section title="Education">
         {education.map((item) => (
           <Row key={item.degree} title={item.school} meta={item.period}>
             {item.degree}, {item.grades.join(", ")}

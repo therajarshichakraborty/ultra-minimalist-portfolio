@@ -1,27 +1,27 @@
 export const meta = {
-  title: "start with the hard states",
+  title: "Start with the hard states",
   date: "2026-10-12",
   summary:
-    "i design the empty, loading, and error states before the happy path. they decide more of the layout than you would think.",
+    "I design the empty, loading, and error states before the happy path. They decide more of the layout than you would think.",
 };
 
-when i start a screen, i skip the version with perfect data. i sketch the ones nobody screenshots first:
+When I start a screen, I skip the version with perfect data. I sketch the ones nobody screenshots first:
 
-- **empty**, before anything exists
-- **loading**, while the request is still out
-- **error**, when it comes back wrong
-- **too much**, when a name runs forty characters and the list has three hundred rows
+- **Empty**, before anything exists
+- **Loading**, while the request is still out
+- **Error**, when it comes back wrong
+- **Too much**, when a name runs forty characters and the list has three hundred rows
 
-these decide the layout more than the happy path does. a list that looks right with five items can fall apart with zero, or with five hundred. a title that fits on one line on my screen will wrap on someone's phone.
+These decide the layout more than the happy path does. A list that looks right with five items can fall apart with zero, or with five hundred. A title that fits on one line on my screen will wrap on someone's phone.
 
-## a small example
+## A small example
 
-a toast i built recently started this way. the happy path was fine. but the toast with an action only announced "undo" to a screen reader, without saying what would be undone. the fix was a better label, something like `aria-label="undo archive"`, not a redesign.
+A toast I built recently started this way. The happy path was fine. But the toast with an action only announced "undo" to a screen reader, without saying what would be undone. The fix was a better label, something like `aria-label="undo archive"`, not a redesign.
 
-> the hard states are where people decide whether to trust what you built.
+> The hard states are where people decide whether to trust what you built.
 
-## how i work through them
+## How I work through them
 
-every component i build gets a small set of fake data next to it: an empty array, a promise that never resolves, one that throws, and a string that is far too long. i switch between them while i work, so the edge cases are there from the first commit instead of the week before launch.
+Every component I build gets a small set of fake data next to it: an empty array, a promise that never resolves, one that throws, and a string that is far too long. I switch between them while I work, so the edge cases are there from the first commit instead of the week before launch.
 
-it is slower for the first hour. it is faster for everything after.
+It is slower for the first hour. It is faster for everything after.

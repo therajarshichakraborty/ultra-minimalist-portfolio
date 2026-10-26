@@ -13,11 +13,11 @@ import { useRef, useState, type ComponentType, type SVGProps } from "react";
 import { FileTextIcon, GithubIcon, MailIcon, MergeIcon, PencilLineIcon } from "@/components/icons";
 
 const items: { label: string; Icon: ComponentType<SVGProps<SVGSVGElement>> }[] = [
-  { label: "mail", Icon: MailIcon },
-  { label: "github", Icon: GithubIcon },
-  { label: "notes", Icon: PencilLineIcon },
-  { label: "résumé", Icon: FileTextIcon },
-  { label: "open source", Icon: MergeIcon },
+  { label: "Mail", Icon: MailIcon },
+  { label: "GitHub", Icon: GithubIcon },
+  { label: "Notes", Icon: PencilLineIcon },
+  { label: "Résumé", Icon: FileTextIcon },
+  { label: "Open source", Icon: MergeIcon },
 ];
 
 const spring = { mass: 0.1, stiffness: 150, damping: 12 };
