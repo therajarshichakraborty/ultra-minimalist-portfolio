@@ -18,7 +18,7 @@ export function SkillsMarquee({ rows, label }: { rows: Skill[][]; label: string 
         <div
           key={index}
           className="marquee-row overflow-hidden py-1.5"
-          style={{ "--speed": `${30 + index * 6}s` } as CSSProperties}
+          style={{ "--speed": `${42 + index * 8}s` } as CSSProperties}
         >
           <ul data-reverse={index % 2 === 1} className="marquee-track flex w-max gap-2.5">
             {row.map((skill) => (

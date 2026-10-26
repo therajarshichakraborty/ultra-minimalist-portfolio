@@ -137,19 +137,17 @@ export const about = {
       { name: "Hono", icon: "hono" },
       { name: "FastAPI", icon: "fastapi" },
       { name: "Python", icon: "python" },
-    ],
-    [
       { name: "Java", icon: "java" },
       { name: "C++", icon: "cplusplus" },
       { name: "PostgreSQL", icon: "postgresql" },
       { name: "Prisma", icon: "prisma" },
+    ],
+    [
       { name: "Redis", icon: "redis" },
       { name: "Kafka", icon: "kafka" },
       { name: "RabbitMQ", icon: "rabbitmq" },
       { name: "PyTorch", icon: "pytorch" },
       { name: "Tailwind CSS", icon: "tailwindcss" },
-    ],
-    [
       { name: "Docker", icon: "docker" },
       { name: "Kubernetes", icon: "kubernetes" },
       { name: "Google Cloud", icon: "googlecloud" },
