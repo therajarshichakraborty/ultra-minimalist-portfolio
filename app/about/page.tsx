@@ -135,7 +135,7 @@ export default function AboutPage() {
             </span>{" "}
             or see the{" "}
             <span className="whitespace-nowrap">
-              <Chip href="/activity">code i ship</Chip>.
+              <Chip href="/activity">code I ship</Chip>.
             </span>
           </p>
           <p className="mt-3 text-meta text-muted">
