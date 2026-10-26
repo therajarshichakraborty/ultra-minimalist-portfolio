@@ -1179,35 +1179,6 @@ main {
   padding-bottom: 96px;
 }
 
-@layer components {
-  .footer-wordmark {
-    font-size: min(17.5vw, 232px);
-    font-weight: 800;
-    line-height: 0.8;
-    letter-spacing: -0.045em;
-  }
-
-  .footer-letter {
-    display: inline-block;
-    background: linear-gradient(to bottom, #e4e4e7 15%, rgb(228 228 231 / 0.2));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    transition: transform 600ms var(--ease-out-quint);
-  }
-
-  .footer-letter[data-accent] {
-    background-image: linear-gradient(to bottom, #ec4899, #a855f7);
-  }
-
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .footer-letter:hover {
-      transform: translateY(-8%);
-      transition-duration: 300ms;
-    }
-  }
-}
-
 .scribble path {
   fill: none;
   stroke: url(#scribble-ink);

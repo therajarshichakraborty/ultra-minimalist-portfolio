@@ -213,19 +213,37 @@ export const blog = {
 };
 
 export const footer = {
-  primary: [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Work", href: "/work" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
-  ],
-  secondary: [
-    { label: "Résumé", href: "/resume" },
-    { label: "Experience", href: "/experience" },
-    { label: "Research", href: "/about#research" },
-    { label: "DSA Journey", href: "/activity" },
-    { label: "Hashnode", href: blog.profile },
+  groups: [
+    {
+      title: "Pages",
+      links: [
+        { label: "Home", href: "/" },
+        { label: "About", href: "/about" },
+        { label: "Work", href: "/work" },
+        { label: "Blog", href: "/blog" },
+        { label: "Contact", href: "/contact" },
+      ],
+    },
+    {
+      title: "More",
+      links: [
+        { label: "Résumé", href: "/resume" },
+        { label: "Experience", href: "/experience" },
+        { label: "Research", href: "/about#research" },
+        { label: "Education", href: "/education" },
+        { label: "DSA journey", href: "/activity" },
+      ],
+    },
+    {
+      title: "Elsewhere",
+      links: [
+        { label: "GitHub", href: site.links.github },
+        { label: "LinkedIn", href: site.links.linkedin },
+        { label: "X", href: site.links.x },
+        { label: "Hashnode", href: blog.profile },
+        { label: "LeetCode", href: `https://leetcode.com/u/${site.profiles.leetcode}/` },
+      ],
+    },
   ],
 };
 
