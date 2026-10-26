@@ -43,7 +43,7 @@ export default function Home() {
                 {site.home.projects}
               </Chip>
               , and share what I&apos;m{" "}
-              <Chip href="/notes" iconName="notes" icon={<PencilLineIcon />}>
+              <Chip href="/blog" iconName="notes" icon={<PencilLineIcon />}>
                 {site.home.thinking}
               </Chip>
               .

@@ -1257,6 +1257,26 @@ main {
   padding-bottom: max(120px, calc(env(safe-area-inset-bottom) + 96px));
 }
 
+.scribble path {
+  fill: none;
+  stroke: url(#scribble-ink);
+  stroke-width: 3.5px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .scribble path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw 900ms var(--ease-out-quint) 520ms forwards;
+  }
+
+  .scribble path + path {
+    animation-delay: 780ms;
+  }
+}
+
 @media print {
   main {
     padding-bottom: 0;

@@ -115,14 +115,14 @@ export const about = {
     "Back in school I captained the cricket team, which turned out to be good training for engineering: read the conditions, back your team and stay calm when the plan falls apart.",
     "Today I’m a Software Engineer at Brand Voy, building live sports products on high-volume cricket and football data. When a match is live, the numbers have to be right and they have to be fast, and that standard has stuck with me in everything I build.",
     "I’m also finishing my B.Tech in Computer Science at Techno Main Salt Lake, where I research time-series forecasting and co-authored a research paper on deep learning. Away from the keyboard, I’ve co-led IGNITE at Samarth TMSL and helped run EDGE, our technical fest, with Geekonix. Organizing events for hundreds of people taught me as much about building things as any codebase.",
-    "The rest of the time I’m solving problems on LeetCode or writing up what I’ve learned on [my blog](/notes).",
+    "The rest of the time I’m solving problems on LeetCode or writing up what I’ve learned on [my blog](/blog).",
     "[Got something that’s broken in a way nobody can explain?](/contact)",
   ],
   now: [
     "Building live sports products at Brand Voy",
     "Finishing my B.Tech in Computer Science, class of 2027",
     "Solving problems on LeetCode most days",
-    "Writing short notes about building interfaces",
+    "Writing about JavaScript, Node.js, Git and AI on Hashnode",
   ],
   skillsTitle: "Tools I ship production software with",
   skills: [
@@ -197,6 +197,18 @@ export const publications: Publication[] = [
     },
   },
 ];
+
+export const blog = {
+  heading: "Things I learned",
+  accent: "the hard way.",
+  topics: "JavaScript, Node.js, networking, Git and AI",
+  profile: "https://hashnode.com/@Rajarshi2005",
+  series: [
+    { name: "The Debug Monk", host: "the-debug-monk.hashnode.dev" },
+    { name: "WebDev Cohort 2026", host: "webdev-cohort-2026.hashnode.dev" },
+    { name: "Git For All", host: "git-for-all.hashnode.dev" },
+  ],
+};
 
 export type Role = {
   company: string;

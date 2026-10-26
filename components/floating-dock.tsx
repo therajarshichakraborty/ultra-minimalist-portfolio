@@ -84,7 +84,7 @@ const pages: Item[] = [
       </svg>
     ),
   },
-  { label: "Notes", href: "/notes", icon: <PencilLineIcon /> },
+  { label: "Blog", href: "/blog", icon: <PencilLineIcon /> },
   {
     label: "Contact",
     href: "/contact",
