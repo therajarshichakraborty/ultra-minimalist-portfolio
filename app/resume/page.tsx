@@ -18,10 +18,7 @@ export default function ResumePage() {
         <div className="print:hidden">
           <PageHeader title="Résumé" meta={<PrintButton />} />
         </div>
-        <div
-          className="reveal mt-10 rounded-3xl bg-bg p-6 shadow-media ring-1 ring-line max-sm:rounded-2xl sm:p-10 print:mt-0 print:rounded-none print:p-0 print:shadow-none print:ring-0"
-          style={revealDelay(180)}
-        >
+        <div className="reveal mt-12 print:mt-0" style={revealDelay(180)}>
           <ResumePaper />
         </div>
       </main>

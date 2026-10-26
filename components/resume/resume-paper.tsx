@@ -36,7 +36,7 @@ function Row({
 
 export function ResumePaper({ className }: { className?: string }) {
   return (
-    <article className={cn("grid gap-5 bg-bg text-ink", className)}>
+    <article className={cn("grid gap-5 text-ink", className)}>
       <header className="grid gap-0.5 pb-1">
         <h2 className="text-[24px] leading-tight font-semibold tracking-[-0.03em]">{site.name}</h2>
         <p className="text-muted">{site.role}</p>
