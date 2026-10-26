@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter, Mrs_Saint_Delafield } from "next/font/google";
 import { DotField } from "@/components/dot-field";
 import { FloatingDock } from "@/components/floating-dock";
+import { SiteFooter } from "@/components/site-footer";
 import { IntroGate } from "@/components/intro-gate";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { site } from "@/content/site";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ScrollProgress />
         <DotField />
         {children}
+        <SiteFooter />
         <FloatingDock />
         <IntroGate />
       </body>

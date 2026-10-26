@@ -47,6 +47,7 @@ export const site = {
   name: "Rajarshi Chakraborty",
   signature: "Rajarshi",
   role: "Software Engineer",
+  tagline: "Full-stack and AI engineer building scalable, production-grade applications.",
   location: "Kolkata, West Bengal, India",
   email: "rajarshichakraborty2005@gmail.com",
   url: "https://rajarshis-portfolio.vercel.app",
@@ -207,6 +208,23 @@ export const blog = {
     { name: "The Debug Monk", host: "the-debug-monk.hashnode.dev" },
     { name: "WebDev Cohort 2026", host: "webdev-cohort-2026.hashnode.dev" },
     { name: "Git For All", host: "git-for-all.hashnode.dev" },
+  ],
+};
+
+export const footer = {
+  primary: [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    { label: "Work", href: "/work" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/contact" },
+  ],
+  secondary: [
+    { label: "Résumé", href: "/resume" },
+    { label: "Experience", href: "/experience" },
+    { label: "Research", href: "/about#research" },
+    { label: "DSA Journey", href: "/activity" },
+    { label: "Hashnode", href: blog.profile },
   ],
 };
 
