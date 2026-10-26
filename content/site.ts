@@ -91,7 +91,7 @@ export type Skill = {
 };
 
 export const about = {
-  photo: "https://avatars.githubusercontent.com/u/274300136?v=4",
+  photo: "/rajarshi.png",
   greeting: "Hey, I’m Rajarshi.",
   story: [
     "Back in school I captained the cricket team, which turned out to be good training for engineering: read the conditions, back your team and stay calm when the plan falls apart.",
