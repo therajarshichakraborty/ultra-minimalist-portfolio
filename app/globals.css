@@ -71,6 +71,7 @@
   --ink: #000000;
   --muted: #696969;
   --faint: #767676;
+  --graphite: #3a3a3a;
   --chip: #f0f0f0;
   --chip-hover: #e5e5e5;
   --chip-press: #dedede;
@@ -564,6 +565,10 @@
     opacity: 0;
     transform: translateY(-46%) rotate(-4deg);
     transition: opacity 120ms ease;
+  }
+
+  .font-script {
+    color: var(--graphite);
   }
 
   .signature-ink {

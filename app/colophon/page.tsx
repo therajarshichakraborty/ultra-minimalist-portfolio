@@ -105,7 +105,7 @@ export default function ColophonPage() {
             <p aria-hidden="true" className="my-auto -rotate-6 py-4 text-center font-script text-[52px] leading-none">
               {site.signature}
             </p>
-            <p className="text-meta text-muted">Mrs Saint Delafield, written on hover</p>
+            <p className="text-meta text-muted">Sacramento in graphite, written on hover</p>
           </Tile>
 
           <Tile label="Mono" className="sm:col-span-2" delay={220}>

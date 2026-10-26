@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter, Mrs_Saint_Delafield } from "next/font/google";
+import { Geist_Mono, Inter, Sacramento } from "next/font/google";
 import { DotField } from "@/components/dot-field";
 import { FloatingDock } from "@/components/floating-dock";
 import { SiteFooter } from "@/components/site-footer";
@@ -20,7 +20,7 @@ const mono = Geist_Mono({
   preload: false,
 });
 
-const signature = Mrs_Saint_Delafield({
+const signature = Sacramento({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-signature",
