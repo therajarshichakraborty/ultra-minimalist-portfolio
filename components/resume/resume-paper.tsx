@@ -38,8 +38,13 @@ export function ResumePaper({ className }: { className?: string }) {
   return (
     <article className={cn("grid gap-5 text-ink", className)}>
       <header className="grid gap-0.5 pb-1">
-        <h2 className="text-[24px] leading-tight font-semibold tracking-[-0.03em]">{site.name}</h2>
-        <p className="text-muted">{site.role}</p>
+        <p aria-hidden="true" className="resume-signature w-fit -rotate-3 font-script text-[60px] leading-none">
+          {site.signature}
+        </p>
+        <h2 className="mt-4">
+          <span className="font-medium">{site.name}</span>
+          <span className="text-muted"> · {site.role}</span>
+        </h2>
         <p className="mt-2 flex flex-wrap gap-x-3 gap-y-0.5 text-meta text-muted">
           <span>{site.location}</span>
           <a href={`mailto:${site.email}`} className="transition-colors hover:text-ink">
