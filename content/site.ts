@@ -46,7 +46,7 @@ export const site = {
   signature: "Rajarshi",
   role: "Software Engineer",
   location: "Kolkata, West Bengal, India",
-  email: "[EMAIL_ADDRESS]",
+  email: "rajarshichakraborty2005@gmail.com",
   url: "https://rajarshis-portfolio.vercel.app",
   title: "Rajarshi Chakraborty · Software Engineer",
   description:
