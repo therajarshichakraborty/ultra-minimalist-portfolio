@@ -89,9 +89,6 @@ export default function AboutPage() {
             <p className="mt-1 text-muted">
               {site.role} · {site.location}
             </p>
-            <p aria-hidden="true" className="mt-1.5 -rotate-3 font-script text-[30px] leading-none">
-              {site.signature}
-            </p>
           </div>
         </section>
 

@@ -22,10 +22,8 @@ function FooterLink({ href, label }: { href: string; label: string }) {
 export function SiteFooter() {
   return (
     <footer className="column pb-[max(128px,calc(env(safe-area-inset-bottom)+112px))] print:hidden">
-      <p aria-hidden="true" className="w-fit -rotate-3 font-script text-[40px] leading-none">
-        {site.signature}
-      </p>
-      <p className="mt-4 max-w-80 text-pretty text-muted">{site.tagline}</p>
+      <p className="font-medium">{site.name}</p>
+      <p className="mt-1 max-w-80 text-pretty text-muted">{site.tagline}</p>
 
       <nav aria-label="Footer" className="mt-10 grid grid-cols-3 gap-6 max-sm:gap-4">
         {footer.groups.map((group) => (
