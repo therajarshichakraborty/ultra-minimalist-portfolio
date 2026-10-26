@@ -569,6 +569,7 @@
 
   .font-script {
     color: var(--graphite);
+    -webkit-text-stroke: 0.02em currentColor;
   }
 
   .signature-ink {
