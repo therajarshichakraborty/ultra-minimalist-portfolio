@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ProjectCover } from "@/components/covers";
-import { LittleGuy, littleGuySurface } from "@/components/little-guy";
+import { LittleGuy } from "@/components/little-guy";
 import { revealDelay } from "@/components/reveal";
+import { littleGuySurface } from "@/components/surfaces";
 import { TiltCard } from "@/components/tilt-card";
 import { Morph } from "@/components/transitions";
 import { projects } from "@/content/site";

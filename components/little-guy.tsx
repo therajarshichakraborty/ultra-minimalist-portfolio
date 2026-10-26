@@ -4,8 +4,6 @@ import { useRef, useState } from "react";
 import { useBlink, useGaze } from "@/components/use-gaze";
 import { cn } from "@/lib/utils";
 
-export const littleGuySurface = "bg-bg shadow-media ring-1 ring-line";
-
 type LittleGuyProps = {
   className?: string;
   playful?: boolean;

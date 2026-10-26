@@ -1,5 +1,5 @@
 import { Demo } from "@/components/demos";
-import { littleGuySurface } from "@/components/little-guy";
+import { littleGuySurface } from "@/components/surfaces";
 import { Morph } from "@/components/transitions";
 import type { Interaction } from "@/content/site";
 import { formatMonth } from "@/lib/format";
