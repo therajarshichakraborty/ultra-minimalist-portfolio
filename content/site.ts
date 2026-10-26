@@ -90,6 +90,24 @@ export type Skill = {
   icon: LogoName;
 };
 
+export type Author = {
+  name: string;
+  affiliation: string;
+  self?: boolean;
+};
+
+export type Publication = {
+  status: string;
+  paperId: string;
+  date: string;
+  title: string;
+  authors: Author[];
+  venue: { name: string; full: string; note: string };
+  abstract: string;
+  identifiers: { label: string; value: string }[];
+  links: { paper: string; publisher: string };
+};
+
 export const about = {
   photo: "/rajarshi.png",
   greeting: "Hey, I’m Rajarshi.",
@@ -142,6 +160,43 @@ export const about = {
     ],
   ] as Skill[][],
 };
+
+export const research = {
+  eyebrow: "Publications",
+  heading: "Research I’ve published",
+  intro:
+    "Committed to advancing technology through research, technical publications and engineering contributions across multiple domains.",
+};
+
+export const publications: Publication[] = [
+  {
+    status: "Published",
+    paperId: "2074",
+    date: "July 2026",
+    title: "Deep Learning Enabled Fruit Quality Assessment with Hyper-Spectral Feature Fusion",
+    authors: [
+      { name: "Rajarshi Chakraborty", affiliation: "UnderGrad Researcher, Techno Main Salt Lake, Kolkata", self: true },
+      { name: "Dr. Subhankar Chatterjee", affiliation: "Professor, Techno Main Salt Lake, Kolkata" },
+      { name: "Aditi Nandi Tokder", affiliation: "Assistant Professor, Techno Main Salt Lake, Kolkata" },
+      { name: "Dr. Anirban Bose", affiliation: "Assistant Professor, Dr. B. C. Roy Engineering College, Durgapur" },
+    ],
+    venue: {
+      name: "CIACON 2026",
+      full: "International Conference on Control, Instrumentation, Energy & Communication",
+      note: "IEEE Xplore",
+    },
+    abstract:
+      "Proposes a novel deep learning framework that integrates hyper-spectral features using a fusion network to assess fruit quality with high precision, combining external appearance defects with internal chemical composition data.",
+    identifiers: [
+      { label: "Electronic ISBN", value: "979-8-3315-5231-2" },
+      { label: "Print on Demand (PoD) ISBN", value: "979-8-3315-5232-9" },
+    ],
+    links: {
+      paper: "/pdfs/research-paper.pdf",
+      publisher: "https://ieeexplore.ieee.org/document/11688352",
+    },
+  },
+];
 
 export type Role = {
   company: string;

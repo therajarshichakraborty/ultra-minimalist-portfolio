@@ -5,12 +5,13 @@ import type { ReactNode } from "react";
 import { Chip } from "@/components/chip";
 import { ArrowRightIcon } from "@/components/icons";
 import { PageHeader } from "@/components/page-header";
+import { PublicationCard } from "@/components/publication-card";
 import { ResumeChip } from "@/components/resume/resume-chip";
 import { revealDelay } from "@/components/reveal";
 import { SkillsMarquee } from "@/components/skills-marquee";
 import { TiltCard } from "@/components/tilt-card";
 import { PageTransition } from "@/components/transitions";
-import { about, site } from "@/content/site";
+import { about, publications, research, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
@@ -118,7 +119,24 @@ export default function AboutPage() {
           </ul>
         </section>
 
-        <section className="reveal mt-16" style={revealDelay(300)}>
+        <section id="research" className="reveal mt-20 scroll-mt-16" style={revealDelay(290)}>
+          <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="h-px flex-1 bg-linear-to-r from-transparent to-line" />
+            <span className="rounded-full bg-ink px-3 py-0.5 text-meta font-medium text-bg">{research.eyebrow}</span>
+            <span aria-hidden="true" className="h-px flex-1 bg-linear-to-l from-transparent to-line" />
+          </div>
+          <h2 className="mt-5 text-center text-[28px] leading-[1.15] font-medium tracking-[-0.03em] text-balance sm:text-[34px]">
+            {research.heading}
+          </h2>
+          <p className="mx-auto mt-3 max-w-110 text-center text-pretty text-muted">{research.intro}</p>
+          <div className="mt-8 grid gap-4">
+            {publications.map((publication) => (
+              <PublicationCard key={publication.paperId} publication={publication} />
+            ))}
+          </div>
+        </section>
+
+        <section className="reveal mt-20" style={revealDelay(320)}>
           <h2 className="mb-5 text-center text-muted">{about.skillsTitle}</h2>
           <SkillsMarquee rows={about.skills} label={about.skillsTitle} />
         </section>
