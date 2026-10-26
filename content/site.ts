@@ -1,3 +1,5 @@
+import type { LogoName } from "@/components/tech-logo";
+
 export type ProjectSection = {
   heading: string;
   body: string[];
@@ -85,7 +87,7 @@ export const site = {
 
 export type Skill = {
   name: string;
-  icon: string;
+  icon: LogoName;
 };
 
 export const about = {
@@ -108,26 +110,35 @@ export const about = {
   skills: [
     [
       { name: "TypeScript", icon: "typescript" },
-      { name: "Python", icon: "python" },
-      { name: "Node", icon: "nodedotjs" },
-      { name: "FastAPI", icon: "fastapi" },
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextjs" },
+      { name: "Node.js", icon: "nodejs" },
       { name: "Express", icon: "express" },
       { name: "NestJS", icon: "nestjs" },
       { name: "Hono", icon: "hono" },
-      { name: "Java", icon: "openjdk" },
-      { name: "C++", icon: "cplusplus" },
-      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "FastAPI", icon: "fastapi" },
+      { name: "Python", icon: "python" },
     ],
     [
+      { name: "Java", icon: "java" },
+      { name: "C++", icon: "cplusplus" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Prisma", icon: "prisma" },
       { name: "Redis", icon: "redis" },
+      { name: "Kafka", icon: "kafka" },
+      { name: "RabbitMQ", icon: "rabbitmq" },
+      { name: "PyTorch", icon: "pytorch" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+    ],
+    [
       { name: "Docker", icon: "docker" },
-      { name: "GCP", icon: "googlecloud" },
+      { name: "Kubernetes", icon: "kubernetes" },
+      { name: "Google Cloud", icon: "googlecloud" },
       { name: "Cloudflare", icon: "cloudflare" },
       { name: "Terraform", icon: "terraform" },
       { name: "GitHub Actions", icon: "githubactions" },
       { name: "Jenkins", icon: "jenkins" },
-      { name: "Kafka", icon: "apachekafka" },
-      { name: "RabbitMQ", icon: "rabbitmq" },
+      { name: "Git", icon: "git" },
     ],
   ] as Skill[][],
 };
